@@ -32,7 +32,7 @@ all: elab
 elab:
 	${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 
-simv:
+sim:
 	./simv -l run_log
 
 verdi:
