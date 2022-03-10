@@ -11,21 +11,21 @@
 # Description: 
 #*************************************************************************************/
 
-MODULE_NAME		:=sync_fifo
+MODULE_NAME     :=sync_fifo
 
-SIM_DIR			:=$(shell pwd)
-RTL_DIR		 	:=${module_dir}/../rtl
-TB_DIR		    :=${module_dir}/../tb
+SIM_DIR         :=$(shell pwd)
+RTL_DIR         :=${module_dir}/../rtl
+TB_DIR          :=${module_dir}/../tb
 
-SRCS			:=$(wildcard ${SIM_DIR}/../rtl/*.v)
-SRCS			+=$(wildcard ${SIM_DIR}/../tb/*.v)
+SRCS            :=$(wildcard ${SIM_DIR}/../rtl/*.v)
+SRCS            +=$(wildcard ${SIM_DIR}/../tb/*.v)
 
-VCS				:=vcs
-GCC				:=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
-MODE			:=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k
-VERDI_LIBS			:=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
-TIME_SCALE		:=-timescale=1ns/1ps
-NO_TIMING		:=+notimingcheck +nospecify
+VCS             :=vcs
+GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
+MODE            :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k
+VERDI_LIBS      :=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
+TIME_SCALE      :=-timescale=1ns/1ps
+NO_TIMING       :=+notimingcheck +nospecify
 
 all: elab
 

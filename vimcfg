@@ -1,5 +1,9 @@
 set nocompatible
 
+" Display more character
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+
 " 打开语法高亮
 syntax on
 
@@ -11,10 +15,9 @@ set shiftwidth=4
 set tabstop=4
 
 " Tab 转为多少空格
-" set softtabstop=2
+set softtabstop=4
+set expandtab
 
-" 文本上按下>>(增加一级缩进) <<(取消一级缩进) ==(取消全部缩进)
-" set expandtab
 
 " 在底部显示当前模式 
 set showmode 
