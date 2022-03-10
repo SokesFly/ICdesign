@@ -1,3 +1,0 @@
-Command Line: /home/soke/synopsys/verdi_2016.06-1/platform/LINUXAMD64/bin/Novas -nologo /home/soke/ICdesign/base/sync_fifo/sim/../rtl/sync_fifo.v /home/soke/ICdesign/base/sync_fifo/sim/../tb/sync_fifo_tb.v -ssf ./tb.fsdb
-uname(Linux ubuntu 5.4.0-99-generic #112~18.04.1-Ubuntu SMP Thu Feb 3 14:09:57 UTC 2022 x86_64)
-au time 11.509378 1.098134 1.868898 delta 231198720 231198720 total 620363776 620363776

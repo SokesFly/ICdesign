@@ -39,4 +39,4 @@ verdi:
 	verdi -nologo ${SRCS} -ssf ./tb.fsdb
 
 clean:
-	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv
+	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog
