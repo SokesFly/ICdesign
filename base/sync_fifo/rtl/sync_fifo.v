@@ -30,13 +30,13 @@ module sync_fifo #(
     input wire                  rd_en_i ,       // input  , read enable , high valid.
 
     /****** Control and status *****************************************/
-    output wire         full_o      ,           // output , high, when fifo full, or low.
-    output wire         empty_o     ,           // output , high, when fifo empty, or low.
+    output wire                 full_o      ,           // output , high, when fifo full, or low.
+    output wire                 empty_o     ,           // output , high, when fifo empty, or low.
     output reg [ELS_SIZE : 0]   elements_o      // output , elements fifo's storaged.
 );
 
-    reg [ELS_SIZE - 1 : 0]         wr_ptr ;
-    reg [ELS_SIZE - 1 : 0]         rd_ptr ;
+    reg [ELS_SIZE - 1 : 0]      wr_ptr ;
+    reg [ELS_SIZE - 1 : 0]      rd_ptr ;
     reg [WIDTH - 1 : 0]         fifo_array [0 : DEPTH - 1] ;
     reg [ELS_SIZE : 0]          i ;
 
@@ -46,10 +46,8 @@ module sync_fifo #(
             for(i = 0; i < DEPTH ; i = i + 1'b1) begin
                 fifo_array [i] <= #DLY 'b0 ;
             end
-        end else if(wr_en_i) begin
+        end else if(wr_en_i && !full_o) begin
             fifo_array [wr_ptr] <= #DLY wdata_i ;
-        end else begin
-            fifo_array [wr_ptr] <= #DLY fifo_array [wr_ptr] ;
         end
     end
 
@@ -58,8 +56,6 @@ module sync_fifo #(
             wr_ptr <= #DLY 'b0 ;
         end else if(wr_en_i && !full_o) begin
             wr_ptr <= #DLY wr_ptr + 1'b1 ;
-        end else begin
-            wr_ptr <= #DLY wr_ptr ;
         end
     end
 
@@ -67,7 +63,7 @@ module sync_fifo #(
     always@(posedge clk_i or negedge rst_n_i) begin
         if(!rst_n_i) begin
             rdata_i <= #DLY 'b0 ;
-        end else if(rd_en_i) begin
+        end else if(rd_en_i && !empty_o) begin
             rdata_i <= #DLY fifo_array [rd_ptr] ;
         end else begin
             rdata_i <= #DLY 'b0 ;
@@ -79,8 +75,6 @@ module sync_fifo #(
             rd_ptr <= #DLY 'b0 ;
         end else if(rd_en_i && !empty_o) begin
             rd_ptr <= #DLY rd_ptr + 1'b1 ;
-        end else begin
-            rd_ptr <= #DLY rd_ptr ;
         end
     end
 
@@ -94,13 +88,11 @@ module sync_fifo #(
             elements_o <= #DLY elements_o + 1'b1 ;
         end else if(rd_en_i && !empty_o) begin
             elements_o <= #DLY elements_o - 1'b1 ;
-        end else begin
-            elements_o <= #DLY elements_o ;
         end
     end
 
     /****** status output ********************************************/
-    assign full_o  = (elements_o == DEPTH) ? 1'b1 : 1'b0;
-    assign empty_o = (elements_o == 'b0) ? 1'b1 : 1'b0;
+    assign full_o  = (elements_o == DEPTH) ;
+    assign empty_o = (elements_o == 'b0) ;
 
 endmodule

@@ -18,6 +18,8 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
+" 关闭提示音
+set vb t_vb=
 
 " 在底部显示当前模式 
 set showmode 
@@ -47,7 +49,7 @@ set relativenumber
 set cursorline
 
 " 设置行宽
-set textwidth=80
+set textwidth=120
 
 " 自动拆行,关闭用set nowtap 
 set wrap
@@ -84,6 +86,17 @@ set hlsearch
 
 " 打开英语单词的拼写检查
 " set spell spelllang=en_us
+
+" Add annotation
+map <F2> : call AddAnnotation()<cr>'s
+function AddAnnotation()
+    call append(line ("."),    "    /********************************************************************************")
+    call append(line (".") + 1,"    *")
+    call append(line (".") + 2,"    ********************************************************************************/")
+    let  pos = getpos(".")
+    echo pos
+    call setpos(".", pos)
+endf
 
 map <F1> : call TitleDet()<cr>'s
 function AddTitle()
@@ -127,3 +140,4 @@ function TitleDet()
     call AddTitle()
 endfunction
 
+" source vim plugin
