@@ -53,10 +53,14 @@ module general_syncer #(
     genvar i;
     generate
         for(i = 0; i < MID_STAGE_NUM; i = i + 1) begin
-            if(i == 0) begin
-                mid_regs[i] <=#DLY first_reg;
-            end else begin
-                mid_regs[i] <=#DLY mid_regs[i - 1];
+            always@(posedge clk_i or negedge rst_n_i) begin
+                if(!rst_n_i) begin
+                   mid_regs[i] <= #DLY {DATA_WIDTH{1'b0}};
+                end else if(i == 0) begin
+                   mid_regs[i] <= #DLY first_reg;
+                end else begin
+                   mid_regs[i] <= #DLY mid_regs[i - 1];
+                end
             end
         end
     endgenerate
@@ -73,7 +77,7 @@ module general_syncer #(
         end else begin
             always@(negedge clk_i or posedge rst_n_i) begin
                 if(!rst_n_i) begin
-                    first_reg <= #DLY   {DATA_WIDTH{1'b0}};
+                    last_reg <= #DLY   {DATA_WIDTH{1'b0}};
                 end else begin
                     last_reg  <= #DLY   mid_regs[MID_STAGE_NUM - 1];
                 end
