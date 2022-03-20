@@ -10,7 +10,6 @@
 * Resverd: 
 * Description: 
 **************************************************************************************/
-
 `timescale 1ns/1ps
 
 module general_syncer #(
@@ -28,7 +27,8 @@ module general_syncer #(
 
     reg [DATA_WIDTH - 1 : 0]        first_reg;
     reg [DATA_WIDTH - 1 : 0]        last_reg;
-    reg [DATA_WIDTH - 1 : 0]        mid_regs [0 : MID_STAGE_NUM - 1];
+    wire [DATA_WIDTH - 1 : 0]       mid_tmp;
+    reg [DATA_WIDTH - 1 : 0]    mid_regs [0 : MID_STAGE_NUM - 1];
 
     generate
         if(FIRST_EDGE == 0) begin
@@ -50,6 +50,14 @@ module general_syncer #(
         end
     endgenerate
 
+    generate
+        if(MID_STAGE_NUM == 0) begin
+            assign  mid_tmp = first_reg;
+        end else begin
+            assign  mid_tmp = mid_regs[MID_STAGE_NUM - 1];
+        end
+    endgenerate
+
     genvar i;
     generate
         for(i = 0; i < MID_STAGE_NUM; i = i + 1) begin
@@ -59,7 +67,7 @@ module general_syncer #(
                 end else if(i == 0) begin
                    mid_regs[i] <= #DLY first_reg;
                 end else begin
-                   mid_regs[i] <= #DLY mid_regs[i - 1];
+                   mid_regs[i] <= #DLY mid_regs[i-1];
                 end
             end
         end
@@ -71,7 +79,7 @@ module general_syncer #(
                 if(!rst_n_i) begin
                     last_reg <= #DLY   {DATA_WIDTH{1'b0}};
                 end else begin
-                    last_reg  <= #DLY   mid_regs[MID_STAGE_NUM - 1];
+                    last_reg  <= #DLY   mid_tmp;
                 end
             end
         end else begin
@@ -79,12 +87,12 @@ module general_syncer #(
                 if(!rst_n_i) begin
                     last_reg <= #DLY   {DATA_WIDTH{1'b0}};
                 end else begin
-                    last_reg  <= #DLY   mid_regs[MID_STAGE_NUM - 1];
+                    last_reg  <= #DLY   mid_tmp;
                 end
             end
         end
     endgenerate
 
-    assign  data_synced_o = last_reg ^ mid_regs[MID_STAGE_NUM - 1] ;
+    assign data_synced_o = last_reg;
 
 endmodule

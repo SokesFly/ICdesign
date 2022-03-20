@@ -52,7 +52,7 @@ set cursorline
 set textwidth=120
 
 " 自动拆行,关闭用set nowtap 
-set wrap
+" set wrap
 
 " 遇到指定符号(如空格)才拆行
 set linebreak
