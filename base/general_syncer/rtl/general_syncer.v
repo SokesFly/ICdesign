@@ -16,7 +16,7 @@ module general_syncer #(
     parameter   DLY             = 1,
     parameter   FIRST_EDGE      = 1, // (1 => negedge ) || (0 => posedge)
     parameter   LAST_EDGE       = 1, // (1 => negedge ) || (0 => posedge)
-    parameter   MID_STAGE_NUM   = 3, // stage number of middle register(s), MID_STAGE_NUM >= 0
+    parameter   MID_STAGE_NUM   = 0, // stage number of middle register(s), MID_STAGE_NUM >= 0
     parameter   DATA_WIDTH      = 1  // data bus width
 )(
     input wire                       clk_i,

@@ -38,5 +38,8 @@ sim:
 verdi:
 	verdi -nologo ${SRCS} -ssf ./tb.fsdb
 
+dc:
+	dc_shell-t -f dc.tcl
+
 clean:
-	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog
+	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog command.log

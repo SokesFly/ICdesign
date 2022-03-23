@@ -22,7 +22,8 @@ SRCS            +=$(wildcard ${SIM_DIR}/../tb/*.v)
 
 VCS             :=vcs
 GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
-MODE            :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k +lint=TFIPC-L -error=noZMMCM
+MODE            :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k 
+# MODE            +=+lint=TFIPC-L -error=noZMMCM
 VERDI_LIBS      :=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
 TIME_SCALE      :=-timescale=1ns/1ps
 NO_TIMING       :=+notimingcheck +nospecify
