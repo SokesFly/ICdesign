@@ -5,11 +5,11 @@
         "module",
         1
     ],
-    "reset_synchronizer": [
-        "reset_synchronizer",
-        "ik0Nb",
+    "reset_syncer_tb": [
+        "reset_syncer_tb",
+        "gsqQ2",
         "module",
-        2
+        4
     ],
     "...MASTER...": [
         "SIM",

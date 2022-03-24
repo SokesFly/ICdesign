@@ -1,0 +1,25 @@
+Verdi>restart
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Mar 24 09:41 2022
+*Verdi* Loading libsscore_vcs201809.so
+FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+(C) 1996 - 2019 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file '/home/ubuntu/ICdesign/base/reset_sync/sim/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 ps.
+*Verdi* : Enable RPC Server(16916)
+*Verdi* : Flush all FSDB Files at 0 ps.
+Verdi>run
+*Verdi* : Begin traversing the scope (reset_syncer_tb), layer (0).
+*Verdi* : End of traversing.
+$finish called from file "/home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v", line 69.
+$finish at simulation time              2000000
+Simulation complete, time is 2000000 ps.
+reset_syncer_tb.v, 14 : module reset_syncer_tb;
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 2000000 ps
+CPU Time:      0.080 seconds;       Data structure size:   0.0Mb
+Thu Mar 24 09:47:48 2022
+debExit

@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : area
+Design : reset_syncer
+Version: O-2018.06-SP1
+Date   : Thu Mar 24 09:16:40 2022
+****************************************
+
+Library(s) Used:
+
+    slow (File: /home/ubuntu/tools/synopsys/dc_libs/smic180/std/synopsys/slow.db)
+
+Number of ports:                            3
+Number of nets:                             5
+Number of cells:                            3
+Number of combinational cells:              0
+Number of sequential cells:                 3
+Number of macros/black boxes:               0
+Number of buf/inv:                          0
+Number of references:                       1
+
+Combinational area:                  0.000000
+Buf/Inv area:                        0.000000
+Noncombinational area:             126.403198
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                   126.403198
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+reset_syncer                       126.4032    100.0    0.0000   126.4032  0.0000  reset_syncer
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                   0.0000   126.4032  0.0000
+
+1

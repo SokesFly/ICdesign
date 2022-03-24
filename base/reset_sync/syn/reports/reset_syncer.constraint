@@ -1,0 +1,94 @@
+ 
+****************************************
+Report : constraint
+        -verbose
+Design : reset_syncer
+Version: O-2018.06-SP1
+Date   : Thu Mar 24 09:16:40 2022
+****************************************
+
+
+  Startpoint: sync_d0_reg/CK
+              (internal path startpoint clocked by clk_i)
+  Endpoint: sync_d1_reg
+            (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk_i (rise edge)                  0.00       0.00
+  clock network delay (ideal)              1.00       1.00
+  input external delay                     0.00       1.00 r
+  sync_d0_reg/CK (DFFSXL)                  0.00       1.00 r
+  sync_d0_reg/Q (DFFSXL)                   0.65       1.65 r
+  sync_d1_reg/D (DFFSXL)                   0.00       1.65 r
+  data arrival time                                   1.65
+
+  clock clk_i (rise edge)                  3.00       3.00
+  clock network delay (ideal)              1.00       4.00
+  clock uncertainty                       -0.15       3.85
+  sync_d1_reg/CK (DFFSXL)                  0.00       3.85 r
+  library setup time                      -0.08       3.77
+  data required time                                  3.77
+  -----------------------------------------------------------
+  data required time                                  3.77
+  data arrival time                                  -1.65
+  -----------------------------------------------------------
+  slack (MET)                                         2.13
+
+
+  Startpoint: sync_d0_reg/CK
+              (internal path startpoint clocked by clk_i)
+  Endpoint: sync_d1_reg
+            (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk_i (rise edge)                  0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.00       0.00 r
+  sync_d0_reg/CK (DFFSXL)                  0.00       0.00 r
+  sync_d0_reg/Q (DFFSXL)                   0.52       0.52 f
+  sync_d1_reg/D (DFFSXL)                   0.00       0.52 f
+  data arrival time                                   0.52
+
+  clock clk_i (rise edge)                  0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  sync_d1_reg/CK (DFFSXL)                  0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.52
+  -----------------------------------------------------------
+  slack (MET)                                         0.50
+
+
+    Net: rst_n_synced_o
+
+    max_transition         4.50
+  - Transition Time        0.45
+  ------------------------------
+    Slack                  4.05  (MET)
+
+
+    Net: rst_n_synced_o
+
+    max_capacitance        0.16
+  - Capacitance            0.03
+  ------------------------------
+    Slack                  0.13  (MET)
+
+
+Min pulse width constraints
+
+                       Required      Actual
+  Pin                pulse width   pulse width   Slack           Scenario
+--------------------------------------------------------------------------------
+  sync_d1_reg/CK(low)
+                      0.26          0.35          0.09 (MET)
+
+1

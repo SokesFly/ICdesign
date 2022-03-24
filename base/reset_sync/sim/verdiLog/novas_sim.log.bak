@@ -1,0 +1,19 @@
+Invoking simulator...
+Verdi>simv -sml=verdi +fsdb+gate=off -ucli2Proc -ucli
+*Verdi* Loading libsscore_vcs201809.so
+FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+(C) 1996 - 2019 by Synopsys, Inc.
+*Verdi* : Create FSDB file '/home/ubuntu/ICdesign/base/reset_sync/sim/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 ps.
+*Verdi* : Enable RPC Server(15791)
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Mar 24 09:26 2022
+Verdi>checkpoint -add {"reset_syncer_tb"} 
+1
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 0 ps
+CPU Time:      0.050 seconds;       Data structure size:   0.0Mb
+Thu Mar 24 09:29:55 2022
+debExit

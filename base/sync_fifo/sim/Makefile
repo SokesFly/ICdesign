@@ -14,11 +14,12 @@
 MODULE_NAME     :=sync_fifo
 
 SIM_DIR         :=$(shell pwd)
-RTL_DIR         :=${module_dir}/../rtl
-TB_DIR          :=${module_dir}/../tb
+RTL_DIR         :=${SIM_DIR}/../rtl
+TB_DIR          :=${SIM_DIR}/../tb
 
 SRCS            :=$(wildcard ${SIM_DIR}/../rtl/*.v)
 SRCS            +=$(wildcard ${SIM_DIR}/../tb/*.v)
+FILELIST        :=${SIM_DIR}/../rtl/filelist.f
 
 VCS             :=vcs
 GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
@@ -29,8 +30,10 @@ NO_TIMING       :=+notimingcheck +nospecify
 
 all: elab
 
+#${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
+
 elab:
-	${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
+	${VCS} ${GCC} ${MODE} -f ${FILELIST} ${TIME_SCALE} ${NO_TIMING}
 
 sim:
 	./simv -l run_log
@@ -38,8 +41,5 @@ sim:
 verdi:
 	verdi -nologo ${SRCS} -ssf ./tb.fsdb
 
-dc:
-	dc_shell-t -f dc.tcl
-
 clean:
-	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog command.log
+	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog comp_log

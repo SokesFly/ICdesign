@@ -1,0 +1,180 @@
+Command: /home/ubuntu/ICdesign/base/reset_sync/sim/simv -sml=verdi +fsdb+gate=off -ucli2Proc -ucli -l /home/ubuntu/ICdesign/base/reset_sync/sim/verdiLog/sim.log
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Mar 24 09:41 2022
+
+ucli% synUtils::getArch
+linux64
+ucli% loaddl -simv /home/ubuntu/tools/synopsys/verdi-2018.9-sp2/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUXAMD64/libnovas.so LoadFSDBDumpCmd;LoadFSDBDumpCmd
+LoadFSDBDumpCmd success
+ucli% config ckptfsdbcheck off;config endofsim noexit;config onfail {enable all};config followactivescope on;catch {setUcliVerdiConnected};set watch::resultTagsForVerdiBP {<ucli_break_bp_status_begin> <ucli_break_bp_status_end>};cbug::config pretty_print auto;fsdbDumpfile {/home/ubuntu/ICdesign/base/reset_sync/sim/inter.fsdb} ;fsdbDumpflush ; 
+*Verdi* Loading libsscore_vcs201809.so
+FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+(C) 1996 - 2019 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file '/home/ubuntu/ICdesign/base/reset_sync/sim/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 ps.
+
+ucli% fsdbDumpvars 0 "reset_syncer_tb.reset_syncer_tb.clk_i"  +all +trace_process;fsdbDumpvars 0 "reset_syncer_tb.reset_syncer_tb.rst_n_sync_i"  +all +trace_process;fsdbDumpvars 0 "reset_syncer_tb.reset_syncer_tb.rst_n_synced_o"  +all +trace_process
+*Verdi* : Dumping the signal (reset_syncer_tb.reset_syncer_tb.clk_i).
+*Verdi* : Dumping the signal (reset_syncer_tb.reset_syncer_tb.rst_n_sync_i).
+*Verdi* : Dumping the signal (reset_syncer_tb.reset_syncer_tb.rst_n_synced_o).
+
+ucli% sps_interactive
+*Verdi* : Enable RPC Server(16916)
+
+ucli% ucliCore::getToolPID
+16916
+ucli% ucliCore::getToolPID
+16916
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% puts $ucliCore::nativeUcliMode
+0
+
+ucli% ucliCore::getToolTopPID
+16916
+ucli% pid
+16926
+ucli% synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.ubuntu.16916 }
+
+ucli% if { [info vars watch::vcbp_str_len_limit_of_get_value] != ""} {set watch::vcbp_str_len_limit_of_get_value 1024}
+1024
+ucli% info command stateVerdiChangeCB
+
+ucli% proc stateVerdiChangeCB args { if {$ucliGUI::state eq "terminated"} {puts "\nVERDI_SIM_Terminated\n";catch {setVerdiSimTerminated}}}
+
+ucli% trace variable ucliGUI::state wu stateVerdiChangeCB
+
+ucli% if {[catch {rename synopsys::restore verdiHack::restore} ]} {puts "0"}
+
+ucli% proc synopsys::restore {args} { verdiHack::restore $args; puts "\nVERDI_SIM_RESTORE\n"}
+
+ucli% if {[catch {rename quit verdiHack::quit} ]} {puts "0"}
+
+ucli% proc quit {args} { if {[string length $args] == 0} { verdiHack::quit; } elseif {([string equal "-h" $args] == 1)||([string equal "-he" $args] == 1)||([string equal "-hel" $args] == 1)||([string equal "-help" $args] == 1)} { puts "\n quit           # Exit the simulation.\n \[-noprompt\]        (Exit the simulation and Verdi.)\n"} elseif {([string equal "-n" $args] == 1)||([string equal "-no" $args] == 1)||([string equal "-nop" $args] == 1)||([string equal "-nopr" $args] == 1)||([string equal "-nopro" $args] == 1)||([string equal "-noprom" $args] == 1)||([string equal "-nopromp" $args] == 1)||([string equal "-noprompt" $args] == 1)} { puts "\nVERDI_EXIT_N\n" } else { verdiHack::quit $args; } }
+
+ucli% if {[catch {rename exit verdiHack::exit} ]} {puts "0"}
+
+ucli% proc exit {args} { if {[string length $args] == 0} { verdiHack::exit; } elseif {([string equal "-h" $args] == 1)||([string equal "-he" $args] == 1)||([string equal "-hel" $args] == 1)||([string equal "-help" $args] == 1)} { puts "\n exit           # Exit the simulation.\n \[-noprompt\]        (Exit the simulation and Verdi.)\n"} elseif {([string equal "-n" $args] == 1)||([string equal "-no" $args] == 1)||([string equal "-nop" $args] == 1)||([string equal "-nopr" $args] == 1)||([string equal "-nopro" $args] == 1)||([string equal "-noprom" $args] == 1)||([string equal "-nopromp" $args] == 1)||([string equal "-noprompt" $args] == 1)} { puts "\nVERDI_EXIT_N\n" } else { verdiHack::exit $args; } }
+
+ucli% proc checkpoint::beforeRecreate {} { sps_interactive }
+
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% fsdbDumpflush 
+*Verdi* : Flush all FSDB Files at 0 ps.
+
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% fsdbDumpflush 
+*Verdi* : Flush all FSDB Files at 0 ps.
+
+ucli% senv
+activeDomain: Verilog
+activeFile: /home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v
+activeFrame: 
+activeLine: 14
+activeScope: reset_syncer_tb
+activeThread: 
+endCol: 0
+file: /home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v
+frame: 
+fsdbFilename: 
+hasTB: 0
+inputFilename: 
+keyFilename: ucli.key
+line: 14
+logFilename: /home/ubuntu/ICdesign/base/reset_sync/sim/verdiLog/sim.log
+macroIndex: -1
+macroOffset: -1
+pid: 16916
+scope: reset_syncer_tb
+startCol: 0
+state: stopped
+thread: 
+time: 0
+timePrecision: 1 ps
+vcdFilename: 
+vpdFilename:
+ucli% puts $::ucliCore::cbug_active
+0
+
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% checkpoint -list -all
+There are no checkpoints present.
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% stop
+No stop points are set
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% run
+*Verdi* : Begin traversing the scope (reset_syncer_tb), layer (0).
+*Verdi* : End of traversing.
+$finish called from file "/home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v", line 69.
+$finish at simulation time              2000000
+Simulation complete, time is 2000000 ps.
+reset_syncer_tb.v, 14 : module reset_syncer_tb;
+
+ucli% synEnv::hasFataled
+0
+ucli% ucliCore::getToolPID
+16916
+ucli% save::getUserdefinedProcs
+::stateVerdiChangeCB ::LoadFSDBDumpCmd
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% fsdbDumpflush 
+*Verdi* : Flush all FSDB Files at 2,000,000 ps.
+
+ucli% senv
+activeDomain: Verilog
+activeFile: /home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v
+activeFrame: 
+activeLine: 14
+activeScope: reset_syncer_tb
+activeThread: 
+endCol: 0
+file: /home/ubuntu/ICdesign/base/reset_sync/tb/reset_syncer_tb.v
+frame: 
+fsdbFilename: 
+hasTB: 0
+inputFilename: 
+keyFilename: ucli.key
+line: 14
+logFilename: /home/ubuntu/ICdesign/base/reset_sync/sim/verdiLog/sim.log
+macroIndex: -1
+macroOffset: -1
+pid: 16916
+scope: reset_syncer_tb
+startCol: 0
+state: stopped
+thread: 
+time: 2000000
+timePrecision: 1 ps
+vcdFilename: 
+vpdFilename:
+ucli% puts $::ucliCore::cbug_active
+0
+
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% checkpoint -list -all
+There are no checkpoints present.
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% stop
+No stop points are set
+ucli% if {[catch {ucliCore::setFocus tool}]} {}
+
+ucli% finish; quit
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 2000000 ps
+CPU Time:      0.080 seconds;       Data structure size:   0.0Mb
+Thu Mar 24 09:47:48 2022
+
+VERDI_SIM_Terminated
+

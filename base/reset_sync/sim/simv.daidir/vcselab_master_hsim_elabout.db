@@ -1,5 +1,5 @@
 hsDirType                          	1
-fHsimDesignHasDebugNodes           	63
+fHsimDesignHasDebugNodes           	61
 fNSParam                           	1024
 fLargeSizeSdfTest                  	0
 fHsimDelayGateMbme                 	0
@@ -240,7 +240,7 @@ fFsdbGateOnepassTraverse           	0
 fHsimAllowVecGateInVpd             	1
 fHsimAllowAllVecGateInVpd          	0
 fHsimAllowUdpInVpd                 	1
-fHsimAllowAlwaysCombInVpd          	1
+fHsimAllowAlwaysCombInVpd          	0
 fHsimAllowAlwaysCombCmpDvcSimv     	0
 fHsimAllowAlwaysCombDbg            	0
 fHsimMakeAllP2SPrimary             	0

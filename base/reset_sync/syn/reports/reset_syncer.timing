@@ -1,0 +1,45 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : reset_syncer
+Version: O-2018.06-SP1
+Date   : Thu Mar 24 09:16:40 2022
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: sync_d0_reg/CK
+              (internal path startpoint clocked by clk_i)
+  Endpoint: sync_d1_reg
+            (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk_i (rise edge)                  0.00       0.00
+  clock network delay (ideal)              1.00       1.00
+  input external delay                     0.00       1.00 r
+  sync_d0_reg/CK (DFFSXL)                  0.00       1.00 r
+  sync_d0_reg/Q (DFFSXL)                   0.65       1.65 r
+  sync_d1_reg/D (DFFSXL)                   0.00       1.65 r
+  data arrival time                                   1.65
+
+  clock clk_i (rise edge)                  3.00       3.00
+  clock network delay (ideal)              1.00       4.00
+  clock uncertainty                       -0.15       3.85
+  sync_d1_reg/CK (DFFSXL)                  0.00       3.85 r
+  library setup time                      -0.08       3.77
+  data required time                                  3.77
+  -----------------------------------------------------------
+  data required time                                  3.77
+  data arrival time                                  -1.65
+  -----------------------------------------------------------
+  slack (MET)                                         2.13
+
+
+1

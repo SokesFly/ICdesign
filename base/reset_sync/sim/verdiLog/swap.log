@@ -1,0 +1,69 @@
+version: (200506)
+
+available memory: 512M bytes
+used memory: 229376 bytes [need 224K bytes if disable swap]
+
+used block: 9 [memory(7) file(2)]
+                 [ 8K(4) 64K(5) { total 352K bytes } ]
+overhead: (22738) bytes for (9) blocks [Average: (2526) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 2(times) 9K(bytes) [2K bytes compressed data from file]
+access => 131315(times) 1032M(bytes)
+          [hit ratio: 99.9985%]
+
+time: write(0) read(0)  unit: second
+
+swap file directory: (/home/ubuntu/ICdesign/base/reset_sync/sim/verdiLog)
+used swap file number: (3)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (10)
+closeHead: (1)
+closeTail: (3)
+openCnt: (3)
+fid(9): fd(0) fileName(/home/ubuntu/ICdesign/base/reset_sync/syn/syn_files/reset_syncer.syn.ddb)
+	size(18577) lastModTime(1648141179) curModTime(1648141179)
+	mode(rb)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(/home/ubuntu/ICdesign/base/reset_sync/syn/syn_files/reset_syncer.syn.ddb)
+	size(18577) lastModTime(1648141179) curModTime(1648141179)
+	mode(rb)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(/home/ubuntu/ICdesign/base/reset_sync/syn/syn_files/reset_syncer.syn.ddb)
+	size(18577) lastModTime(1648141179) curModTime(1648141179)
+	mode(rb)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(rb)	hot(4) cool(5) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(rb)	hot(6) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(rb)	hot(0) cool(6) pos(0)
+fid(3): fd(1073741825) fileName(/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/kdb.elab++/work.lib++/reset_syncer.v.tdc)
+	size(1725) lastModTime(1648140486) curModTime(1648140486)
+	mode(rb)	hot(0) cool(2) pos(0)
+fid(2): fd(29) fileName(/home/ubuntu/ICdesign/base/reset_sync/sim/verdiLog/_swap_0001#8323329#18542)
+	size(0) lastModTime(0) curModTime(1648141105)
+	mode(w+b)	hot(3) cool(1) pos(0)
+fid(1): fd(1073741824) fileName(/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/kdb.elab++/work.lib++/reset_syncer_tb.v.tdc)
+	size(2725) lastModTime(1648140486) curModTime(1648140486)
+	mode(rb)	hot(2) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+==================================================
+mySelf(1a2ae040) pre(14436870) next(1a2ae150)
+version(200506)
+date(Feb 21 2019 04:07:44)
+==================================================
+mySelf(1a2ae150) pre(1a2ae040) next(1a2ea780)
+version(200506)
+date(Feb 21 2019 04:07:44)
+==================================================
+mySelf(1a2ea780) pre(1a2ae150) next(15da5f10)
+version(200506)
+date(Feb 21 2019 04:07:44)
+==================================================
+mySelf(15da5f10) pre(1a2ea780) next(0)
+version(200506)
+date(Feb 11 2019 22:10:27)
