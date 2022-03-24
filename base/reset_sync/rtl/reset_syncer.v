@@ -17,7 +17,7 @@ module reset_syncer #(
     input wire      clk_i          ,    //input wire , input clock.
     input wire      rst_n_sync_i   ,    //input wire , the rst need synced.
 
-    output reg      rst_n_synced_o      //output reg , the rst has been synced.
+    output wire     rst_n_synced_o      //output reg , the rst has been synced.
 );
 
     reg             sync_d0 ;
@@ -29,7 +29,7 @@ module reset_syncer #(
             sync_d1 <= #DLY 1'b0 ;
         end else begin
             sync_d0 <= #DLY 1'b1 ;
-            sync_d1 <= #DLY sync_d1 ;
+            sync_d1 <= #DLY sync_d0 ;
         end
     end
 

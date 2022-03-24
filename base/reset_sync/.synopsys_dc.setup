@@ -1,0 +1,28 @@
+echo "---> Start load .synopsys_dc.setup."
+set     TOP_PATH        /home/ubuntu/ICdesign/base/reset_sync
+set     RTL_PATH        $TOP_PATH/rtl
+set     CONFIG_PATH     $TOP_PATH/syn/config
+set     SCRIPT_PATH     $TOP_PATH/syn/script
+set     UNMAPPED_PATH   $TOP_PATH/syn/unmapped
+set     MAPPED_PATH     $TOP_PATH/syn/mapped
+set     REPORT_PATH     $TOP_PATH/syn/report
+set     WORK_PATH       $TOP_PATH/syn/work
+set     DC_PATH         /home/ubuntu/tools/synopsys/syn_vO-2018.06-SP1/syn/O-2018.06-SP1
+
+define_design_lib work  -path ${WORK_PATH}
+
+set     SYMBOL_PATH     /home/ubuntu/tools/synopsys/dc_libs/smic180/std/symbols
+set     LIB_PATH        /home/ubuntu/tools/synopsys/dc_libs/smic180/std/synopsys
+
+set_app_var     search_path     [list   . $search_path   $LIB_PATH   \
+                                          $SYMBOL_PATH   $RTL_PATH   \
+                                          $SCRIPT_PATH               \
+                                          ${DC_PATH}/libraries/syn]
+
+set_app_var     synthetic_library         [list dw_foundation.sldb standard.sldb]
+
+set_app_var     target_library            [list slow.db]
+
+set_app_var     link_library              [list * ${target_library} dw_foundation.sldb]
+
+set_app_var     symbol_library            [list slow.db]
