@@ -1,0 +1,18 @@
+*design* DebussyLib (btIdent Verdi_O-2018.09-SP2)
+Command arguments:  -lib  simv.daidir/work  -saveLevel  -elab  simv.daidir/kdb  -simflow  -simdir  simv.daidir/kdb_libs  -top  async_fifo  -ssv  -ssy  -Lf  work  +disable_message+C00380+C00381  +disable_message+C00388+C00389  -SNPS_ELABCOM  -saveElab 
+
+*Warning* Failed to find the specified instance parameter FIFO_DEPTH in the master bin2gray
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 121: 
+
+*Warning* Failed to find the specified instance parameter FIFO_DEPTH in the master bin2gray
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 165: 
+
+*Error* view is_full is not defined for instance u_is_full_i
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 134: 
+
+*Error* view read_ctrl is not defined for instance u_read_ctrl_i
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 149: 
+
+*Error* view is_empty is not defined for instance u_is_empty_i
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 178: 
+Total	3 error(s),   2 warning(s)

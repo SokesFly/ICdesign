@@ -1,0 +1,5 @@
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/bin2gray.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/dual_port_mem.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/general_syncer.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/write_ctrl.v

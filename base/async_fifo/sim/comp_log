@@ -1,0 +1,62 @@
+Command: vcs -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed -full64 -debug_acc+all \
+-sverilog -nc -l comp_log +v2k -lca -kdb -f /home/ubuntu/ICdesign/base/async_fifo/sim/../rtl/filelist.f \
+-timescale=1ns/1ps +notimingcheck +nospecify
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS/VCS-MX Release Notes
+
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/general_syncer.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/dual_port_mem.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/write_ctrl.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/bin2gray.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/tb/async_fifo_tb.v'
+Top Level Modules:
+       async_fifo
+
+Warning-[AOUP] Attempt to override undefined parameter
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 121
+  Attempting to override undefined parameter "FIFO_DEPTH", will ignore it.
+
+
+Warning-[AOUP] Attempt to override undefined parameter
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 165
+  Attempting to override undefined parameter "FIFO_DEPTH", will ignore it.
+
+TimeScale is 1 ns / 1 ps
+
+Warning-[TFIPC] Too few instance port connections
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 104
+async_fifo, "write_ctrl #(.DLY(DLY), .FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_DEPTH)) u_write_ctrl_i( .wr_clk_i (wr_clk_i),  .rst_n_i (rst_n_i),  .wr_en_i (wr_en_i),  .wr_ptr_o (wr_ptr),  .wr_valid_o (wr_valid),  .wr_cnt_o (wr_cnt));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Error-[URMI] Unresolved modules
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 134
+"is_full #(.DLY(DLY), .FIFO_DEPTH(FIFO_DEPTH)) u_is_full_i( .wr_cnt_i (wr_cnt),  .rd_cnt_gray_synced_i (rd_cnt_gray_synced),  .full_o (full_o));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 149
+"read_ctrl #(.DLY(DLY), .FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_DEPTH)) u_read_ctrl_i( .rd_clk_i (rd_clk_i),  .rd_en_i (rd_en_i),  .rd_ptr_o (rd_ptr),  .rd_valid_o (rd_valid),  .rd_cnt_o (rd_cnt));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 178
+"is_empty #(.DLY(DLY), .FIFO_DEPTH(FIFO_DEPTH)) u_is_empty_i( .rd_cnt_i (rd_cnt),  .wr_cnt_gray_synced_i (wr_cnt_gray_synced),  .empty_o (empty));"
+  Module definition of above instance is not found in the design.
+
+4 warnings
+3 errors
+
+Warning-[KDB-ELAB-E] Verdi KDB elaboration with error
+  Verdi KDB elaboration finished with 3 error(s) and 2 warning(s).
+  Please look at this Verdi elaboration log file for details. 
+  /home/ubuntu/ICdesign/base/async_fifo/sim/simv.daidir/elabcomLog/compiler.log
+
