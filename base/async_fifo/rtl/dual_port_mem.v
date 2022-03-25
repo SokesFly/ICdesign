@@ -39,7 +39,10 @@ reg [SIZE:0]                        i;
 /********************************************************************************
 * Declare memory  array
 ********************************************************************************/
+reg [FIFO_WIDTH-1:0]               rd_data_r ;
 reg [FIFO_WIDTH-1:0]                array [0 : FIFO_DEPTH-1];
+
+assign      rd_data_o = rd_data_r ;
 
 /********************************************************************************
 * write data
@@ -60,9 +63,9 @@ end
 ********************************************************************************/
 always@(posedge rd_clk_i or negedge rst_n_i) begin
     if(!rst_n_i) begin
-        rd_data_o <= #DLY {FIFO_WIDTH{1'b0}};
+        rd_data_r <= #DLY {FIFO_WIDTH{1'b0}};
     end else if(rd_valid_i) begin
-        rd_data_o <= #DLY array[rd_ptr_i];
+        rd_data_r <= #DLY array[rd_ptr_i];
     end
 end
 

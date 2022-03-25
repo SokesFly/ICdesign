@@ -11,7 +11,10 @@ Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v'
 Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/general_syncer.v'
 Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/dual_port_mem.v'
 Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/write_ctrl.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/read_ctrl.v'
 Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/bin2gray.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/if_full.v'
+Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/rtl/if_empty.v'
 Parsing design file '/home/ubuntu/ICdesign/base/async_fifo/tb/async_fifo_tb.v'
 Top Level Modules:
        async_fifo
@@ -22,8 +25,18 @@ Warning-[AOUP] Attempt to override undefined parameter
 
 
 Warning-[AOUP] Attempt to override undefined parameter
-/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 165
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 134
   Attempting to override undefined parameter "FIFO_DEPTH", will ignore it.
+
+
+Warning-[AOUP] Attempt to override undefined parameter
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 166
+  Attempting to override undefined parameter "FIFO_DEPTH", will ignore it.
+
+
+Warning-[AOUP] Attempt to override undefined parameter
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 179
+  Attempting to override undefined parameter "DLY", will ignore it.
 
 TimeScale is 1 ns / 1 ps
 
@@ -35,28 +48,171 @@ async_fifo, "write_ctrl #(.DLY(DLY), .FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_D
   ports.
 
 
-Error-[URMI] Unresolved modules
-/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 134
-"is_full #(.DLY(DLY), .FIFO_DEPTH(FIFO_DEPTH)) u_is_full_i( .wr_cnt_i (wr_cnt),  .rd_cnt_gray_synced_i (rd_cnt_gray_synced),  .full_o (full_o));"
-  Module definition of above instance is not found in the design.
-
-
-Error-[URMI] Unresolved modules
+Warning-[TFIPC] Too few instance port connections
 /home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 149
-"read_ctrl #(.DLY(DLY), .FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_DEPTH)) u_read_ctrl_i( .rd_clk_i (rd_clk_i),  .rd_en_i (rd_en_i),  .rd_ptr_o (rd_ptr),  .rd_valid_o (rd_valid),  .rd_cnt_o (rd_cnt));"
-  Module definition of above instance is not found in the design.
+async_fifo, "read_ctrl #(.DLY(DLY), .FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_DEPTH)) u_read_ctrl_i( .rst_n_i (rst_n_i),  .rd_clk_i (rd_clk_i),  .rd_en_i (rd_en_i),  .rd_ptr_o (rd_ptr),  .rd_valid_o (rd_valid),  .rd_cnt_o (rd_cnt));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
 
 
-Error-[URMI] Unresolved modules
-/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 178
-"is_empty #(.DLY(DLY), .FIFO_DEPTH(FIFO_DEPTH)) u_is_empty_i( .rd_cnt_i (rd_cnt),  .wr_cnt_gray_synced_i (wr_cnt_gray_synced),  .empty_o (empty));"
-  Module definition of above instance is not found in the design.
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 81
+"dual_port_mem #(DLY, FIFO_WIDTH, FIFO_DEPTH, ) u_dual_port_mem_i( .rst_n_i (rst_n_i),  .wr_clk_i (wr_clk_i),  .wr_data_i (wr_data_i),  .wr_ptr_i (wr_ptr),  .wr_valid_i (wr_valid),  .rd_clk_i (rd_clk_i),  .rd_data_o (rd_data_o),  .rd_ptr_i (rd_ptr),  .rd_valid_i (rd_valid));"
+  The following 8-bit expression is connected to 32-bit port "wr_ptr_i" of 
+  module "dual_port_mem", instance "u_dual_port_mem_i".
+  Expression: wr_ptr
+  	use +lint=PCWM for more details
 
-4 warnings
-3 errors
 
-Warning-[KDB-ELAB-E] Verdi KDB elaboration with error
-  Verdi KDB elaboration finished with 3 error(s) and 2 warning(s).
-  Please look at this Verdi elaboration log file for details. 
-  /home/ubuntu/ICdesign/base/async_fifo/sim/simv.daidir/elabcomLog/compiler.log
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 81
+"dual_port_mem #(DLY, FIFO_WIDTH, FIFO_DEPTH, ) u_dual_port_mem_i( .rst_n_i (rst_n_i),  .wr_clk_i (wr_clk_i),  .wr_data_i (wr_data_i),  .wr_ptr_i (wr_ptr),  .wr_valid_i (wr_valid),  .rd_clk_i (rd_clk_i),  .rd_data_o (rd_data_o),  .rd_ptr_i (rd_ptr),  .rd_valid_i (rd_valid));"
+  The following 8-bit expression is connected to 32-bit port "rd_ptr_i" of 
+  module "dual_port_mem", instance "u_dual_port_mem_i".
+  Expression: rd_ptr
+  	use +lint=PCWM for more details
 
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 104
+"write_ctrl #(DLY, FIFO_WIDTH, FIFO_DEPTH) u_write_ctrl_i( .wr_clk_i (wr_clk_i),  .rst_n_i (rst_n_i),  .wr_en_i (wr_en_i),  .wr_ptr_o (wr_ptr),  .wr_valid_o (wr_valid),  .wr_cnt_o (wr_cnt));"
+  The following 8-bit expression is connected to 32-bit port "wr_ptr_o" of 
+  module "write_ctrl", instance "u_write_ctrl_i".
+  Expression: wr_ptr
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 121
+"bin2gray #(DLY, ) u_bin2gray_wr_i( .bin_i (wr_cnt),  .gray_o (wr_cnt_gray));"
+  The following 33-bit expression is connected to 8-bit port "bin_i" of module
+  "bin2gray", instance "u_bin2gray_wr_i".
+  Expression: wr_cnt
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 121
+"bin2gray #(DLY, ) u_bin2gray_wr_i( .bin_i (wr_cnt),  .gray_o (wr_cnt_gray));"
+  The following 33-bit expression is connected to 8-bit port "gray_o" of 
+  module "bin2gray", instance "u_bin2gray_wr_i".
+  Expression: wr_cnt_gray
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 134
+"if_full #(DLY, ) u_if_full_i( .wr_cnt_i (wr_cnt),  .rd_cnt_gray_synced_i (rd_cnt_gray_synced),  .full_o (full_o));"
+  The following 33-bit expression is connected to 9-bit port "wr_cnt_i" of 
+  module "if_full", instance "u_if_full_i".
+  Expression: wr_cnt
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 134
+"if_full #(DLY, ) u_if_full_i( .wr_cnt_i (wr_cnt),  .rd_cnt_gray_synced_i (rd_cnt_gray_synced),  .full_o (full_o));"
+  The following 1-bit expression is connected to 9-bit port 
+  "rd_cnt_gray_synced_i" of module "if_full", instance "u_if_full_i".
+  Expression: rd_cnt_gray_synced
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 149
+"read_ctrl #(DLY, FIFO_WIDTH, FIFO_DEPTH) u_read_ctrl_i( .rst_n_i (rst_n_i),  .rd_clk_i (rd_clk_i),  .rd_en_i (rd_en_i),  .rd_ptr_o (rd_ptr),  .rd_valid_o (rd_valid),  .rd_cnt_o (rd_cnt));"
+  The following 8-bit expression is connected to 32-bit port "rd_ptr_o" of 
+  module "read_ctrl", instance "u_read_ctrl_i".
+  Expression: rd_ptr
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 166
+"bin2gray #(DLY, ) u_bin2gray_rd_i( .bin_i (rd_cnt),  .gray_o (rd_cnt_gray));"
+  The following 33-bit expression is connected to 8-bit port "bin_i" of module
+  "bin2gray", instance "u_bin2gray_rd_i".
+  Expression: rd_cnt
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 166
+"bin2gray #(DLY, ) u_bin2gray_rd_i( .bin_i (rd_cnt),  .gray_o (rd_cnt_gray));"
+  The following 33-bit expression is connected to 8-bit port "gray_o" of 
+  module "bin2gray", instance "u_bin2gray_rd_i".
+  Expression: rd_cnt_gray
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 179
+"if_empty #(FIFO_DEPTH) u_if_empty_i( .rd_cnt_i (rd_cnt),  .wr_cnt_gray_synced_i (wr_cnt_gray_synced),  .empty_o (empty));"
+  The following 1-bit expression is connected to 33-bit port 
+  "wr_cnt_gray_synced_i" of module "if_empty", instance "u_if_empty_i".
+  Expression: wr_cnt_gray_synced
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 196
+"general_syncer #(DLY, FIRST_EDGE, LAST_EDGE, MID_STAGE_NUM, FIFO_DEPTH) u_general_syncer_r2w_i( .clk_i (wr_clk_i),  .rst_n_i (rst_n_i),  .data_unsync_i (rd_cnt_gray),  .data_synced_o (rd_cnt_gray_synced));"
+  The following 33-bit expression is connected to 32-bit port "data_unsync_i" 
+  of module "general_syncer", instance "u_general_syncer_r2w_i".
+  Expression: rd_cnt_gray
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 196
+"general_syncer #(DLY, FIRST_EDGE, LAST_EDGE, MID_STAGE_NUM, FIFO_DEPTH) u_general_syncer_r2w_i( .clk_i (wr_clk_i),  .rst_n_i (rst_n_i),  .data_unsync_i (rd_cnt_gray),  .data_synced_o (rd_cnt_gray_synced));"
+  The following 1-bit expression is connected to 32-bit port "data_synced_o" 
+  of module "general_syncer", instance "u_general_syncer_r2w_i".
+  Expression: rd_cnt_gray_synced
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 212
+"general_syncer #(DLY, FIRST_EDGE, LAST_EDGE, MID_STAGE_NUM, FIFO_DEPTH) u_general_syncer_w2r_i( .clk_i (rd_clk_i),  .rst_n_i (rst_n_i),  .data_unsync_i (wr_cnt_gray),  .data_synced_o (wr_cnt_gray_synced));"
+  The following 33-bit expression is connected to 32-bit port "data_unsync_i" 
+  of module "general_syncer", instance "u_general_syncer_w2r_i".
+  Expression: wr_cnt_gray
+  	use +lint=PCWM for more details
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v, 212
+"general_syncer #(DLY, FIRST_EDGE, LAST_EDGE, MID_STAGE_NUM, FIFO_DEPTH) u_general_syncer_w2r_i( .clk_i (rd_clk_i),  .rst_n_i (rst_n_i),  .data_unsync_i (wr_cnt_gray),  .data_synced_o (wr_cnt_gray_synced));"
+  The following 1-bit expression is connected to 32-bit port "data_synced_o" 
+  of module "general_syncer", instance "u_general_syncer_w2r_i".
+  Expression: wr_cnt_gray_synced
+  	use +lint=PCWM for more details
+
+
+Warning-[SIOB] Select index out of bounds
+/home/ubuntu/ICdesign/base/async_fifo/rtl/general_syncer.v, 70
+"mid_regs[(0 - 1)]"
+  The select index is out of declared bounds : [2:0].
+  In module instance : u_general_syncer_r2w_i u_general_syncer_w2r_i 
+  In module : general_syncer.
+
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+1 module and 0 UDP read.
+recompiling module async_fifo
+make[1]: Entering directory '/home/ubuntu/ICdesign/base/async_fifo/sim/csrc'
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++-4.8  -o ../simv    -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ \
+-Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -Wl,--no-as-needed -rdynamic  -Wl,-rpath=/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib \
+-L/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib \
+objs/amcQw_d.o   _13582_archive_1.so _prev_archive_1.so  SIM_l.o       rmapats_mop.o \
+rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          -lzerosoft_rt_stubs \
+-lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive -lvcsucli -Wl,-no-whole-archive        _vcs_pli_stub_.o   /home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o \
+/home/ubuntu/tools/synopsys/verdi-2018.9-sp2/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a \
+-ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[1]: Leaving directory '/home/ubuntu/ICdesign/base/async_fifo/sim/csrc'

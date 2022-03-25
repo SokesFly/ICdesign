@@ -5,14 +5,11 @@ Command arguments:  -lib  simv.daidir/work  -saveLevel  -elab  simv.daidir/kdb  
 "/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 121: 
 
 *Warning* Failed to find the specified instance parameter FIFO_DEPTH in the master bin2gray
-"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 165: 
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 166: 
 
-*Error* view is_full is not defined for instance u_is_full_i
+*Warning* Failed to find the specified instance parameter FIFO_DEPTH in the master if_full
 "/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 134: 
 
-*Error* view read_ctrl is not defined for instance u_read_ctrl_i
-"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 149: 
-
-*Error* view is_empty is not defined for instance u_is_empty_i
-"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 178: 
-Total	3 error(s),   2 warning(s)
+*Warning* Failed to find the specified instance parameter DLY in the master if_empty
+"/home/ubuntu/ICdesign/base/async_fifo/rtl/async_fifo.v", 179: 
+Total	0 error(s),   4 warning(s)

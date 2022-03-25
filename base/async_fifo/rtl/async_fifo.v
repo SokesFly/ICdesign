@@ -127,11 +127,11 @@ bin2gray            #(
 /********************************************************************************
 * Dut for full check
 ********************************************************************************/
-is_full             #(
+if_full             #(
     .DLY            (DLY            ),
     .FIFO_DEPTH     (FIFO_DEPTH     )
     )
-    u_is_full_i
+    u_if_full_i
     (
     .wr_cnt_i               (wr_cnt             ),
     .rd_cnt_gray_synced_i   (rd_cnt_gray_synced ),
@@ -148,6 +148,7 @@ read_ctrl          #(
     )
     u_read_ctrl_i
     (
+    .rst_n_i        (rst_n_i        ),
     .rd_clk_i       (rd_clk_i       ),
     .rd_en_i        (rd_en_i        ),
     .rd_ptr_o       (rd_ptr         ),
@@ -169,13 +170,13 @@ bin2gray            #(
     );
 
 /********************************************************************************
-* Dut for is empty
+* Dut for if empty
 ********************************************************************************/
-is_empty            #(
+if_empty            #(
     .DLY            (DLY            ),
     .FIFO_DEPTH     (FIFO_DEPTH     )
     )
-    u_is_empty_i
+    u_if_empty_i
     (
     .rd_cnt_i               (rd_cnt             ),
     .wr_cnt_gray_synced_i   (wr_cnt_gray_synced ),

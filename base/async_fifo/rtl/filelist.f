@@ -4,4 +4,6 @@
 /home/ubuntu/ICdesign/base/async_fifo/rtl/write_ctrl.v
 /home/ubuntu/ICdesign/base/async_fifo/rtl/read_ctrl.v
 /home/ubuntu/ICdesign/base/async_fifo/rtl/bin2gray.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/if_full.v
+/home/ubuntu/ICdesign/base/async_fifo/rtl/if_empty.v
 /home/ubuntu/ICdesign/base/async_fifo/tb/async_fifo_tb.v

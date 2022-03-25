@@ -262,7 +262,7 @@ fHsimEvcdDbgFlags                  	0
 fHsimNewEvcdMultiDrvFmt            	1
 fHsimDumpElabData                  	1
 fHsimNoDeposit                     	0
-fHsimDumpOffsetData                	0
+fHsimDumpOffsetData                	1
 fNoOfsOpt                          	0
 fFlopGlitchDetect                  	0
 fHsimClkGlitch                     	0
@@ -337,7 +337,7 @@ fFsdbGateOnepassTraverse           	0
 fHsimAllowVecGateInVpd             	1
 fHsimAllowAllVecGateInVpd          	0
 fHsimAllowUdpInVpd                 	1
-fHsimAllowAlwaysCombInVpd          	0
+fHsimAllowAlwaysCombInVpd          	1
 fHsimAllowAlwaysCombCmpDvcSimv     	0
 fHsimAllowAlwaysCombDbg            	0
 fHsimMakeAllP2SPrimary             	0
