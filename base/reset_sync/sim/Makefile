@@ -20,6 +20,7 @@ TB_DIR          :=${SIM_DIR}/../tb
 SRCS            :=$(wildcard ${SIM_DIR}/../rtl/*.v)
 SRCS            +=$(wildcard ${SIM_DIR}/../tb/*.v)
 FILELIST        :=${SIM_DIR}/../rtl/filelist.f
+TBLIST          :=${SIM_DIR}/../tb/filelist.f
 
 VCS             :=vcs
 GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
@@ -34,15 +35,17 @@ all: elab
 #${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 
 elab:
-	${VCS} ${GCC} ${MODE} -f ${FILELIST} ${TIME_SCALE} ${NO_TIMING}
+	${VCS} ${GCC} ${MODE}	\
+	-f ${TBLIST}	\
+	-f ${FILELIST}	\
+	${TIME_SCALE} ${NO_TIMING}
 
 sim:
 	./simv -l run_log
 
-#
 verdi:
-	verdi -nologo	\
-	-f ../syn/filelist.f	\
+	verdi -nologo \
+	-f ../syn/syn_files/reset_syncer.syn.v	\
 	-dbdir simv.daidir	\
 	-simflow -simBin ./simv	\
 	-simBin simv	\

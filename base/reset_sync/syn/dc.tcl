@@ -12,6 +12,8 @@ set DESIGN_NAME reset_syncer
 ###################################
 #   二、读入RTL文件                #
 ###################################
+#
+#analyze -format sverilog -vcs "-f ../rtl/filelist.f"
 read_verilog ../rtl/reset_syncer.v
 current_design reset_syncer
 link

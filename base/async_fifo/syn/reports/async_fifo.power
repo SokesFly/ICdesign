@@ -1,0 +1,49 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Sun Mar 27 13:10:27 2022
+****************************************
+
+
+Library(s) Used:
+
+    slow (File: /home/ubuntu/tools/synopsys/dc_libs/smic180/std/synopsys/slow.db)
+
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.62 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =   5.5409 mW   (98%)
+  Net Switching Power  =  99.8463 uW    (2%)
+                         ---------
+Total Dynamic Power    =   5.6407 mW  (100%)
+
+Cell Leakage Power     =   1.0987 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           5.4831        1.3811e-02        4.7278e+05            5.4974  (  97.44%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  5.7763e-02        8.6035e-02        6.2592e+05            0.1444  (   2.56%)
+--------------------------------------------------------------------------------------------------
+Total              5.5409 mW     9.9846e-02 mW     1.0987e+06 pW         5.6418 mW
+1

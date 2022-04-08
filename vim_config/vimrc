@@ -1,0 +1,19 @@
+"Plugins manager
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'antoinemadec/vim-verilog-instance'
+Plugin 'Shougo/deoplete.nvim'
+
+call vundle#end()
+
+set tags=tags;
+
+" First, echo follow lines in .bashrc
+" if [ -f /etc/bashrc ] ; then 
+"   . /etc/bashrc
+"   stty -ixon
+" fi

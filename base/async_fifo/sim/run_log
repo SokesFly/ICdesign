@@ -1,8 +1,0 @@
-Command: /home/ubuntu/ICdesign/base/async_fifo/sim/./simv -l run_log
-Chronologic VCS simulator copyright 1991-2018
-Contains Synopsys proprietary information.
-Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Mar 25 06:26 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 0 ps
-CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
-Fri Mar 25 06:26:26 2022

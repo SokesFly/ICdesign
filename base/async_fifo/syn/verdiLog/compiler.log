@@ -1,0 +1,10 @@
+*design* DebussyLib (btIdent Verdi_O-2018.09-SP2)
+Command arguments:
+    +define+verilog
+    -full64
+*Warning* Unknown argument -full64
+
+
+*Error* no source file
+
+Total	1 error(s),   1 warning(s)

@@ -1,0 +1,83 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Sun Mar 27 13:07:22 2022
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: u_write_ctrl_i/wr_addr_r_reg[3]
+              (rising edge-triggered flip-flop clocked by wr_clk_i)
+  Endpoint: u_general_syncer_w2r_i/first_reg_reg[2]
+            (falling edge-triggered flip-flop clocked by rd_clk_i)
+  Path Group: rd_clk_i
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wr_clk_i (rise edge)                              3.00       3.00
+  clock network delay (ideal)                             1.00       4.00
+  u_write_ctrl_i/wr_addr_r_reg[3]/CK (DFFSXL)             0.00       4.00 r
+  u_write_ctrl_i/wr_addr_r_reg[3]/QN (DFFSXL)             0.73       4.73 f
+  U704/Y (XNOR2X1)                                        0.42       5.14 f
+  u_general_syncer_w2r_i/first_reg_reg[2]/D (DFFNSXL)     0.00       5.14 f
+  data arrival time                                                  5.14
+
+  clock rd_clk_i (fall edge)                              4.50       4.50
+  clock network delay (ideal)                             1.00       5.50
+  clock uncertainty                                      -0.15       5.35
+  u_general_syncer_w2r_i/first_reg_reg[2]/CKN (DFFNSXL)
+                                                          0.00       5.35 f
+  library setup time                                     -0.13       5.22
+  data required time                                                 5.22
+  --------------------------------------------------------------------------
+  data required time                                                 5.22
+  data arrival time                                                 -5.14
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_general_syncer_r2w_i/last_reg_reg[0]
+              (falling edge-triggered flip-flop clocked by wr_clk_i)
+  Endpoint: u_dual_port_mem_i/array_reg[1][0]
+            (rising edge-triggered flip-flop clocked by wr_clk_i)
+  Path Group: wr_clk_i
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wr_clk_i (fall edge)                              1.50       1.50
+  clock network delay (ideal)                             1.00       2.50
+  u_general_syncer_r2w_i/last_reg_reg[0]/CKN (DFFNSX4)
+                                                          0.00       2.50 f
+  u_general_syncer_r2w_i/last_reg_reg[0]/QN (DFFNSX4)     0.55       3.05 r
+  U991/Y (XOR2X4)                                         0.22       3.27 r
+  U994/Y (NAND4X4)                                        0.14       3.41 f
+  U997/Y (NOR2X4)                                         0.12       3.53 r
+  U643/Y (BUFX16)                                         0.17       3.70 r
+  U1007/Y (INVX8)                                         0.06       3.76 f
+  U986/Y (AND2X4)                                         0.23       3.99 f
+  U1009/Y (MXI2X1)                                        0.17       4.15 f
+  u_dual_port_mem_i/array_reg[1][0]/D (DFFSXL)            0.00       4.15 f
+  data arrival time                                                  4.15
+
+  clock wr_clk_i (rise edge)                              3.00       3.00
+  clock network delay (ideal)                             1.00       4.00
+  clock uncertainty                                      -0.15       3.85
+  u_dual_port_mem_i/array_reg[1][0]/CK (DFFSXL)           0.00       3.85 r
+  library setup time                                     -0.16       3.69
+  data required time                                                 3.69
+  --------------------------------------------------------------------------
+  data required time                                                 3.69
+  data arrival time                                                 -4.15
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.46
+
+
+1

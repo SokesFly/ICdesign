@@ -25,25 +25,28 @@ module general_syncer #(
     output reg [DATA_WIDTH - 1 : 0]  data_synced_o
 );
 
-    reg [DATA_WIDTH - 1 : 0]        first_reg;
-    reg [DATA_WIDTH - 1 : 0]        last_reg;
-    wire [DATA_WIDTH - 1 : 0]       mid_tmp;
-    reg [DATA_WIDTH - 1 : 0]        mid_regs [0 : MID_STAGE_NUM - 1];
+    reg  [DATA_WIDTH - 1 : 0]        first_reg;
+    reg  [DATA_WIDTH - 1 : 0]        last_reg;
+    wire [DATA_WIDTH - 1 : 0]        mid_tmp;
+    reg  [DATA_WIDTH - 1 : 0]        mid_regs [0 : MID_STAGE_NUM - 1];
 
     generate
         if(FIRST_EDGE == 0) begin
             always@(posedge clk_i or negedge rst_n_i) begin
                 if(!rst_n_i) begin
                     first_reg <= #DLY   {DATA_WIDTH{1'b0}};
-                end else begin
+                end 
+                else begin
                     first_reg <= #DLY   data_unsync_i;
                 end
             end
-        end else begin
-            always@(negedge clk_i or posedge rst_n_i) begin
+        end 
+        else begin
+            always@(negedge clk_i or negedge rst_n_i) begin
                 if(!rst_n_i) begin
                     first_reg <= #DLY   {DATA_WIDTH{1'b0}};
-                end else begin
+                end 
+                else begin
                     first_reg <= #DLY   data_unsync_i;
                 end
             end
@@ -53,7 +56,8 @@ module general_syncer #(
     generate
         if(MID_STAGE_NUM == 0) begin
             assign  mid_tmp = first_reg;
-        end else begin
+        end 
+        else begin
             assign  mid_tmp = mid_regs[MID_STAGE_NUM - 1];
         end
     endgenerate
@@ -64,9 +68,11 @@ module general_syncer #(
             always@(posedge clk_i or negedge rst_n_i) begin
                 if(!rst_n_i) begin
                    mid_regs[i] <= #DLY {DATA_WIDTH{1'b0}};
-                end else if(i == 0) begin
+                end 
+                else if(i == 0) begin
                    mid_regs[i] <= #DLY first_reg;
-                end else begin
+                end 
+                else begin
                    mid_regs[i] <= #DLY mid_regs[i-1];
                 end
             end
@@ -78,15 +84,17 @@ module general_syncer #(
             always@(posedge clk_i or negedge rst_n_i) begin
                 if(!rst_n_i) begin
                     last_reg <= #DLY   {DATA_WIDTH{1'b0}};
-                end else begin
+                end 
+                else begin
                     last_reg  <= #DLY   mid_tmp;
                 end
             end
         end else begin
-            always@(negedge clk_i or posedge rst_n_i) begin
+            always@(negedge clk_i or negedge rst_n_i) begin
                 if(!rst_n_i) begin
                     last_reg <= #DLY   {DATA_WIDTH{1'b0}};
-                end else begin
+                end 
+                else begin
                     last_reg  <= #DLY   mid_tmp;
                 end
             end

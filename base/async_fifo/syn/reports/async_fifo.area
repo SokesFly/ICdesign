@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : area
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Sun Mar 27 13:10:27 2022
+****************************************
+
+Library(s) Used:
+
+    slow (File: /home/ubuntu/tools/synopsys/dc_libs/smic180/std/synopsys/slow.db)
+
+Number of ports:                           23
+Number of nets:                          1225
+Number of cells:                          983
+Number of combinational cells:            647
+Number of sequential cells:               336
+Number of macros/black boxes:               0
+Number of buf/inv:                         45
+Number of references:                      46
+
+Combinational area:              12231.172731
+Buf/Inv area:                      695.217598
+Noncombinational area:           20118.067429
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 32349.240160
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ------------------------------ 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-   Black-
+                                  Total       Total    national    national    boxes   Design
+--------------------------------  ----------  -------  ----------  ----------  ------  ---------
+async_fifo                        32349.2402    100.0  12231.1727  20118.0674  0.0000  async_fifo
+--------------------------------  ----------  -------  ----------  ----------  ------  ---------
+Total                                                  12231.1727  20118.0674  0.0000
+
+1

@@ -1,0 +1,542 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : async_fifo
+Version: O-2018.06-SP1
+Date   : Sun Mar 27 13:10:27 2022
+****************************************
+
+
+   max_delay/setup ('wr_clk_i' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   u_dual_port_mem_i/array_reg[1][0]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][1]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][2]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][3]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][4]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][5]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][6]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[1][7]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][0]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][1]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][2]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][3]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][4]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][5]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][6]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[4][7]/D
+                                2.19           2.65 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][0]/D
+                                2.20           2.67 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][2]/D
+                                2.20           2.67 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][3]/D
+                                2.20           2.67 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][7]/D
+                                2.20           2.67 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][1]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][0]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][2]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][3]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][4]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][5]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][6]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[7][7]/D
+                                2.20           2.66 f        -0.46  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][0]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][2]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][3]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][4]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][5]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][6]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][7]/D
+                                2.19           2.64 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][1]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][0]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][2]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][3]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][4]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][5]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][6]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[16][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[17][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[19][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[20][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[23][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[8][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[28][7]/D
+                                2.20           2.65 f        -0.45  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][1]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][0]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][2]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][3]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][4]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][5]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][6]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][0]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][2]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][3]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][4]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][5]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][6]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][7]/D
+                                2.20           2.65 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][0]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][1]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][2]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][3]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][4]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][5]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][6]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[0][7]/D
+                                2.19           2.63 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][1]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][0]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][2]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][3]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][4]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][5]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][6]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[5][7]/D
+                                2.20           2.64 f        -0.44  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[11][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[12][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[9][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[10][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[14][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[22][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][1]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][0]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][2]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][3]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][4]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][5]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][6]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[25][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[26][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[27][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[29][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[30][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[31][7]/D
+                                2.20           2.64 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][1]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][1]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][1]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][0]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][2]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][3]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][4]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][5]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][6]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[18][7]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][0]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][2]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][3]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][4]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][5]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][6]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[13][7]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][0]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][2]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][3]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][4]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][5]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][6]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[15][7]/D
+                                2.20           2.63 f        -0.43  (VIOLATED)
+   u_dual_port_mem_i/array_reg[2][1]/D
+                                2.20           2.61 f        -0.41  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[1]/D
+                                2.20           2.60 f        -0.40  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[3]/D
+                                2.20           2.60 f        -0.40  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][0]/D
+                                2.19           2.59 f        -0.40  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][2]/D
+                                2.19           2.59 f        -0.40  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][4]/D
+                                2.19           2.59 f        -0.40  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][6]/D
+                                2.19           2.59 f        -0.40  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][1]/D
+                                2.19           2.58 f        -0.39  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][3]/D
+                                2.19           2.58 f        -0.39  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][5]/D
+                                2.19           2.58 f        -0.39  (VIOLATED)
+   u_dual_port_mem_i/array_reg[3][7]/D
+                                2.19           2.58 f        -0.39  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[4]/D
+                                2.20           2.58 f        -0.38  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[2]/D
+                                2.20           2.57 f        -0.37  (VIOLATED)
+   u_dual_port_mem_i/array_reg[6][1]/D
+                                2.20           2.57 f        -0.37  (VIOLATED)
+   u_dual_port_mem_i/array_reg[24][7]/D
+                                2.20           2.57 f        -0.37  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][1]/D
+                                2.20           2.57 f        -0.36  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][4]/D
+                                2.20           2.57 f        -0.36  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][5]/D
+                                2.20           2.57 f        -0.36  (VIOLATED)
+   u_dual_port_mem_i/array_reg[21][6]/D
+                                2.20           2.57 f        -0.36  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[0]/D
+                                2.20           2.56 f        -0.36  (VIOLATED)
+   u_write_ctrl_i/wr_addr_r_reg[5]/D
+                                2.20           2.55 f        -0.36  (VIOLATED)
+
+
+1
