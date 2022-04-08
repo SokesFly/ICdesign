@@ -49,8 +49,6 @@ wire                        rx_rdy              ;
 wire                        rx_vld              ;
 wire  [DATA_WIDTH-1 :0]     rx_data             ;
 
-assign                      rx_rdy  = rx_rdy_r  ;
-
 /**************************** Uart physical link  ***************************/
 wire                        tx                  ;
 wire                        rx                  ;
@@ -129,10 +127,7 @@ end
 
 /****************************  Rx data *************************************/
 // case 1 resver data.
-assign                      rx_rdy      =   1'b0;
-
-// case 2 resver data.
-// assign                      rx_rdy      =   1'b0;
+assign                      rx_rdy      =   1'b1;
 
 /**************************** Sim end **************************************/
 initial begin

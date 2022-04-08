@@ -37,10 +37,6 @@ module                                  uart_tx_ctrl #(
     output wire                         tx_o
     );
 
-/****************************  Output tx state  *********************************/
-assign                                  ur_tx_ctrl_rdy_o  = ur_tx_fifo_full_o;
-
-
 /****************************  REG & WIRE declare for uart tx  ******************/
 reg  [DATA_WIDTH-1:0]                   ur_tx_data_r        ;
 wire [DATA_WIDTH-1:0]                   ur_tx_data          ;
@@ -59,7 +55,9 @@ assign                                  ur_tx_fifo_wr_en   = (~ur_tx_fifo_full_o
 assign                                  ur_tx_fifo_rd_en   = (~ur_tx_busy && ~ur_tx_fifo_empty_o && br_en_i);
 assign                                  ur_tx_vld          = ur_tx_fifo_rd_en;
 assign                                  ur_tx_data         = ur_tx_fifo_rd_data;
-/****************************  generate uart tx data and enable  *****************/
+
+/****************************  Output tx state  *********************************/
+assign                                  ur_tx_ctrl_rdy_o  = ur_tx_fifo_rd_en;
 
 /****************************  Module Instance **********************************/
 /**************************  Uart tx FIFO instance ******************************/
