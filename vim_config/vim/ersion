@@ -1,0 +1,498 @@
+
+chdir(/usr/share/vim)
+fchdir() to previous dir
+sourcing "$VIM/vimrc"
+Searching for "debian.vim" in "/home/ubuntu/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/debian.vim"
+Searching for "/usr/share/vim/vimfiles/debian.vim"
+Searching for "/usr/share/vim/vim80/debian.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 10: sourcing "/usr/share/vim/vim80/debian.vim"
+finished sourcing /usr/share/vim/vim80/debian.vim
+continuing in /usr/share/vim/vimrc
+Searching for "/usr/share/vim/vimfiles/after/debian.vim"
+Searching for "/home/ubuntu/.vim/after/debian.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 27: sourcing "/usr/share/vim/vim80/syntax/syntax.vim"
+Searching for "syntax/synload.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/syntax/synload.vim"
+Searching for "/var/lib/vim/addons/syntax/synload.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/synload.vim"
+Searching for "/usr/share/vim/vim80/syntax/synload.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 19: sourcing "/usr/share/vim/vim80/syntax/synload.vim"
+Searching for "syntax/syncolor.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vim80/syntax/syncolor.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 21: sourcing "/usr/share/vim/vim80/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim80/syntax/syncolor.vim
+continuing in /usr/share/vim/vim80/syntax/synload.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/after/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim80/syntax/synload.vim
+continuing in /usr/share/vim/vim80/syntax/syntax.vim
+Searching for "filetype.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/filetype.vim"
+Searching for "/var/lib/vim/addons/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/share/vim/vim80/filetype.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 25: sourcing "/usr/share/vim/vim80/filetype.vim"
+Searching for "ftdetect/*.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/ftdetect/*.vim"
+Searching for "/var/lib/vim/addons/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/ftdetect/*.vim"
+Searching for "/usr/share/vim/vim80/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/after/ftdetect/*.vim"
+Searching for "/var/lib/vim/addons/after/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/after/ftdetect/*.vim"
+not found in 'runtimepath': "ftdetect/*.vim"
+finished sourcing /usr/share/vim/vim80/filetype.vim
+continuing in /usr/share/vim/vim80/syntax/syntax.vim
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/var/lib/vim/addons/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/after/filetype.vim"
+finished sourcing /usr/share/vim/vim80/syntax/syntax.vim
+continuing in /usr/share/vim/vimrc
+finished sourcing $VIM/vimrc
+chdir(/home/ubuntu)
+fchdir() to previous dir
+sourcing "$HOME/.vimrc"
+Searching for "autoload/plug.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/autoload/plug.vim"
+chdir(/home/ubuntu/.vim/autoload)
+fchdir() to previous dir
+line 13: sourcing "/home/ubuntu/.vim/autoload/plug.vim"
+finished sourcing /home/ubuntu/.vim/autoload/plug.vim
+continuing in /home/ubuntu/.vimrc
+Searching for "ftoff.vim" in "/home/ubuntu/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/ftoff.vim"
+Searching for "/var/lib/vim/addons/ftoff.vim"
+Searching for "/usr/share/vim/vimfiles/ftoff.vim"
+Searching for "/usr/share/vim/vim80/ftoff.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 14: sourcing "/usr/share/vim/vim80/ftoff.vim"
+finished sourcing /usr/share/vim/vim80/ftoff.vim
+continuing in function plug#end
+Searching for "/usr/share/vim/vimfiles/after/ftoff.vim"
+Searching for "/var/lib/vim/addons/after/ftoff.vim"
+Searching for "/home/ubuntu/.vim/after/ftoff.vim"
+Searching for "filetype.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/filetype.vim"
+Searching for "/home/ubuntu/.fzf/filetype.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/filetype.vim"
+Searching for "/var/lib/vim/addons/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/share/vim/vim80/filetype.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 83: sourcing "/usr/share/vim/vim80/filetype.vim"
+Searching for "ftdetect/*.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/ftdetect/*.vim"
+chdir(/home/ubuntu/.vim/plugged/ultisnips/ftdetect)
+fchdir() to previous dir
+line 2105: sourcing "/home/ubuntu/.vim/plugged/ultisnips/ftdetect/snippets.vim"
+finished sourcing /home/ubuntu/.vim/plugged/ultisnips/ftdetect/snippets.vim
+continuing in /usr/share/vim/vim80/filetype.vim
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/ftdetect/*.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-go/ftdetect)
+fchdir() to previous dir
+line 2105: sourcing "/home/ubuntu/.vim/plugged/vim-go/ftdetect/gofiletype.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-go/ftdetect/gofiletype.vim
+continuing in /usr/share/vim/vim80/filetype.vim
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/ftdetect/*.vim"
+Searching for "/home/ubuntu/.fzf/ftdetect/*.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/ftdetect/*.vim"
+Searching for "/var/lib/vim/addons/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/ftdetect/*.vim"
+Searching for "/usr/share/vim/vim80/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/after/ftdetect/*.vim"
+Searching for "/var/lib/vim/addons/after/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/ftdetect/*.vim"
+Searching for "/home/ubuntu/.vim/after/ftdetect/*.vim"
+finished sourcing /usr/share/vim/vim80/filetype.vim
+continuing in function plug#end
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/var/lib/vim/addons/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/after/filetype.vim"
+Searching for "ftplugin.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/ftplugin.vim"
+Searching for "/home/ubuntu/.fzf/ftplugin.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/ftplugin.vim"
+Searching for "/var/lib/vim/addons/ftplugin.vim"
+Searching for "/usr/share/vim/vimfiles/ftplugin.vim"
+Searching for "/usr/share/vim/vim80/ftplugin.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 83: sourcing "/usr/share/vim/vim80/ftplugin.vim"
+finished sourcing /usr/share/vim/vim80/ftplugin.vim
+continuing in function plug#end
+Searching for "/usr/share/vim/vimfiles/after/ftplugin.vim"
+Searching for "/var/lib/vim/addons/after/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/ftplugin.vim"
+Searching for "/home/ubuntu/.vim/after/ftplugin.vim"
+Searching for "indent.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/indent.vim"
+Searching for "/home/ubuntu/.fzf/indent.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/indent.vim"
+Searching for "/var/lib/vim/addons/indent.vim"
+Searching for "/usr/share/vim/vimfiles/indent.vim"
+Searching for "/usr/share/vim/vim80/indent.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 83: sourcing "/usr/share/vim/vim80/indent.vim"
+finished sourcing /usr/share/vim/vim80/indent.vim
+continuing in function plug#end
+Searching for "/usr/share/vim/vimfiles/after/indent.vim"
+Searching for "/var/lib/vim/addons/after/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/indent.vim"
+Searching for "/home/ubuntu/.vim/after/indent.vim"
+finished sourcing $HOME/.vimrc
+Searching for "pack/*/start/*" in "/home/ubuntu/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/pack/*/start/*"
+Searching for "/usr/share/vim/vimfiles/pack/*/start/*"
+Searching for "/usr/share/vim/vim80/pack/*/start/*"
+Searching for "/usr/share/vim/vimfiles/after/pack/*/start/*"
+Searching for "/home/ubuntu/.vim/after/pack/*/start/*"
+not found in 'packpath': "pack/*/start/*"
+Searching for "plugin/**/*.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugin/comments.vim"
+finished sourcing /home/ubuntu/.vim/plugin/comments.vim
+chdir(/home/ubuntu/.vim/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugin/config.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 14: sourcing "/usr/share/vim/vim80/syntax/syntax.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 15: sourcing "/usr/share/vim/vim80/syntax/nosyntax.vim"
+finished sourcing /usr/share/vim/vim80/syntax/nosyntax.vim
+continuing in /usr/share/vim/vim80/syntax/syntax.vim
+Searching for "syntax/synload.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/syntax/synload.vim"
+Searching for "/home/ubuntu/.fzf/syntax/synload.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/syntax/synload.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/syntax/synload.vim"
+Searching for "/var/lib/vim/addons/syntax/synload.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/synload.vim"
+Searching for "/usr/share/vim/vim80/syntax/synload.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 19: sourcing "/usr/share/vim/vim80/syntax/synload.vim"
+Searching for "syntax/syncolor.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.fzf/syntax/syncolor.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vim80/syntax/syncolor.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+line 21: sourcing "/usr/share/vim/vim80/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim80/syntax/syncolor.vim
+continuing in /usr/share/vim/vim80/syntax/synload.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/bundle/Vundle.vim/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim80/syntax/synload.vim
+continuing in /usr/share/vim/vim80/syntax/syntax.vim
+finished sourcing /usr/share/vim/vim80/syntax/syntax.vim
+continuing in /home/ubuntu/.vim/plugin/config.vim
+Searching for "filetype.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/filetype.vim"
+Searching for "/home/ubuntu/.fzf/filetype.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/filetype.vim"
+Searching for "/var/lib/vim/addons/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+Searching for "/usr/share/vim/vim80/filetype.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 50: sourcing "/usr/share/vim/vim80/filetype.vim"
+finished sourcing /usr/share/vim/vim80/filetype.vim
+continuing in /home/ubuntu/.vim/plugin/config.vim
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/var/lib/vim/addons/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/after/filetype.vim"
+Searching for "/home/ubuntu/.vim/bundle/Vundle.vim/filetype.vim"
+Searching for "indent.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/indent.vim"
+Searching for "/home/ubuntu/.fzf/indent.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/indent.vim"
+Searching for "/var/lib/vim/addons/indent.vim"
+Searching for "/usr/share/vim/vimfiles/indent.vim"
+Searching for "/usr/share/vim/vim80/indent.vim"
+chdir(/usr/share/vim/vim80)
+fchdir() to previous dir
+line 50: sourcing "/usr/share/vim/vim80/indent.vim"
+finished sourcing /usr/share/vim/vim80/indent.vim
+continuing in /home/ubuntu/.vim/plugin/config.vim
+Searching for "/usr/share/vim/vimfiles/after/indent.vim"
+Searching for "/var/lib/vim/addons/after/indent.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/indent.vim"
+Searching for "/home/ubuntu/.vim/after/indent.vim"
+Searching for "/home/ubuntu/.vim/bundle/Vundle.vim/indent.vim"
+finished sourcing /home/ubuntu/.vim/plugin/config.vim
+chdir(/home/ubuntu/.vim/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugin/keywords_map.vim"
+finished sourcing /home/ubuntu/.vim/plugin/keywords_map.vim
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-easy-align/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/vim-easy-align/plugin/easy_align.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-easy-align/plugin/easy_align.vim
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-github-dashboard/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/vim-github-dashboard/plugin/github_dashboard.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-github-dashboard/plugin/github_dashboard.vim
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/ultisnips/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/ultisnips/plugin/UltiSnips.vim"
+Searching for "autoload/UltiSnips/map_keys.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/autoload/UltiSnips/map_keys.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/autoload/UltiSnips/map_keys.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/autoload/UltiSnips/map_keys.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/autoload/UltiSnips/map_keys.vim"
+chdir(/home/ubuntu/.vim/plugged/ultisnips/autoload/UltiSnips)
+fchdir() to previous dir
+line 46: sourcing "/home/ubuntu/.vim/plugged/ultisnips/autoload/UltiSnips/map_keys.vim"
+finished sourcing /home/ubuntu/.vim/plugged/ultisnips/autoload/UltiSnips/map_keys.vim
+continuing in /home/ubuntu/.vim/plugged/ultisnips/plugin/UltiSnips.vim
+finished sourcing /home/ubuntu/.vim/plugged/ultisnips/plugin/UltiSnips.vim
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-snippets/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/vim-snippets/plugin/vimsnippets.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-snippets/plugin/vimsnippets.vim
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/YCM-Generator/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/YCM-Generator/plugin/ycm-generator.vim"
+finished sourcing /home/ubuntu/.vim/plugged/YCM-Generator/plugin/ycm-generator.vim
+Searching for "/home/ubuntu/.vim/plugged/vim-go/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-go/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/vim-go/plugin/go.vim"
+Searching for "autoload/go/config.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/autoload/go/config.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/autoload/go/config.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-go/autoload/go)
+fchdir() to previous dir
+line 2: sourcing "/home/ubuntu/.vim/plugged/vim-go/autoload/go/config.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-go/autoload/go/config.vim
+continuing in function <SNR>24_checkVersion
+Searching for "autoload/go/util.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/autoload/go/util.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/autoload/go/util.vim"
+chdir(/home/ubuntu/.vim/plugged/vim-go/autoload/go)
+fchdir() to previous dir
+line 297: sourcing "/home/ubuntu/.vim/plugged/vim-go/autoload/go/util.vim"
+finished sourcing /home/ubuntu/.vim/plugged/vim-go/autoload/go/util.vim
+continuing in /home/ubuntu/.vim/plugged/vim-go/plugin/go.vim
+finished sourcing /home/ubuntu/.vim/plugged/vim-go/plugin/go.vim
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/plugin/**/*.vim"
+Searching for "/home/ubuntu/.fzf/plugin/**/*.vim"
+chdir(/home/ubuntu/.fzf/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.fzf/plugin/fzf.vim"
+finished sourcing /home/ubuntu/.fzf/plugin/fzf.vim
+Searching for "/home/ubuntu/my-prototype-plugin/plugin/**/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/YouCompleteMe/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/YouCompleteMe/plugin/youcompleteme.vim"
+                                                                           YouCompleteMe unavailable: requires Vim 8.1.2269+.
+finished sourcing /home/ubuntu/.vim/plugged/YouCompleteMe/plugin/youcompleteme.vim
+Searching for "/var/lib/vim/addons/plugin/**/*.vim"
+Searching for "/usr/share/vim/vimfiles/plugin/**/*.vim"
+Searching for "/usr/share/vim/vim80/plugin/**/*.vim"
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/getscriptPlugin.vim"
+finished sourcing /usr/share/vim/vim80/plugin/getscriptPlugin.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/gzip.vim"
+finished sourcing /usr/share/vim/vim80/plugin/gzip.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/logiPat.vim"
+finished sourcing /usr/share/vim/vim80/plugin/logiPat.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/manpager.vim"
+finished sourcing /usr/share/vim/vim80/plugin/manpager.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/matchparen.vim"
+finished sourcing /usr/share/vim/vim80/plugin/matchparen.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/netrwPlugin.vim"
+finished sourcing /usr/share/vim/vim80/plugin/netrwPlugin.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/rrhelper.vim"
+finished sourcing /usr/share/vim/vim80/plugin/rrhelper.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/spellfile.vim"
+finished sourcing /usr/share/vim/vim80/plugin/spellfile.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/tarPlugin.vim"
+finished sourcing /usr/share/vim/vim80/plugin/tarPlugin.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/tohtml.vim"
+finished sourcing /usr/share/vim/vim80/plugin/tohtml.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/vimballPlugin.vim"
+finished sourcing /usr/share/vim/vim80/plugin/vimballPlugin.vim
+chdir(/usr/share/vim/vim80/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/plugin/zipPlugin.vim"
+finished sourcing /usr/share/vim/vim80/plugin/zipPlugin.vim
+Searching for "pack/*/start/*" in "/home/ubuntu/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/home/ubuntu/.vim/after"
+Searching for "/home/ubuntu/.vim/pack/*/start/*"
+Searching for "/usr/share/vim/vimfiles/pack/*/start/*"
+Searching for "/usr/share/vim/vim80/pack/*/start/*"
+Searching for "/usr/share/vim/vimfiles/after/pack/*/start/*"
+Searching for "/home/ubuntu/.vim/after/pack/*/start/*"
+not found in 'packpath': "pack/*/start/*"
+Searching for "plugin/**/*.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/usr/share/vim/vimfiles/after/plugin/**/*.vim"
+Searching for "/var/lib/vim/addons/after/plugin/**/*.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/plugin/**/*.vim"
+chdir(/home/ubuntu/.vim/plugged/ultisnips/after/plugin)
+fchdir() to previous dir
+sourcing "/home/ubuntu/.vim/plugged/ultisnips/after/plugin/UltiSnips_after.vim"
+finished sourcing /home/ubuntu/.vim/plugged/ultisnips/after/plugin/UltiSnips_after.vim
+Searching for "/home/ubuntu/.vim/after/plugin/**/*.vim"
+Reading viminfo file "/home/ubuntu/.viminfo" info oldfiles
+Executing BufEnter Auto commands for "*"
+autocommand sil call s:LocalBrowse(expand("<amatch>"))
+
+Executing VimEnter Auto commands for "*"
+autocommand sil call s:VimEnter(expand("<amatch>"))
+
+Executing CursorMoved Auto commands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+E35: No previous regular expression
+Searching for "syntax/syncolor.vim" in "/home/ubuntu/.vim,/home/ubuntu/.vim/plugged/vim-easy-align,/home/ubuntu/.vim/plugged/vim-github-dashboard,/home/ubuntu/.vim/plugged/ultisnips,/home/ubuntu/.vim/plugged/vim-snippets,/home/ubuntu/.vim/plugged/YCM-Generator,/home/ubuntu/.vim/plugged/vim-go,/home/ubuntu/.vim/plugged/gocode/vim,/home/ubuntu/.fzf,/home/ubuntu/my-prototype-plugin,/home/ubuntu/.vim/plugged/YouCompleteMe,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ubuntu/.vim/plugged/ultisnips/after,/home/ubuntu/.vim/after,/home/ubuntu/.vim/bundle/Vundle.vim"
+Searching for "/home/ubuntu/.vim/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-easy-align/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-github-dashboard/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-snippets/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/YCM-Generator/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/vim-go/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/gocode/vim/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.fzf/syntax/syncolor.vim"
+Searching for "/home/ubuntu/my-prototype-plugin/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/YouCompleteMe/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vim80/syntax/syncolor.vim"
+chdir(/usr/share/vim/vim80/syntax)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim80/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim80/syntax/syncolor.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/var/lib/vim/addons/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/plugged/ultisnips/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/after/syntax/syncolor.vim"
+Searching for "/home/ubuntu/.vim/bundle/Vundle.vim/syntax/syncolor.vim"
