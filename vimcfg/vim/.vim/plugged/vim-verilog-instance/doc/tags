@@ -1,0 +1,11 @@
+g:verilog_instance_skip_last_coma	verilog_instance.txt	/*g:verilog_instance_skip_last_coma*
+gb	verilog_instance.txt	/*gb*
+gb-visual	verilog_instance.txt	/*gb-visual*
+gbb	verilog_instance.txt	/*gbb*
+verilog-instance	verilog_instance.txt	/*verilog-instance*
+verilog-instance-about	verilog_instance.txt	/*verilog-instance-about*
+verilog-instance-commands	verilog_instance.txt	/*verilog-instance-commands*
+verilog-instance-contents	verilog_instance.txt	/*verilog-instance-contents*
+verilog-instance-intro	verilog_instance.txt	/*verilog-instance-intro*
+verilog-instance-key-mappings	verilog_instance.txt	/*verilog-instance-key-mappings*
+verilog-instance-options	verilog_instance.txt	/*verilog-instance-options*
