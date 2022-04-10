@@ -1,0 +1,221 @@
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+"                                                                              "
+"                       __   _ _ _ __ ___  _ __ ___                            "
+"                       \ \ / / | '_ ` _ \| '__/ __|                           "
+"                        \ V /| | | | | | | | | (__                            "
+"                         \_/ |_|_| |_| |_|_|  \___|                           "
+"                                                                              "
+"                                                                              "
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+
+set langmenu=en_US                          " set to English menu
+let $LANG = 'en_US'
+
+set nocompatible                            " use Vim
+
+filetype on                                 " filetype
+filetype plugin indent on
+
+"=====================================================
+""" Vim-plug settings
+"=====================================================
+
+call plug#begin('~/.vim/plugged')
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+
+
+Plug 'scrooloose/nerdtree'                  " nerdtree
+Plug 'itchyny/lightline.vim'                " status bar
+
+Plug 'tpope/vim-fugitive'                   " git plugin
+
+Plug 'sheerun/vim-polyglot'                 " language support
+Plug 'mhinz/vim-startify'                   " start screen
+
+Plug 'joshdick/onedark.vim'                 " color schemes
+"Plug 'flazz/vim-colorschemes'
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+Plug '~/my-prototype-plugin'
+
+Plug 'preservim/nerdcommenter'
+
+Plug 'preservim/tagbar'
+
+Plug  'terryma/vim-expand-region'
+
+Plug  'maralla/completor.vim'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'antoinemadec/vim-verilog-instance'
+
+
+call plug#end()
+
+"=====================================================
+"" General settings
+"=====================================================
+
+syntax on                                   " syntax highlighting
+
+set background=dark
+" colorscheme onedark                         " color scheme
+
+set termguicolors
+set cursorline
+
+set encoding=utf-8                          " file encoding
+
+set number                                  " show line numbers
+set ruler
+set ttyfast                                 " terminal acceleration
+
+set tabstop=4                               " 4 whitespaces for tabs visual presentation
+set shiftwidth=4                            " shift lines by 4 spaces
+set smarttab                                " set tabs for a shifttabs logic
+set expandtab                               " expand tabs into spaces
+set autoindent smartindent                  " indent when moving to the next line while writing code
+
+set showmatch                               " shows matching part of bracket pairs (), [], {}
+set matchpairs+=<:>                         " highlight match pairs
+
+set magic                                   " regular expression
+set title                                   " display title
+
+set nobackup 	                            " no backup files
+set nowritebackup                           " only in case you don't want a backup file while editing
+set noswapfile 	                            " no swap files
+
+set backspace=indent,eol,start              " fix common backspace problems
+
+set nowrap                                  " line wrap
+set history=1000                            " history
+
+set autoread                                " reload files when changed on disk, i.e. via `git checkout`
+set shortmess=atI
+set noshowmode
+set showcmd
+
+set selection=inclusive
+set selectmode=mouse,key
+
+set scrolloff=10                            " let 10 lines before/after cursor during scroll
+
+set clipboard+=unnamed                      " use system clipboard
+set laststatus=2
+
+set exrc                                    " enable usage of additional .vimrc files from working directory
+set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
+
+set pastetoggle=<C-p>                       " toggle paste mode
+
+"=====================================================
+"" Search settings
+"=====================================================
+
+set incsearch                               " incremental search
+set hlsearch                                " highlight search results
+set ignorecase                              " ignore search cases
+set smartcase                               " unless there is capital
+
+"=====================================================
+"" Plugin settings
+"=====================================================
+
+let g:lightline = {
+            \ 'colorscheme': 'onedark',
+            \ }
+
+" Some key remapping
+map <C-n> :NERDTreeToggle<CR>
+
+"=====================================================
+"" Keybindings
+"=====================================================
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-v> <ESC>"+pa
+
+" Quick Esc 
+inoremap jj <Esc>
+inoremap jk <Esc>
+
+" Easy window navigation
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+
+" Quick yanking to the end of the line
+nnoremap Y y$
+
+" Jump to matching pairs easily, with Tab
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" Folding
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Map ; to : and save a million keystrokes
+" ex mode commands made easy 用于快速进入命令行
+nnoremap ; :
+
+" Shift+H goto head of the line, Shift+L goto end of the line
+nnoremap H ^
+nnoremap L $
+
+" Tab
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+" Auto indent pasted text
+"nnoremap p p=`]<C-o>
+"nnoremap P P=`]<C-o>
+
+set tags=tags;
+
+nmap <F8> :TagbarToggle<CR>
+
+"let g:deoplete#enable_at_startup = 1
+"
