@@ -7,3 +7,12 @@ Command: vcs -cpp -cc -LDFLAGS -Wl,--no-as-needed -full64 -debug_acc+all -sveril
 -nc -l comp_log +v2k -kdb +lint=TFIPC-L +lint=PCWM -f /home/soke/ICdesign/base/uart/sim/../tb/filelist.f \
 -f /home/soke/ICdesign/base/uart/sim/../rtl/filelist.f -timescale=1ns/1ps +notimingcheck \
 +nospecify
+
+Error-[SFCOR] Source file cannot be opened
+  Source file "/home/ubuntu/ICdesign/base/uart/tb/uart_tb.v" cannot be opened 
+  for reading due to 'No such file or directory'.
+  Please fix above issue and compile again.
+  
+  
+
+1 error
