@@ -1,0 +1,9 @@
+
+Warning-[LINX_KRNL] Unsupported Linux kernel
+  Linux kernel '5.4.0-107-generic' is not supported.
+  Supported versions are 2.4* or 2.6*.
+
+Command: vcs -cpp -cc -LDFLAGS -Wl,--no-as-needed -full64 -debug_acc+all -sverilog \
+-nc -l comp_log +v2k -kdb +lint=TFIPC-L +lint=PCWM -f /home/soke/ICdesign/base/uart/sim/../tb/filelist.f \
+-f /home/soke/ICdesign/base/uart/sim/../rtl/filelist.f -timescale=1ns/1ps +notimingcheck \
++nospecify
