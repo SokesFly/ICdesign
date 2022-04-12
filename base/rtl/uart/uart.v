@@ -222,5 +222,4 @@ uart_tx_ctrl                          #(
     .tx_o                             (tx                 )
     );
 
-
 endmodule
