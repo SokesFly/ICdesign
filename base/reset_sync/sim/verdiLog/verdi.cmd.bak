@@ -1,5 +1,0 @@
-simSetSimulator "-vcssv" -exec "simv" -args
-debImport "-f" "../rtl/filelist.f" "-dbdir" "simv.daidir" "-simflow" "simv"
-debLoadSimResult /home/ubuntu/ICdesign/base/reset_sync/sim/tb.fsdb
-wvCreateWindow
-debExit

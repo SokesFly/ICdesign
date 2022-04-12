@@ -1,5 +1,0 @@
-@elabcom rc file Version 1.0
-[oh]
-invokeDir = /home/ubuntu/ICdesign/base/reset_sync/sim
-hostCommand = -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top reset_syncer_tb -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389 -SNPS_ELABCOM -saveElab
-simType = VCS

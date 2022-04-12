@@ -1,4 +1,0 @@
-Command Line: /home/ubuntu/tools/synopsys/verdi-2018.9-sp2/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -nologo -f ../syn/syn_files/reset_syncer.syn.v -dbdir simv.daidir -simflow -simBin ./simv -simBin simv -ssf tb.fsdb
-uname(Linux ubuntu 5.4.0-105-generic #119~18.04.1-Ubuntu SMP Tue Mar 8 11:21:24 UTC 2022 x86_64)
-Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 151.982131 5.363796 4.503478 delta 839430144 839430144 total 1271783424 1271783424

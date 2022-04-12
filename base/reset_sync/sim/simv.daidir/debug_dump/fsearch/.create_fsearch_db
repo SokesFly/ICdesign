@@ -1,9 +1,0 @@
-#!/bin/sh -h 
-PYTHONHOME=/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/etc/search/pyh
-export PYTHONHOME
-PYTHONPATH=/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/pylib27
-export PYTHONPATH
-LD_LIBRARY_PATH=/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib:/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/pylib27
-export LD_LIBRARY_PATH
-/home/ubuntu/tools/synopsys/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/bin/vcsfind_create_index.exe  -z  "/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/debug_dump/fsearch/./idents_MPqLMd.xml.gz" "/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/debug_dump/fsearch/./idents_tapi.xml.gz" -o "/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/debug_dump/fsearch/fsearch.db_tmp"
-\mv "/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/debug_dump/fsearch/fsearch.db_tmp" "/home/ubuntu/ICdesign/base/reset_sync/sim/simv.daidir/debug_dump/fsearch/fsearch.db"
