@@ -101,7 +101,23 @@ typeset -g POWERLEVEL9K_DIR_CLASSES=(
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git  
+    gitfast
+    vi-mode
+    sudo 
+    colored-man-pages
+    autojump
+    web-search
+   	command-not-found
+   	safe-paste
+    #zsh-vi-mode
+    git-open
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-history-substring-search                                                     
+    incr
+)
 
 source $ZSH/oh-my-zsh.sh
 
