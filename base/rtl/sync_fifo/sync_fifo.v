@@ -26,7 +26,7 @@ module sync_fifo #(
     input wire                  wr_en_i ,       // input  , write enable , high valid.
 
     /****** Read channel ***********************************************/
-    output reg [WIDTH - 1 : 0]  rdata_i ,       // output , data will be read frome fifo.
+    output reg [WIDTH - 1 : 0]  rdata_o ,       // output , data will be read frome fifo.
     input wire                  rd_en_i ,       // input  , read enable , high valid.
 
     /****** Control and status *****************************************/
@@ -34,7 +34,7 @@ module sync_fifo #(
     output wire                 empty_o     ,           // output , high, when fifo empty, or low.
     output reg [ELS_SIZE : 0]   elements_o      // output , elements fifo's storaged.
 );
-
+    
     reg [ELS_SIZE - 1 : 0]      wr_ptr ;
     reg [ELS_SIZE - 1 : 0]      rd_ptr ;
     reg [WIDTH - 1 : 0]         fifo_array [0 : DEPTH - 1] ;
@@ -47,7 +47,7 @@ module sync_fifo #(
                 fifo_array [i] <= #DLY 'b0 ;
             end
         end else if(wr_en_i && !full_o) begin
-            fifo_array [wr_ptr] <= #DLY wdata_i ;
+            fifo_array [wr_ptr] <= #DLY wdata_i;
         end
     end
 
@@ -62,11 +62,11 @@ module sync_fifo #(
     /****** Read data **********************************************/
     always@(posedge clk_i or negedge rst_n_i) begin
         if(!rst_n_i) begin
-            rdata_i <= #DLY 'b0 ;
+            rdata_o <= #DLY 'b0 ;
         end else if(rd_en_i && !empty_o) begin
-            rdata_i <= #DLY fifo_array [rd_ptr] ;
+            rdata_o <= #DLY fifo_array [rd_ptr] ;
         end else begin
-            rdata_i <= #DLY 'b0 ;
+            rdata_o <= #DLY 'b0 ;
         end
     end
 

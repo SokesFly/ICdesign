@@ -87,8 +87,6 @@ Plug 'tokorom/completor-shell'
 Plug 'Shougo/neoinclude.vim'
 Plug 'masawada/completor-dictionary'
 
-
-
 call plug#end()
 
 "=====================================================
@@ -132,7 +130,8 @@ set noswapfile 	                            " no swap files
 
 set backspace=indent,eol,start              " fix common backspace problems
 
-set nowrap                                  " line wrap
+set textwidth=80
+" set nowrap                                  " line wrap
 set history=1000                            " history
 
 set autoread                                " reload files when changed on disk, i.e. via `git checkout`
@@ -152,6 +151,9 @@ set exrc                                    " enable usage of additional .vimrc 
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
 set pastetoggle=<C-p>                       " toggle paste mode
+
+set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 "=====================================================
 "" Search settings
@@ -264,7 +266,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " auto update tags
-autocmd BufWritePost *.v *.sv *.c,*.h,*.cpp call UpdateCtags()
+autocmd BufWritePost *.sv *.v *.c,*.h,*.cpp call UpdateCtags()
 
 function! UpdateCtags()
     let curdir=getcwd()

@@ -27,7 +27,7 @@ module sync_fifo_tb();
     reg                     wr_en_i ;
 
     /*** read data ***************************************/
-    wire [WIDTH - 1 : 0]    rdata_i ;
+    wire [WIDTH - 1 : 0]    rdata_o ;
     reg                     rd_en_i ;
 
     wire                    full_o  ;
@@ -149,7 +149,7 @@ module sync_fifo_tb();
             rd_en_i     = 1'b1 ;
         end
         @(negedge clk_i) begin
-            pop_data_i  = rdata_i ;
+            pop_data_i  = rdata_o ;
         end
         rd_en_i = 1'b0 ;
     endtask
@@ -171,7 +171,7 @@ module sync_fifo_tb();
         .rst_n_i( rst_n_i ),
         .wdata_i( wdata_i ),
         .wr_en_i( wr_en_i ),
-        .rdata_i( rdata_i ),
+        .rdata_o( rdata_o ),
         .rd_en_i( rd_en_i ),
         .full_o ( full_o  ),
         .empty_o( empty_o ),

@@ -1,0 +1,549 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADDR	rtl/async_fifo/async_fifo.v	/^    parameter       ADDR            = $clog2(FIFO_DEPTH)$/;"	c
+CLK_PER	tb/reset_sync/reset_syncer_tb.v	/^parameter       CLK_PER = 20 ;$/;"	c
+CLK_PERIOD	tb/general_syncer/general_syncer_tb.v	/^    parameter   CLK_PERIOD      = 10;$/;"	c
+CLK_PERIOD	tb/sync_fifo/sync_fifo_tb.v	/^    parameter       CLK_PERIOD  = 10;$/;"	c
+CLK_PERIOD	tb/uart/uart_tb.v	/^parameter                   CLK_PERIOD      = 20;  \/\/ Primary clk is 50Mhz.$/;"	c
+CLK_PERIOD_RD	tb/async_fifo/async_fifo_tb.v	/^parameter       CLK_PERIOD_RD   = 20;$/;"	c
+CLK_PERIOD_WR	tb/async_fifo/async_fifo_tb.v	/^parameter       CLK_PERIOD_WR   = 10;$/;"	c
+DATA_WIDTH	rtl/async_fifo/general_syncer.v	/^    parameter   DATA_WIDTH      = 1  \/\/ data bus width$/;"	c
+DATA_WIDTH	rtl/general_syncer/general_syncer.v	/^    parameter   DATA_WIDTH      = 1  \/\/ data bus width$/;"	c
+DATA_WIDTH	rtl/uart/general_syncer/general_syncer.v	/^    parameter                           DATA_WIDTH      = 1  \/\/ data bus width$/;"	c
+DATA_WIDTH	rtl/uart/uart.v	/^    parameter                         DATA_WIDTH      = 8     \/\/ Data width , without parity bit.$/;"	c
+DATA_WIDTH	tb/general_syncer/general_syncer_tb.v	/^    parameter   DATA_WIDTH      = 1;$/;"	c
+DATA_WIDTH	tb/uart/uart_tb.v	/^parameter                   DATA_WIDTH      = 8 ;$/;"	c
+DEPTH	rtl/memory/dram.v	/^    parameter                           DEPTH           =   8,$/;"	c
+DEPTH	tb/sync_fifo/sync_fifo_tb.v	/^    parameter       DEPTH       = 16;$/;"	c
+DLY	rtl/async_fifo/async_fifo.v	/^    parameter       DLY             = 1,$/;"	c
+DLY	rtl/async_fifo/bin2gray.v	/^    parameter           DLY        = 1,$/;"	c
+DLY	rtl/async_fifo/dual_port_mem.v	/^    parameter           DLY          = 1,$/;"	c
+DLY	rtl/async_fifo/general_syncer.v	/^    parameter   DLY             = 1,$/;"	c
+DLY	rtl/async_fifo/read_ctrl.v	/^    parameter           DLY         = 1,$/;"	c
+DLY	rtl/async_fifo/write_ctrl.v	/^    parameter           DLY         = 1,$/;"	c
+DLY	rtl/general_syncer/general_syncer.v	/^    parameter   DLY             = 1,$/;"	c
+DLY	rtl/reset_sync/reset_syncer.v	/^    parameter       DLY     =   1$/;"	c
+DLY	rtl/reset_sync/reset_synchronizer.v	/^    parameter       DLY      = 1,$/;"	c
+DLY	rtl/uart/async_fifo/async_fifo.v	/^    parameter       DLY             = 1,$/;"	c
+DLY	rtl/uart/async_fifo/bin2gray.v	/^    parameter           DLY        = 1,$/;"	c
+DLY	rtl/uart/async_fifo/dual_port_mem.v	/^    parameter           DLY        = 1         ,$/;"	c
+DLY	rtl/uart/async_fifo/read_ctrl.v	/^    parameter           DLY         = 1,$/;"	c
+DLY	rtl/uart/async_fifo/write_ctrl.v	/^    parameter           DLY         = 1,$/;"	c
+DLY	rtl/uart/gen_baudrate_bit.v	/^    parameter                           DLY                 =   1,$/;"	c
+DLY	rtl/uart/general_syncer/general_syncer.v	/^    parameter                           DLY             = 1,$/;"	c
+DLY	rtl/uart/reset/reset_syncer.v	/^    parameter       DLY     =   1$/;"	c
+DLY	rtl/uart/status_ctrl.v	/^    parameter                           DLY     =   1$/;"	c
+DLY	rtl/uart/uart.v	/^    parameter                         DLY             = 1,$/;"	c
+DLY	rtl/uart/uart_rx.v	/^    parameter                       DLY           = 1,$/;"	c
+DLY	rtl/uart/uart_rx_ctrl.v	/^    parameter                           DLY         = 1     ,$/;"	c
+DLY	rtl/uart/uart_tx.v	/^    parameter                      DLY         = 1   ,$/;"	c
+DLY	rtl/uart/uart_tx_ctrl.v	/^    parameter                           DLY         = 1,$/;"	c
+DLY	tb/async_fifo/async_fifo_tb.v	/^parameter       DLY         = 1;$/;"	c
+DLY	tb/general_syncer/general_syncer_tb.v	/^    parameter   DLY             = 0;$/;"	c
+DLY	tb/reset_sync/reset_syncer_tb.v	/^parameter       DLY     = 1  ;$/;"	c
+DLY	tb/uart/uart_tb.v	/^parameter                   DLY             = 1 ;$/;"	c
+ELS_SIZE	rtl/sync_fifo/sync_fifo.v	/^    parameter           ELS_SIZE    = $clog2(DEPTH),$/;"	c
+ELS_SIZE	tb/sync_fifo/sync_fifo_tb.v	/^    parameter       ELS_SIZE    = $clog2(DEPTH);$/;"	c
+FIFO_DEPTH	rtl/async_fifo/async_fifo.v	/^    parameter       FIFO_DEPTH      = 32,$/;"	c
+FIFO_DEPTH	rtl/async_fifo/dual_port_mem.v	/^    parameter           FIFO_DEPTH   = 8,$/;"	c
+FIFO_DEPTH	rtl/async_fifo/if_empty.v	/^    parameter       FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/async_fifo/if_full.v	/^    parameter       FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/async_fifo/read_ctrl.v	/^    parameter           FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/async_fifo/write_ctrl.v	/^    parameter           FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/async_fifo.v	/^    parameter       FIFO_DEPTH      = 32,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/dual_port_mem.v	/^    parameter           FIFO_DEPTH = 8         ,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/if_empty.v	/^    parameter       FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/if_full.v	/^    parameter       FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/read_ctrl.v	/^    parameter           FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	rtl/uart/async_fifo/write_ctrl.v	/^    parameter           FIFO_DEPTH  = 8,$/;"	c
+FIFO_DEPTH	tb/async_fifo/async_fifo_tb.v	/^parameter       FIFO_DEPTH  = 32;$/;"	c
+FIFO_WIDTH	tb/async_fifo/async_fifo_tb.v	/^parameter       FIFO_WIDTH  = 8;$/;"	c
+FIRST_EDGE	rtl/uart/async_fifo/async_fifo.v	/^parameter       FIRST_EDGE      = 1'b1;$/;"	c
+FIRST_EDGE	tb/general_syncer/general_syncer_tb.v	/^    parameter   FIRST_EDGE      = 0;$/;"	c
+LAST_EDGE	rtl/async_fifo/async_fifo.v	/^    parameter       LAST_EDGE       = 1'b1,$/;"	c
+LAST_EDGE	rtl/async_fifo/general_syncer.v	/^    parameter   LAST_EDGE       = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+LAST_EDGE	rtl/general_syncer/general_syncer.v	/^    parameter   LAST_EDGE       = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+LAST_EDGE	rtl/uart/async_fifo/async_fifo.v	/^parameter       LAST_EDGE       = 1'b1;$/;"	c
+LAST_EDGE	rtl/uart/general_syncer/general_syncer.v	/^    parameter                           LAST_EDGE       = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+LAST_EDGE	tb/general_syncer/general_syncer_tb.v	/^    parameter   LAST_EDGE       = 0;$/;"	c
+MID_STAGE_NUM	rtl/uart/async_fifo/async_fifo.v	/^parameter       MID_STAGE_NUM   = 4'h2;$/;"	c
+MID_STAGE_NUM	tb/general_syncer/general_syncer_tb.v	/^    parameter   MID_STAGE_NUM   = 5;$/;"	c
+READ_WIDTH	rtl/async_fifo/async_fifo.v	/^    parameter       READ_WIDTH      = 8,$/;"	c
+READ_WIDTH	tb/async_fifo/async_fifo_tb.v	/^parameter       READ_WIDTH  = 8;$/;"	c
+SIM_TIMES	tb/general_syncer/general_syncer_tb.v	/^    parameter   SIM_TIMES       = 500;$/;"	c
+SIM_TIMES	tb/sync_fifo/sync_fifo_tb.v	/^    parameter       SIM_TIMES   = 20000;$/;"	c
+WIDTH	rtl/sync_fifo/sync_fifo.v	/^    parameter           WIDTH       = 32,$/;"	c
+WIDTH	tb/sync_fifo/sync_fifo_tb.v	/^    parameter       WIDTH       = 8 ;$/;"	c
+WRITE_WIDTH	rtl/memory/dram.v	/^    parameter                           WRITE_WIDTH     =   4,$/;"	c
+WRITE_WIDTH	tb/async_fifo/async_fifo_tb.v	/^parameter       WRITE_WIDTH = 8;$/;"	c
+array	rtl/async_fifo/dual_port_mem.v	/^reg [FIFO_WIDTH-1:0]                array [0 : FIFO_DEPTH-1];$/;"	r
+array	rtl/uart/async_fifo/dual_port_mem.v	/^reg [FIFO_WIDTH-1:0]                array [0 : FIFO_DEPTH-1];$/;"	r
+async_fifo	rtl/async_fifo/async_fifo.v	/^module async_fifo #($/;"	m
+async_fifo	rtl/uart/async_fifo/async_fifo.v	/^module async_fifo #($/;"	m
+async_fifo_tb	tb/async_fifo/async_fifo_tb.v	/^module async_fifo_tb;$/;"	m
+baudrate_cfg	rtl/uart/uart.v	/^wire  [11   :0]                       baudrate_cfg    ;$/;"	n
+baudrate_cnt_r	rtl/uart/gen_baudrate_bit.v	/^reg  [BAUDRATE_WIDTH-1:0]               baudrate_cnt_r ;$/;"	r
+baudrate_en	rtl/uart/uart.v	/^wire                                  baudrate_en     ;$/;"	n
+baudrate_en_n	rtl/uart/uart.v	/^wire                                  baudrate_en_n   ;$/;"	n
+bin2gray	rtl/async_fifo/bin2gray.v	/^module  bin2gray #($/;"	m
+bin2gray	rtl/uart/async_fifo/bin2gray.v	/^module  bin2gray #($/;"	m
+clk	rtl/uart/uart.v	/^wire                                  clk             ;$/;"	n
+clk	tb/async_fifo/async_fifo_tb.v	/^reg                         clk ;$/;"	r
+clk	tb/uart/uart_tb.v	/^reg                         clk                 ;$/;"	r
+clk_i	tb/general_syncer/general_syncer_tb.v	/^    reg                             clk_i;$/;"	r
+clk_i	tb/reset_sync/reset_syncer_tb.v	/^reg             clk_i        ;$/;"	r
+clk_i	tb/sync_fifo/sync_fifo_tb.v	/^    reg                     clk_i   ;$/;"	r
+clk_mask	rtl/uart/clocks/clk_mask.v	/^module  clk_mask ($/;"	m
+cs	tb/async_fifo/async_fifo_tb.v	/^reg [7:0]                   cs  ;$/;"	r
+cs_rd_synced	tb/async_fifo/async_fifo_tb.v	/^wire [7:0]                  cs_rd_synced;$/;"	n
+cs_wr_synced	tb/async_fifo/async_fifo_tb.v	/^wire [7:0]                  cs_wr_synced;$/;"	n
+ctrl	tb/uart/uart_tb.v	/^wire  [31    :0]            ctrl                ;$/;"	n
+ctrl_enable	tb/uart/uart_tb.v	/^reg                         ctrl_enable         ;$/;"	r
+ctrl_mirror	tb/uart/uart_tb.v	/^wire  [31    :0]            ctrl_mirror         ;$/;"	n
+ctrl_mirror_r	rtl/uart/status_ctrl.v	/^reg [31:0]                              ctrl_mirror_r   ;$/;"	r
+ctrl_r	rtl/uart/status_ctrl.v	/^reg [31:0]                              ctrl_r          ;$/;"	r
+ctrl_r	tb/uart/uart_tb.v	/^reg   [31    :0]            ctrl_r              ;$/;"	r
+data_bits	rtl/uart/uart.v	/^wire  [3    :0]                       data_bits       ;$/;"	n
+data_cross_domain	rtl/reset_sync/reset_synchronizer.v	/^    reg             data_cross_domain ;$/;"	r
+data_d1	rtl/reset_sync/reset_synchronizer.v	/^    reg             data_d1  ;$/;"	r
+data_d2	rtl/reset_sync/reset_synchronizer.v	/^    reg             data_d2  ;$/;"	r
+data_o_r	rtl/reset_sync/reset_synchronizer.v	/^    reg             data_o_r ;$/;"	r
+data_synced_o	tb/general_syncer/general_syncer_tb.v	/^    wire [DATA_WIDTH - 1 : 0]       data_synced_o;$/;"	n
+data_unsync_i	tb/general_syncer/general_syncer_tb.v	/^    reg [DATA_WIDTH - 1 : 0]        data_unsync_i;$/;"	r
+dram	rtl/memory/dram.v	/^module                                  dram #($/;"	m
+dual_port_mem	rtl/async_fifo/dual_port_mem.v	/^module  dual_port_mem #($/;"	m
+dual_port_mem	rtl/uart/async_fifo/dual_port_mem.v	/^module  dual_port_mem #($/;"	m
+elements_o	tb/sync_fifo/sync_fifo_tb.v	/^    wire [ELS_SIZE : 0]     elements_o ;$/;"	n
+empty_o	tb/async_fifo/async_fifo_tb.v	/^wire                        empty_o     ;$/;"	n
+empty_o	tb/sync_fifo/sync_fifo_tb.v	/^    wire                    empty_o ;$/;"	n
+fifo_array	rtl/sync_fifo/sync_fifo.v	/^    reg [WIDTH - 1 : 0]         fifo_array [0 : DEPTH - 1] ;$/;"	r
+first_reg	rtl/async_fifo/general_syncer.v	/^    reg  [DATA_WIDTH - 1 : 0]        first_reg;$/;"	r
+first_reg	rtl/general_syncer/general_syncer.v	/^    reg [DATA_WIDTH - 1 : 0]        first_reg;$/;"	r
+first_reg	rtl/uart/general_syncer/general_syncer.v	/^reg  [DATA_WIDTH - 1 : 0]               first_reg;$/;"	r
+flow	tb/sync_fifo/sync_fifo_tb.v	/^    wire                    flow       ;$/;"	n
+flow_flag	tb/sync_fifo/sync_fifo_tb.v	/^    reg [0 : 0]             flow_flag  ;$/;"	r
+flow_read	tb/sync_fifo/sync_fifo_tb.v	/^    wire                    flow_read  ;$/;"	n
+flow_write	tb/sync_fifo/sync_fifo_tb.v	/^    wire                    flow_write ;$/;"	n
+full_o	tb/async_fifo/async_fifo_tb.v	/^wire                        full_o      ;$/;"	n
+full_o	tb/sync_fifo/sync_fifo_tb.v	/^    wire                    full_o  ;$/;"	n
+gen_baudrate_bit	rtl/uart/gen_baudrate_bit.v	/^module                                  gen_baudrate_bit #($/;"	m
+general_syncer	rtl/async_fifo/general_syncer.v	/^module general_syncer #($/;"	m
+general_syncer	rtl/general_syncer/general_syncer.v	/^module general_syncer #($/;"	m
+general_syncer	rtl/uart/general_syncer/general_syncer.v	/^module                                  general_syncer #($/;"	m
+general_syncer_tb	tb/general_syncer/general_syncer_tb.v	/^module general_syncer_tb;$/;"	m
+go_data	rtl/uart/uart_rx.v	/^wire                                go_data         ;$/;"	n
+go_data_send	rtl/uart/uart_tx.v	/^wire                                go_data_send    ;$/;"	n
+go_idle	rtl/uart/uart_rx.v	/^wire                                go_idle         ;$/;"	n
+go_idle	rtl/uart/uart_tx.v	/^wire                                go_idle         ;$/;"	n
+go_parity	rtl/uart/uart_rx.v	/^wire                                go_parity       ;$/;"	n
+go_parity_bit	rtl/uart/uart_tx.v	/^wire                                go_parity_bit   ;$/;"	n
+go_start_bit	rtl/uart/uart_rx.v	/^wire                                go_start_bit    ;$/;"	n
+go_start_bit	rtl/uart/uart_tx.v	/^wire                                go_start_bit    ;$/;"	n
+go_stop_bit	rtl/uart/uart_rx.v	/^wire                                go_stop_bit     ;$/;"	n
+go_stop_bit	rtl/uart/uart_tx.v	/^wire                                go_stop_bit     ;$/;"	n
+i	rtl/async_fifo/dual_port_mem.v	/^reg [ADDR        :0]                i;$/;"	r
+i	rtl/sync_fifo/sync_fifo.v	/^    reg [ELS_SIZE : 0]          i ;$/;"	r
+i	rtl/uart/async_fifo/dual_port_mem.v	/^reg [ADDR        :0]                i;$/;"	r
+if_empty	rtl/async_fifo/if_empty.v	/^module if_empty #($/;"	m
+if_empty	rtl/uart/async_fifo/if_empty.v	/^module if_empty #($/;"	m
+if_full	rtl/async_fifo/if_full.v	/^module if_full #($/;"	m
+if_full	rtl/uart/async_fifo/if_full.v	/^module if_full #($/;"	m
+input	rtl/async_fifo/async_fifo.v	/^    input wire                      wr_clk_i    ,$/;"	c
+input	rtl/async_fifo/general_syncer.v	/^    input wire                       rst_n_i,$/;"	c
+input	rtl/general_syncer/general_syncer.v	/^    input wire                       rst_n_i,$/;"	c
+input	rtl/reset_sync/reset_syncer.v	/^    input wire      rst_n_sync_i   ,    \/\/input wire , the rst need synced.$/;"	c
+input	rtl/uart/general_syncer/general_syncer.v	/^    input wire                          rst_n_i,$/;"	c
+input	rtl/uart/reset/reset_syncer.v	/^    input wire      rst_n_sync_i   ,    \/\/input wire , the rst need synced.$/;"	c
+input	rtl/uart/status_ctrl.v	/^    input  wire                         rst_n_i         ,$/;"	c
+input	rtl/uart/uart.v	/^    input  wire                       rst_n_i        ,        \/\/ Sys reset.$/;"	c
+last_reg	rtl/async_fifo/general_syncer.v	/^    reg  [DATA_WIDTH - 1 : 0]        last_reg;$/;"	r
+last_reg	rtl/general_syncer/general_syncer.v	/^    reg [DATA_WIDTH - 1 : 0]        last_reg;$/;"	r
+last_reg	rtl/uart/general_syncer/general_syncer.v	/^reg  [DATA_WIDTH - 1 : 0]               last_reg;$/;"	r
+low_power	rtl/uart/uart.v	/^wire                                  low_power       ;$/;"	n
+mem	rtl/memory/dram.v	/^        reg [WRITE_WIDTH-1]             mem [0 :WRITE_ADDR-1];$/;"	r
+mid_regs	rtl/async_fifo/general_syncer.v	/^    reg  [DATA_WIDTH - 1 : 0]        mid_regs [0 : MID_STAGE_NUM - 1];$/;"	r
+mid_regs	rtl/general_syncer/general_syncer.v	/^    reg [DATA_WIDTH - 1 : 0]        mid_regs [0 : MID_STAGE_NUM - 1];$/;"	r
+mid_regs	rtl/uart/general_syncer/general_syncer.v	/^reg  [DATA_WIDTH - 1 : 0]               mid_regs [0 : MID_STAGE_NUM - 1];$/;"	r
+mid_tmp	rtl/async_fifo/general_syncer.v	/^    wire [DATA_WIDTH - 1 : 0]        mid_tmp;$/;"	n
+mid_tmp	rtl/general_syncer/general_syncer.v	/^    wire [DATA_WIDTH - 1 : 0]       mid_tmp;$/;"	n
+mid_tmp	rtl/uart/general_syncer/general_syncer.v	/^wire [DATA_WIDTH - 1 : 0]               mid_tmp;$/;"	n
+ns	tb/async_fifo/async_fifo_tb.v	/^reg [7:0]                   ns  ;$/;"	r
+parameter	rtl/async_fifo/async_fifo.v	/^    parameter       FIFO_WIDTH      = 8,$/;"	c
+parameter	rtl/async_fifo/async_fifo.v	/^    parameter       FIRST_EDGE      = 1'b1,$/;"	c
+parameter	rtl/async_fifo/async_fifo.v	/^    parameter       MID_STAGE_NUM   = 4'h3,$/;"	c
+parameter	rtl/async_fifo/async_fifo.v	/^    parameter       WRITE_WIDTH     = 8,$/;"	c
+parameter	rtl/async_fifo/bin2gray.v	/^    parameter           WIDTH      = 8$/;"	c
+parameter	rtl/async_fifo/dual_port_mem.v	/^    parameter           ADDR         = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/async_fifo/dual_port_mem.v	/^    parameter           FIFO_WIDTH   = 8,$/;"	c
+parameter	rtl/async_fifo/general_syncer.v	/^    parameter   FIRST_EDGE      = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+parameter	rtl/async_fifo/general_syncer.v	/^    parameter   MID_STAGE_NUM   = 0, \/\/ stage number of middle register(s), MID_STAGE_NUM >= 0$/;"	c
+parameter	rtl/async_fifo/if_empty.v	/^    parameter       SIZE        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/async_fifo/if_full.v	/^    parameter       SIZE        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/async_fifo/read_ctrl.v	/^    parameter           ADDR        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/async_fifo/read_ctrl.v	/^    parameter           FIFO_WIDTH  = 8,$/;"	c
+parameter	rtl/async_fifo/write_ctrl.v	/^    parameter           ADDR        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/async_fifo/write_ctrl.v	/^    parameter           FIFO_WIDTH  = 8,$/;"	c
+parameter	rtl/general_syncer/general_syncer.v	/^    parameter   FIRST_EDGE      = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+parameter	rtl/general_syncer/general_syncer.v	/^    parameter   MID_STAGE_NUM   = 0, \/\/ stage number of middle register(s), MID_STAGE_NUM >= 0$/;"	c
+parameter	rtl/memory/dram.v	/^    parameter                           ADDR            =   (READ_WIDTH - WRITE_WIDTH) ? $/;"	c
+parameter	rtl/memory/dram.v	/^    parameter                           READ_WIDTH      =   16,$/;"	c
+parameter	rtl/reset_sync/reset_synchronizer.v	/^    parameter       EDGE_WAY = 1  \/\/ 1 -- Rising , 0 -- falling$/;"	c
+parameter	rtl/sync_fifo/sync_fifo.v	/^    parameter           DEPTH       = 16,$/;"	c
+parameter	rtl/sync_fifo/sync_fifo.v	/^    parameter           DLY = 1$/;"	c
+parameter	rtl/uart/async_fifo/async_fifo.v	/^    parameter       ADDR            = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/async_fifo.v	/^    parameter       FIFO_WIDTH      = 8,$/;"	c
+parameter	rtl/uart/async_fifo/bin2gray.v	/^    parameter           WIDTH      = 8$/;"	c
+parameter	rtl/uart/async_fifo/dual_port_mem.v	/^    parameter           ADDR       = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/dual_port_mem.v	/^    parameter           FIFO_WIDTH = 8         ,$/;"	c
+parameter	rtl/uart/async_fifo/if_empty.v	/^    parameter       SIZE        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/if_full.v	/^    parameter       SIZE        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/read_ctrl.v	/^    parameter           ADDR        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/read_ctrl.v	/^    parameter           FIFO_WIDTH  = 8,$/;"	c
+parameter	rtl/uart/async_fifo/write_ctrl.v	/^    parameter           ADDR        = $clog2(FIFO_DEPTH)$/;"	c
+parameter	rtl/uart/async_fifo/write_ctrl.v	/^    parameter           FIFO_WIDTH  = 8,$/;"	c
+parameter	rtl/uart/gen_baudrate_bit.v	/^    parameter                           BAUDRATE_WIDTH      =   16$/;"	c
+parameter	rtl/uart/general_syncer/general_syncer.v	/^    parameter                           FIRST_EDGE      = 1, \/\/ (1 => negedge ) || (0 => posedge)$/;"	c
+parameter	rtl/uart/general_syncer/general_syncer.v	/^    parameter                           MID_STAGE_NUM   = 0, \/\/ stage number of middle register(s), MID_STAGE_NUM >= 0$/;"	c
+parameter	rtl/uart/uart.v	/^    parameter                         BAUDRATE_WIDTH  = 16,$/;"	c
+parameter	rtl/uart/uart_rx.v	/^    parameter                       DATA_WIDTH    = 8$/;"	c
+parameter	rtl/uart/uart_rx_ctrl.v	/^    parameter                           DATA_WIDTH  = 8$/;"	c
+parameter	rtl/uart/uart_tx.v	/^    parameter                      DATA_WIDTH  = 8$/;"	c
+parameter	rtl/uart/uart_tx_ctrl.v	/^    parameter                           DATA_WIDTH  = 8$/;"	c
+parity_mode	rtl/uart/uart.v	/^wire  [1    :0]                       parity_mode     ;$/;"	n
+pop	tb/sync_fifo/sync_fifo_tb.v	/^    task pop ;$/;"	t
+push	tb/sync_fifo/sync_fifo_tb.v	/^    task push ;$/;"	t
+push_data_i	tb/sync_fifo/sync_fifo_tb.v	/^        input [WIDTH - 1 : 0] push_data_i ;$/;"	p
+rd_addr	rtl/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        rd_addr       ;$/;"	n
+rd_addr	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        rd_addr       ;$/;"	n
+rd_addr_gray	rtl/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        rd_addr_gray  ;$/;"	n
+rd_addr_gray	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        rd_addr_gray  ;$/;"	n
+rd_addr_gray_synced	rtl/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        rd_addr_gray_synced ;$/;"	n
+rd_addr_gray_synced	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        rd_addr_gray_synced ;$/;"	n
+rd_addr_r	rtl/async_fifo/read_ctrl.v	/^reg [ADDR          :0]              rd_addr_r  ;$/;"	r
+rd_addr_r	rtl/uart/async_fifo/read_ctrl.v	/^reg [ADDR          :0]              rd_addr_r  ;$/;"	r
+rd_clk_i	tb/async_fifo/async_fifo_tb.v	/^reg                         rd_clk_i    ;$/;"	r
+rd_data_o	tb/async_fifo/async_fifo_tb.v	/^wire [FIFO_WIDTH - 1: 0]    rd_data_o   ;$/;"	n
+rd_data_r	rtl/async_fifo/dual_port_mem.v	/^reg [FIFO_WIDTH-1:0]                rd_data_r ;$/;"	r
+rd_data_r	rtl/uart/async_fifo/dual_port_mem.v	/^reg [FIFO_WIDTH-1:0]                rd_data_r ;$/;"	r
+rd_en_i	tb/async_fifo/async_fifo_tb.v	/^reg                         rd_en_i     ;$/;"	r
+rd_en_i	tb/sync_fifo/sync_fifo_tb.v	/^    reg                     rd_en_i ;$/;"	r
+rd_ptr	rtl/async_fifo/async_fifo.v	/^wire    [ADDR-1:0]        rd_ptr        ;$/;"	n
+rd_ptr	rtl/sync_fifo/sync_fifo.v	/^    reg [ELS_SIZE - 1 : 0]      rd_ptr ;$/;"	r
+rd_ptr	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR-1:0]        rd_ptr        ;$/;"	n
+rd_valid	rtl/async_fifo/async_fifo.v	/^wire                      rd_valid      ;$/;"	n
+rd_valid	rtl/uart/async_fifo/async_fifo.v	/^wire                      rd_valid      ;$/;"	n
+rd_valid_r	rtl/async_fifo/read_ctrl.v	/^reg                                 rd_valid_r;$/;"	r
+rd_valid_r	rtl/uart/async_fifo/read_ctrl.v	/^reg                                 rd_valid_r;$/;"	r
+rd_vdata	rtl/async_fifo/async_fifo.v	/^wire    [FIFO_WIDTH -1 :0]rd_vdata      ;$/;"	n
+rd_vdata	rtl/uart/async_fifo/async_fifo.v	/^wire    [FIFO_WIDTH -1 :0]rd_vdata      ;$/;"	n
+rd_vdata_r	rtl/async_fifo/read_ctrl.v	/^reg [FIFO_WIDTH -1 :0]              rd_vdata_r;$/;"	r
+rd_vdata_r	rtl/uart/async_fifo/read_ctrl.v	/^reg [FIFO_WIDTH -1 :0]              rd_vdata_r;$/;"	r
+rdata	tb/sync_fifo/sync_fifo_tb.v	/^    reg [WIDTH - 1 : 0]     rdata      ;$/;"	r
+rdata_o	tb/sync_fifo/sync_fifo_tb.v	/^    wire [WIDTH - 1 : 0]    rdata_o ;$/;"	n
+read_ctrl	rtl/async_fifo/read_ctrl.v	/^module read_ctrl    #($/;"	m
+read_ctrl	rtl/uart/async_fifo/read_ctrl.v	/^module read_ctrl    #($/;"	m
+read_flag	tb/sync_fifo/sync_fifo_tb.v	/^    reg [15 : 0]            read_flag  ;$/;"	r
+reg	rtl/async_fifo/general_syncer.v	/^    output reg [DATA_WIDTH - 1 : 0]  data_synced_o$/;"	p
+reg	rtl/general_syncer/general_syncer.v	/^    output reg [DATA_WIDTH - 1 : 0]  data_synced_o$/;"	p
+reg	rtl/reset_sync/reset_synchronizer.v	/^    output reg      data_o$/;"	p
+reg	rtl/sync_fifo/sync_fifo.v	/^    output reg [ELS_SIZE : 0]   elements_o      \/\/ output , elements fifo's storaged.$/;"	p
+reg	rtl/sync_fifo/sync_fifo.v	/^    output reg [WIDTH - 1 : 0]  rdata_o ,       \/\/ output , data will be read frome fifo.$/;"	p
+reg	rtl/uart/general_syncer/general_syncer.v	/^    output reg [DATA_WIDTH - 1 : 0]     data_synced_o$/;"	p
+reg	tb/sync_fifo/sync_fifo_tb.v	/^        output reg [WIDTH - 1 : 0] pop_data_i ;$/;"	p
+reset_syncer	rtl/reset_sync/reset_syncer.v	/^module reset_syncer #($/;"	m
+reset_syncer	rtl/uart/reset/reset_syncer.v	/^module reset_syncer #($/;"	m
+reset_syncer_tb	tb/reset_sync/reset_syncer_tb.v	/^module reset_syncer_tb;$/;"	m
+reset_synchronizer	rtl/reset_sync/reset_synchronizer.v	/^module reset_synchronizer #($/;"	m
+rst_n	rtl/uart/uart.v	/^wire                                  rst_n           ;$/;"	n
+rst_n	tb/uart/uart_tb.v	/^reg                         rst_n               ;$/;"	r
+rst_n_i	tb/async_fifo/async_fifo_tb.v	/^reg                         rst_n_i     ;$/;"	r
+rst_n_i	tb/general_syncer/general_syncer_tb.v	/^    reg                             rst_n_i;$/;"	r
+rst_n_i	tb/sync_fifo/sync_fifo_tb.v	/^    reg                     rst_n_i ;$/;"	r
+rst_n_sync_i	tb/reset_sync/reset_syncer_tb.v	/^reg             rst_n_sync_i ;$/;"	r
+rst_n_synced_o	tb/reset_sync/reset_syncer_tb.v	/^reg             rst_n_synced_o ;$/;"	r
+rst_synced	rtl/reset_sync/reset_synchronizer.v	/^    wire            rst_synced ;$/;"	n
+rx	tb/uart/uart_tb.v	/^wire                        rx                  ;$/;"	n
+rx_data	tb/uart/uart_tb.v	/^wire  [DATA_WIDTH-1 :0]     rx_data             ;$/;"	n
+rx_data_cnt_r	rtl/uart/uart_rx.v	/^reg  [3             :0]             rx_data_cnt_r   ;$/;"	r
+rx_data_r	rtl/uart/uart_rx.v	/^reg  [DATA_WIDTH-1  :0]             rx_data_r       ;$/;"	r
+rx_fall_edge	rtl/uart/uart_rx.v	/^wire                                rx_fall_edge    ;$/;"	n
+rx_flow_fsm_r	rtl/uart/uart_rx.v	/^reg  [4             :0]             rx_flow_fsm_r   ;$/;"	r
+rx_rdy	tb/uart/uart_tb.v	/^wire                        rx_rdy              ;$/;"	n
+rx_rdy_r	tb/uart/uart_tb.v	/^reg                         rx_rdy_r            ;$/;"	r
+rx_synced	rtl/uart/uart_rx.v	/^wire                                rx_synced       ;$/;"	n
+rx_synced_d1	rtl/uart/uart_rx.v	/^reg                                 rx_synced_d1    ;$/;"	r
+rx_vld	tb/uart/uart_tb.v	/^wire                        rx_vld              ;$/;"	n
+rx_vld_r	rtl/uart/uart_rx.v	/^reg                                 rx_vld_r        ;$/;"	r
+sim_times	tb/sync_fifo/sync_fifo_tb.v	/^    reg [15 : 0]            sim_times  ;$/;"	r
+state	tb/uart/uart_tb.v	/^wire  [31    :0]            state               ;$/;"	n
+state_r	rtl/uart/status_ctrl.v	/^reg [31:0]                              state_r         ;$/;"	r
+status_ctrl	rtl/uart/status_ctrl.v	/^module                                  status_ctrl #($/;"	m
+stop_bits	rtl/uart/uart.v	/^wire  [1    :0]                       stop_bits       ;$/;"	n
+sync_d0	rtl/reset_sync/reset_syncer.v	/^    reg             sync_d0 ;$/;"	r
+sync_d0	rtl/uart/reset/reset_syncer.v	/^    reg             sync_d0 ;$/;"	r
+sync_d1	rtl/reset_sync/reset_syncer.v	/^    reg             sync_d1 ;$/;"	r
+sync_d1	rtl/uart/reset/reset_syncer.v	/^    reg             sync_d1 ;$/;"	r
+sync_fifo	rtl/sync_fifo/sync_fifo.v	/^module sync_fifo #($/;"	m
+sync_fifo_tb	tb/sync_fifo/sync_fifo_tb.v	/^module sync_fifo_tb();$/;"	m
+tx	tb/uart/uart_tb.v	/^wire                        tx                  ;$/;"	n
+tx_data	tb/uart/uart_tb.v	/^wire  [DATA_WIDTH-1 :0]     tx_data             ;$/;"	n
+tx_data_cnt_r	rtl/uart/uart_tx.v	/^reg [3:0]                           tx_data_cnt_r    ;$/;"	r
+tx_data_r	tb/uart/uart_tb.v	/^reg   [DATA_WIDTH-1 :0]     tx_data_r           ;$/;"	r
+tx_flow_fsm_r	rtl/uart/uart_tx.v	/^reg [4:0]                           tx_flow_fsm_r    ;$/;"	r
+tx_r	rtl/uart/uart_tx.v	/^reg                                 tx_r             ;$/;"	r
+tx_rdy	tb/uart/uart_tb.v	/^wire                        tx_rdy              ;$/;"	n
+tx_vld	tb/uart/uart_tb.v	/^wire                        tx_vld              ;$/;"	n
+tx_vld_r	tb/uart/uart_tb.v	/^reg                         tx_vld_r            ;$/;"	r
+uart	rtl/uart/uart.v	/^module                                uart #($/;"	m
+uart_rx	rtl/uart/uart_rx.v	/^module                              uart_rx #($/;"	m
+uart_rx_ctrl	rtl/uart/uart_rx_ctrl.v	/^module                                  uart_rx_ctrl #($/;"	m
+uart_tb	tb/uart/uart_tb.v	/^module          uart_tb;$/;"	m
+uart_tx	rtl/uart/uart_tx.v	/^module                             uart_tx #($/;"	m
+uart_tx_ctrl	rtl/uart/uart_tx_ctrl.v	/^module                                  uart_tx_ctrl #($/;"	m
+ur_rx_data_o	rtl/uart/uart_rx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_rx_data_o        ;$/;"	n
+ur_rx_fifo_empty	rtl/uart/uart.v	/^wire                                  ur_rx_fifo_empty;$/;"	n
+ur_rx_fifo_empty	tb/uart/uart_tb.v	/^wire                        ur_rx_fifo_empty    ;$/;"	n
+ur_rx_fifo_full	rtl/uart/uart.v	/^wire                                  ur_rx_fifo_full ;$/;"	n
+ur_rx_fifo_full	tb/uart/uart_tb.v	/^wire                        ur_rx_fifo_full     ;$/;"	n
+ur_rx_fifo_rd_data	rtl/uart/uart_rx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_rx_fifo_rd_data     ;$/;"	n
+ur_rx_fifo_rd_en	rtl/uart/uart_rx_ctrl.v	/^wire                                    ur_rx_fifo_rd_en       ;$/;"	n
+ur_rx_fifo_wr_data	rtl/uart/uart_rx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_rx_fifo_wr_data     ;$/;"	n
+ur_rx_fifo_wr_data_r	rtl/uart/uart_rx_ctrl.v	/^reg  [DATA_WIDTH-1:0]                   ur_rx_fifo_wr_data_r   ;$/;"	r
+ur_rx_fifo_wr_en	rtl/uart/uart_rx_ctrl.v	/^wire                                    ur_rx_fifo_wr_en       ;$/;"	n
+ur_rx_interrupt	rtl/uart/uart.v	/^wire                                  ur_rx_interrupt ;$/;"	n
+ur_rx_vld_o	rtl/uart/uart_rx_ctrl.v	/^wire                                    ur_rx_vld_o         ;$/;"	n
+ur_tx_busy	rtl/uart/uart_tx_ctrl.v	/^wire                                    ur_tx_busy          ;$/;"	n
+ur_tx_data	rtl/uart/uart_tx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_tx_data          ;$/;"	n
+ur_tx_data_r	rtl/uart/uart_tx_ctrl.v	/^reg  [DATA_WIDTH-1:0]                   ur_tx_data_r        ;$/;"	r
+ur_tx_fifo_empty	rtl/uart/uart.v	/^wire                                  ur_tx_fifo_empty;$/;"	n
+ur_tx_fifo_empty	tb/uart/uart_tb.v	/^wire                        ur_tx_fifo_empty    ;$/;"	n
+ur_tx_fifo_full	rtl/uart/uart.v	/^wire                                  ur_tx_fifo_full ;$/;"	n
+ur_tx_fifo_full	tb/uart/uart_tb.v	/^wire                        ur_tx_fifo_full     ;$/;"	n
+ur_tx_fifo_rd_data	rtl/uart/uart_tx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_tx_fifo_rd_data  ;$/;"	n
+ur_tx_fifo_rd_en	rtl/uart/uart_tx_ctrl.v	/^wire                                    ur_tx_fifo_rd_en    ;$/;"	n
+ur_tx_fifo_wr_data	rtl/uart/uart_tx_ctrl.v	/^wire [DATA_WIDTH-1:0]                   ur_tx_fifo_wr_data  ;$/;"	n
+ur_tx_fifo_wr_en	rtl/uart/uart_tx_ctrl.v	/^wire                                    ur_tx_fifo_wr_en    ;$/;"	n
+ur_tx_vld	rtl/uart/uart_tx_ctrl.v	/^wire                                    ur_tx_vld           ;$/;"	n
+wdata	tb/sync_fifo/sync_fifo_tb.v	/^    reg [WIDTH - 1 : 0]     wdata      ;$/;"	r
+wdata_i	tb/sync_fifo/sync_fifo_tb.v	/^    reg [WIDTH - 1 : 0]     wdata_i ;$/;"	r
+wire	rtl/async_fifo/async_fifo.v	/^    input wire                      rd_clk_i    ,$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    input wire                      rd_en_i     ,$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    input wire                      wr_en_i     ,$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    input wire  [FIFO_WIDTH-1:0]    wr_data_i   ,$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    output wire                     empty_o$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    output wire                     full_o      ,$/;"	p
+wire	rtl/async_fifo/async_fifo.v	/^    output wire [FIFO_WIDTH-1:0]    rd_data_o   ,$/;"	p
+wire	rtl/async_fifo/bin2gray.v	/^    input wire  [WIDTH-1 :0]    bin_i  ,$/;"	p
+wire	rtl/async_fifo/bin2gray.v	/^    output wire [WIDTH-1 :0]    gray_o $/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire                      rd_clk_i    ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire                      rd_valid_i  $/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire                      rst_n_i     ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire                      wr_clk_i    ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire                      wr_valid_i  ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire  [ADDR-1      :0]    rd_ptr_i    ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire [ADDR-1       :0]    wr_ptr_i    ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    input wire [FIFO_WIDTH-1 :0]    wr_data_i   ,$/;"	p
+wire	rtl/async_fifo/dual_port_mem.v	/^    output wire [FIFO_WIDTH-1:0]    rd_data_o   ,$/;"	p
+wire	rtl/async_fifo/general_syncer.v	/^    input wire [DATA_WIDTH - 1 : 0]  data_unsync_i,$/;"	p
+wire	rtl/async_fifo/if_empty.v	/^    input wire [SIZE : 0]     rd_addr_gray_i,$/;"	p
+wire	rtl/async_fifo/if_empty.v	/^    input wire [SIZE : 0]     wr_addr_gray_synced_i,$/;"	p
+wire	rtl/async_fifo/if_empty.v	/^    output wire               empty_o$/;"	p
+wire	rtl/async_fifo/if_full.v	/^    input wire  [SIZE :0]    rd_addr_gray_synced_i,$/;"	p
+wire	rtl/async_fifo/if_full.v	/^    input wire  [SIZE :0]    wr_addr_gray_i ,$/;"	p
+wire	rtl/async_fifo/if_full.v	/^    output wire                     full_o$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    input wire                      empty_i    ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    input wire                      rd_clk_i   ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    input wire                      rd_en_i    ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    input wire                      rst_n_i    ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    input wire  [FIFO_WIDTH -1 :0]  rd_data_i  ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    output wire                     rd_valid_o ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    output wire [ADDR          :0]  rd_addr_o$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    output wire [ADDR-1        :0]  rd_ptr_o   ,$/;"	p
+wire	rtl/async_fifo/read_ctrl.v	/^    output wire [FIFO_WIDTH -1 :0]  rd_vdata_o ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    input wire                      full_o    ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    input wire                      rst_n_i   ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    input wire                      wr_clk_i  ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    input wire                      wr_en_i   ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    input wire  [FIFO_WIDTH -1 :0]  wr_data_i ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    output wire                     wr_valid_o,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    output wire [ADDR          :0]  wr_addr_o$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    output wire [ADDR-1        :0]  wr_ptr_o  ,$/;"	p
+wire	rtl/async_fifo/write_ctrl.v	/^    output wire [FIFO_WIDTH -1 :0]  wr_vdata_o,$/;"	p
+wire	rtl/general_syncer/general_syncer.v	/^    input wire [DATA_WIDTH - 1 : 0]  data_unsync_i,$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_clk_i        ,   \/\/ port a clock input.$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_clk_i        ,   \/\/ port b clock input.$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_rd_en_i      ,   \/\/ port a write enable in$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_rd_en_i      ,   \/\/ port b write enable in$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_rst_n_i      ,   \/\/ port a reset input.$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire                         pa_rst_n_i      ,   \/\/ port b reset input.$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [READ_WIDTH-1   :0]     pa_rd_en_i          \/\/ port b read data output$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [READ_WIDTH-1   :0]     pa_rd_en_i      ,   \/\/ port a read data output$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [WRITE_ADDR-1   :0]     pa_addr_i       ,   \/\/ port a address in$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [WRITE_ADDR-1   :0]     pa_addr_i       ,   \/\/ port b address in$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [WRITE_WIDTH-1  :0]     pa_wr_data_i    ,   \/\/ port a write data in$/;"	p
+wire	rtl/memory/dram.v	/^    input  wire [WRITE_WIDTH-1  :0]     pa_wr_data_i    ,   \/\/ port b write data in$/;"	p
+wire	rtl/reset_sync/reset_syncer.v	/^    output wire     rst_n_synced_o      \/\/output reg , the rst has been synced.$/;"	p
+wire	rtl/reset_sync/reset_synchronizer.v	/^    input wire      clk_0_i , $/;"	p
+wire	rtl/reset_sync/reset_synchronizer.v	/^    input wire      clk_1_i ,$/;"	p
+wire	rtl/reset_sync/reset_synchronizer.v	/^    input wire      data_i  ,$/;"	p
+wire	rtl/reset_sync/reset_synchronizer.v	/^    input wire      rst_n_i ,$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    input wire                  clk_i   ,       \/\/ input  , clock,both read and write.$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    input wire                  rd_en_i ,       \/\/ input  , read enable , high valid.$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    input wire                  rst_n_i ,       \/\/ input  , system reset , low valid.$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    input wire                  wr_en_i ,       \/\/ input  , write enable , high valid.$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    input wire [WIDTH - 1 : 0]  wdata_i ,       \/\/ input  , data will be write in fifo $/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    output wire                 empty_o     ,           \/\/ output , high, when fifo empty, or low.$/;"	p
+wire	rtl/sync_fifo/sync_fifo.v	/^    output wire                 full_o      ,           \/\/ output , high, when fifo full, or low.$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire                      rd_clk_i    ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire                      rd_en_i     ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire                      wr_clk_i    ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire                      wr_en_i     ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire      rst_n_i     ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    input wire  [FIFO_WIDTH-1:0]    wr_data_i   ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    output wire                     empty_o$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    output wire                     full_o      ,$/;"	p
+wire	rtl/uart/async_fifo/async_fifo.v	/^    output wire [FIFO_WIDTH-1:0]    rd_data_o   ,$/;"	p
+wire	rtl/uart/async_fifo/bin2gray.v	/^    input wire  [WIDTH-1 :0]    bin_i  ,$/;"	p
+wire	rtl/uart/async_fifo/bin2gray.v	/^    output wire [WIDTH-1 :0]    gray_o $/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire                      rd_clk_i   ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire                      rd_valid_i  $/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire                      rst_n_i    ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire                      wr_clk_i   ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire                      wr_valid_i ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire  [ADDR-1      :0]    rd_ptr_i   ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire [ADDR-1       :0]    wr_ptr_i   ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    input wire [FIFO_WIDTH-1 :0]    wr_data_i  ,$/;"	p
+wire	rtl/uart/async_fifo/dual_port_mem.v	/^    output wire [FIFO_WIDTH-1:0]    rd_data_o  ,$/;"	p
+wire	rtl/uart/async_fifo/if_empty.v	/^    input wire [SIZE : 0]     rd_addr_gray_i,$/;"	p
+wire	rtl/uart/async_fifo/if_empty.v	/^    input wire [SIZE : 0]     wr_addr_gray_synced_i,$/;"	p
+wire	rtl/uart/async_fifo/if_empty.v	/^    output wire               empty_o$/;"	p
+wire	rtl/uart/async_fifo/if_full.v	/^    input wire  [SIZE :0]    rd_addr_gray_synced_i,$/;"	p
+wire	rtl/uart/async_fifo/if_full.v	/^    input wire  [SIZE :0]    wr_addr_gray_i ,$/;"	p
+wire	rtl/uart/async_fifo/if_full.v	/^    output wire                     full_o$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    input wire                      empty_i    ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    input wire                      rd_clk_i   ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    input wire                      rd_en_i    ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    input wire                      rst_n_i    ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    input wire  [FIFO_WIDTH -1 :0]  rd_data_i  ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    output wire                     rd_valid_o ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    output wire [ADDR          :0]  rd_addr_o$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    output wire [ADDR-1        :0]  rd_ptr_o   ,$/;"	p
+wire	rtl/uart/async_fifo/read_ctrl.v	/^    output wire [FIFO_WIDTH -1 :0]  rd_vdata_o ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    input wire                      full_o    ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    input wire                      rst_n_i   ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    input wire                      wr_clk_i  ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    input wire                      wr_en_i   ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    input wire  [FIFO_WIDTH -1 :0]  wr_data_i ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    output wire                     wr_valid_o,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    output wire [ADDR          :0]  wr_addr_o$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    output wire [ADDR-1        :0]  wr_ptr_o  ,$/;"	p
+wire	rtl/uart/async_fifo/write_ctrl.v	/^    output wire [FIFO_WIDTH -1 :0]  wr_vdata_o,$/;"	p
+wire	rtl/uart/clocks/clk_mask.v	/^    input  wire         clk_i       ,       \/\/ input clk$/;"	p
+wire	rtl/uart/clocks/clk_mask.v	/^    input  wire         enable      ,       \/\/ clk mask$/;"	p
+wire	rtl/uart/clocks/clk_mask.v	/^    output wire         clk_o               \/\/ output clk$/;"	p
+wire	rtl/uart/gen_baudrate_bit.v	/^    input  wire                         clk_i           , \/\/ Primary clk$/;"	p
+wire	rtl/uart/gen_baudrate_bit.v	/^    input  wire                         rst_n_i         , \/\/ reset$/;"	p
+wire	rtl/uart/gen_baudrate_bit.v	/^    input  wire [BAUDRATE_WIDTH-1:0]    baudrate_cfg_i  ,$/;"	p
+wire	rtl/uart/gen_baudrate_bit.v	/^    output wire                         baudrate_en_n_o$/;"	p
+wire	rtl/uart/gen_baudrate_bit.v	/^    output wire                         baudrate_en_o   , \/\/ baudrate reached.$/;"	p
+wire	rtl/uart/general_syncer/general_syncer.v	/^    input wire [DATA_WIDTH - 1 : 0]     data_unsync_i,$/;"	p
+wire	rtl/uart/reset/reset_syncer.v	/^    output wire     rst_n_synced_o      \/\/output reg , the rst has been synced.$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ctrl_enable     ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ur_rx_fifo_empty,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ur_rx_fifo_full ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ur_rx_interrupt$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ur_tx_fifo_empty,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire                         ur_tx_fifo_full ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    input  wire [31 : 0]                ctrl            ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire                         low_power       ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [1  : 0]                parity_mode     ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [1  : 0]                stop_bits       ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [11 : 0]                baudrate_cfg    ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [3  : 0]                data_bits       ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [31 : 0]                ctrl_mirror     ,$/;"	p
+wire	rtl/uart/status_ctrl.v	/^    output wire [31 : 0]                state           ,$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire                       ctrl_enable    ,        \/\/ Reconfigure uart ip.$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire                       rx                     \/\/ Physical uart rx.$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire                       rx_rdy_i       ,       \/\/ Input rx data ready.$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire                       tx_vld_i       ,       \/\/ Input tx data valid.$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire [31             :0]   ctrl           ,        \/\/ Generate baudrate.$/;"	p
+wire	rtl/uart/uart.v	/^    input  wire [DATA_WIDTH-1   :0]   tx_data_i      ,       \/\/ Input tx data.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire                       rx_vld_o       ,       \/\/ Output rx data valid.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire                       tx             ,       \/\/ Physical uart tx.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire                       tx_rdy_o       ,       \/\/ Output tx data ready.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire [31             :0]   ctrl_mirror    ,        \/\/ Ctrl register mirror.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire [31             :0]   state          ,       \/\/ FIFO full.$/;"	p
+wire	rtl/uart/uart.v	/^    output wire [DATA_WIDTH-1   :0]   rx_data_o      ,       \/\/ Output rx data.$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire                     br_en_half_i    ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire                     br_en_i         ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire                     clk_i           ,    \/\/ Primary clock$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire                     rst_n_i         ,    \/\/ Reset.$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire                     rx_i            ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire [1           :0]    parity_mode     ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire [1           :0]    stop_bits       ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    input  wire [3           :0]    data_bits       ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    output wire                     rx_interrupt_o$/;"	p
+wire	rtl/uart/uart_rx.v	/^    output wire                     rx_vld_o        ,$/;"	p
+wire	rtl/uart/uart_rx.v	/^    output wire [DATA_WIDTH-1:0]    rx_data_o       ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         br_en_half_i        ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         br_en_i             ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         clk_i               ,  \/\/ Primary clk$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         rst_n_i             ,  \/\/ Reset async$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         rx_i$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire                         rx_rdy_i            ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire [1           :0]        parity_mode         ,  \/\/ Uart parity mode.$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire [1           :0]        stop_bits           ,  \/\/ Uart stop bits.$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    input  wire [3           :0]        data_bits           ,  \/\/ Uart stop bit$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    output wire                         rx_vld_o            ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    output wire                         ur_rx_fifo_empty_o  ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    output wire                         ur_rx_fifo_full_o   ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    output wire                         ur_rx_interrupt_o   ,$/;"	p
+wire	rtl/uart/uart_rx_ctrl.v	/^    output wire [DATA_WIDTH-1:0]        rx_data_o           ,$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire                     br_en_i          ,    \/\/ generate from primary$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire                     clk_i            ,    \/\/ input primary clock$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire                     rst_n_i          ,    \/\/ input reset.$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire                     tx_vld_i         ,    \/\/ Data enable$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire [1            :0]   parity_mode     ,$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire [1            :0]   stop_bits        ,$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire [3            :0]   data_bits        ,    \/\/ Primary clock$/;"	p
+wire	rtl/uart/uart_tx.v	/^    input  wire [DATA_WIDTH-1 :0]   tx_data_i        ,    \/\/ Data need to send.$/;"	p
+wire	rtl/uart/uart_tx.v	/^    output wire                     tx_busy_o        ,$/;"	p
+wire	rtl/uart/uart_tx.v	/^    output wire                     tx_o                  \/\/TX Phsical link$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire                         br_en_i             ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire                         clk_i               , \/\/ Primary clk$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire                         rst_n_i             , \/\/ Reset$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire                         ur_tx_ctrl_vld_i    ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire [1            :0]       parity_mode         ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire [1            :0]       stop_bits           ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire [3            :0]       data_bits           ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    input  wire [DATA_WIDTH-1 :0]       ur_tx_ctrl_data_i   ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    output wire                         tx_o$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    output wire                         ur_tx_ctrl_rdy_o    ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    output wire                         ur_tx_fifo_empty_o  ,$/;"	p
+wire	rtl/uart/uart_tx_ctrl.v	/^    output wire                         ur_tx_fifo_full_o   ,$/;"	p
+wr_addr	rtl/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        wr_addr      ;$/;"	n
+wr_addr	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        wr_addr      ;$/;"	n
+wr_addr_gray	rtl/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        wr_addr_gray ;$/;"	n
+wr_addr_gray	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR : 0]        wr_addr_gray ;$/;"	n
+wr_addr_gray_synced	rtl/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        wr_addr_gray_synced ;$/;"	n
+wr_addr_gray_synced	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR  :0]        wr_addr_gray_synced ;$/;"	n
+wr_addr_r	rtl/async_fifo/write_ctrl.v	/^reg [ADDR   :0]             wr_addr_r   ;$/;"	r
+wr_addr_r	rtl/uart/async_fifo/write_ctrl.v	/^reg [ADDR   :0]             wr_addr_r   ;$/;"	r
+wr_clk_i	tb/async_fifo/async_fifo_tb.v	/^reg                         wr_clk_i    ;$/;"	r
+wr_data_i	tb/async_fifo/async_fifo_tb.v	/^reg [FIFO_WIDTH - 1: 0]     wr_data_i   ;$/;"	r
+wr_en_i	tb/async_fifo/async_fifo_tb.v	/^reg                         wr_en_i     ;$/;"	r
+wr_en_i	tb/sync_fifo/sync_fifo_tb.v	/^    reg                     wr_en_i ;$/;"	r
+wr_ptr	rtl/async_fifo/async_fifo.v	/^wire    [ADDR-1:0]        wr_ptr       ;$/;"	n
+wr_ptr	rtl/sync_fifo/sync_fifo.v	/^    reg [ELS_SIZE - 1 : 0]      wr_ptr ;$/;"	r
+wr_ptr	rtl/uart/async_fifo/async_fifo.v	/^wire    [ADDR-1:0]        wr_ptr       ;$/;"	n
+wr_valid	rtl/async_fifo/async_fifo.v	/^wire                      wr_valid     ;$/;"	n
+wr_valid	rtl/uart/async_fifo/async_fifo.v	/^wire                      wr_valid     ;$/;"	n
+wr_vdata	rtl/async_fifo/async_fifo.v	/^wire    [FIFO_WIDTH -1 :0]wr_vdata     ;$/;"	n
+wr_vdata	rtl/uart/async_fifo/async_fifo.v	/^wire    [FIFO_WIDTH -1 :0]wr_vdata     ;$/;"	n
+write_ctrl	rtl/async_fifo/write_ctrl.v	/^module write_ctrl #($/;"	m
+write_ctrl	rtl/uart/async_fifo/write_ctrl.v	/^module write_ctrl #($/;"	m
+write_flag	tb/sync_fifo/sync_fifo_tb.v	/^    reg [15 : 0]            write_flag ;$/;"	r
