@@ -29,7 +29,6 @@ wire                                elements_o  ;
 // define fsm register  
 reg  [2                :0]          spi_tx_flow_fsm     ;
 reg                                 spi_tx_start        ;
-reg                                 spi_tx_stop         ;
 reg  [DATA_VLD-1       :0]          spi_tfr_cnt         ;
 reg                                 sdo_buf_r           ;
 
@@ -37,7 +36,7 @@ wire                                go_idle             ;
 wire                                go_tfr              ;
 wire                                go_stop             ;
 
-localparam                          IDLE     = 3'b000     ;
+localparam                          IDLE     = 3'b001     ;
 localparam                          TFR      = 3'b010     ;
 localparam                          STOP     = 3'b100     ;
 
@@ -46,9 +45,9 @@ assign                              wdata_i  = tx_data_i ;
 assign                              wr_en_i  = tx_vld_i  ;
 assign                              tx_rdy_o = ~full_o   ;
 
-assign                              go_tfr   = ((spi_tx_flow_fsm            == IDLE) && spi_tx_start && bit_en);
-assign                              go_stop  = ((spi_tx_flow_fsm            == TFR ) && spi_tx_stop && bit_en && (spi_tfr_cnt == rdata_o[37:32]));
-assign                              go_idle  = ((spi_tx_flow_fsm            == STOP) &&  bit_en);
+assign                              go_tfr   = ((spi_tx_flow_fsm            == IDLE) && spi_tx_start);
+assign                              go_stop  = ((spi_tx_flow_fsm            == TFR ) && bit_en && (spi_tfr_cnt == rdata_o[37:32]));
+assign                              go_idle  = ((spi_tx_flow_fsm            == STOP) && bit_en);
 assign                              clk_en   = spi_tx_start;
 
 assign                              rd_en_i  = (!empty_o && spi_tx_flow_fsm == IDLE);
