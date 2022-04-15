@@ -14,6 +14,7 @@ module                              spi_tx #(
     output wire                     tx_rdy_o    ,  // invert fifo full
     input  wire                     bit_en      ,  // bit enable, from clock gen.
     output wire                     clk_en      ,  // start generate bus clock
+    output wire                     tx_eot      ,  // rx send complete
     output wire                     sdo
     );
 
@@ -50,8 +51,9 @@ assign                              go_stop  = ((spi_tx_flow_fsm            == T
 assign                              go_idle  = ((spi_tx_flow_fsm            == STOP) && bit_en);
 assign                              clk_en   = spi_tx_start;
 
-assign                              rd_en_i  = (!empty_o && spi_tx_flow_fsm == IDLE);
+assign                              tx_eot   = go_idle  ;
 
+assign                              rd_en_i  = (!empty_o && spi_tx_flow_fsm == IDLE);
 
 // FSM jump
 always@(posedge clk_i or negedge rst_n_i) begin
