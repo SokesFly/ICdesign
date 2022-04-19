@@ -13,7 +13,7 @@
 # DUT_MODULE  :=sync_fifo
 # DUT_MODULE  :=memory
 # DUT_MODULE  :=reset_sync
-TOP_MODULE	    :=spi_loop_tb
+TOP_MODULE	    :=spi_tx_tb
 DUT_MODULE 		:=spi
 
 # Define project dir
@@ -30,26 +30,28 @@ SRCS            +=$(wildcard ${TB_DIR}/${DUT_MODULE}/*.v)
 SRCS            +=$(wildcard ${TB_DIR}/${DUT_MODULE}/*.sv)
 
 # config sub module
-CONFIG_RESET_SYNC		:=y
-CONFIG_SYNC_FIFO		:=y
-CONFIG_GENERAL_SYNCER	:=y
+CONFIG_CLOCKS			:=y
+CONFIG_SYNC_FIFO		:=n
 
-ifeq (${CONFIG_RESET_SYNC}, y)
-SRCS            +=$(wildcard ${RTL_DIR}/${sync_fifo}/*.v)
-SRCS            +=$(wildcard ${RTL_DIR}/${sync_fifo}/*.sv)
+ifeq (${CONFIG_SYNC_FIFO}, y)
+SRCS            +=$(wildcard ${RTL_DIR}/sync_fifo/*.v)
+SRCS            +=$(wildcard ${RTL_DIR}/sync_fifo/*.sv)
 else
 endif
 
-ifeq (${CONFIG_GENERAL_SYNCER}, y)
+ifeq (${CONFIG_CLOCKS}, y)
+SRCS            +=$(wildcard ${RTL_DIR}/clocks/*.v)
+SRCS            +=$(wildcard ${RTL_DIR}/clocks/*.sv)
 else
 endif
+
 
 VCS             :=vcs
 # GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
 GCC_V           :=-cpp -cc
 VCS_FLAGS       :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k
 VCS_FLAGS		+=-j16
-VCS_FLAGS		+=-M 
+VCS_FLAGS		+=-M
 # Show array var
 VCS_FLAGS		+=+memcbk
 VCS_FLAGS		+=+warn=all
@@ -57,13 +59,13 @@ VCS_FLAGS       +=-kdb
 VCS_LDFLAGS		:=-LDFLAGS -Wl,--no-as-needed
 LOG_OUTPU		:=-l vcs.log
 VERDI_LIBS      :=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
-TIME_SCALE      :=-timescale=1ns/1ps
+TIME_SCALE      :=-timescale=1ns/1ns
 NO_TIMING       :=+notimingcheck +nospecify
 DESIGN			:=-top ${TOP_MODULE}
 
 export			RTL_DIR TB_DIR
 
-all: elab
+all: verdi
 
 #${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 

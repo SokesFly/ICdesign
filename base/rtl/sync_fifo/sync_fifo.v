@@ -65,8 +65,6 @@ module sync_fifo #(
             rdata_o <= #DLY 'b0 ;
         end else if(rd_en_i && !empty_o) begin
             rdata_o <= #DLY fifo_array [rd_ptr] ;
-        end else begin
-            rdata_o <= #DLY 'b0 ;
         end
     end
 

@@ -1,183 +1,155 @@
 
 module                              spi_rx #(
-    parameter                       DLY         = 1,
-    parameter                       DATA_LEN    = 32,
-    parameter                       FIFO_VLD    = $clog2(DATA_LEN),
-    parameter                       FIFO_WIDTH  = DATA_LEN + DATA_VLD
+    parameter                       DLY              = 1,
+    parameter                       SPI_RX_WIDTH     = 32,
+    parameter                       LENGTH_RECEIVE   = $clog2(SPI_RX_WIDTH)
     )(
-    input  wire                     clk_i       ,  //  spi controller clock
-    input  wire                     rst_n_i     ,  //  reset 
-    input  wire                     cpol        ,  // 0, clock keep low state ; 1 , clock keep high state , when bus idle
-    input  wire                     cpoa        ,  // 0, first edge DAQ, 1, second edge DAQ
-    output wire [FIFO_WIDTH-1   :0] rx_rdata_o  ,  // data recv from sdi
-    output wire                     rx_vld_o    ,  // data vld 
-    input  wire                     rx_rdy_i    ,  // data ready
-    input  wire                     rx_enable_i ,  // enable spi recv
-    input  wire                     bit_en      ,  // bit enabel ,from clock gen
-    output wire                     clk_gen     ,  // generate bit enable
-    input  wire                     spi_bus_clk ,  // spi bus clock.
-    output wire                     rx_eot      ,  // rx recv complete
-    input  wire                     sdi            // physical rx
+    // Input primay clock and reset
+    input  wire                         clk             ,    // Primary clock
+    input  wire                         rstn            ,    // System reset
+    // SPI Mode configure
+    input  wire                         cpol            ,    // Mode : [CPOL:CPOA]
+    input  wire                         cpoa            ,    // Mode : [CPOL:CPOA]
+
+    // SPI data with up level
+    input  wire                         rx_rdy          ,    // Ready to recv data from spi_rx
+    input  wire [LENGTH_RECEIVE-1   :0] length     ,
+    output wire [SPI_RX_WIDTH-1     :0] rx_rdata        ,    // Parallel output data recvfrom MOSI
+    output wire                         rx_vld          ,    // Data valid indicate
+
+    // SPI Physical link
+    input  wire                         spi_bus_clk     ,    // SPI bus clock
+    input  wire                         sdi             ,    // SDI or MISO 
+
+    // SPI Status indicate
+    output wire                         rx_interrupt         // Recv interrupt with length
     );
 
-parameter                           TFR_RX_CNT  = $clog2(FIFO_WIDTH);
-reg  [TFR_RX_CNT-1   :0]            spi_rx_tfr_cnt ;
+// Detect wire
+wire                                    spi_bus_pedge   ;
 
-// declare fifo wire
-reg  [FIFO_WIDTH-1   :0]            wdata_r     ;
-wire [FIFO_WIDTH-1   :0]            wdata_i     ;
-reg                                 wr_en_r     ;
-wire                                wr_en_i     ;
-wire                                full_o      ;
-wire                                empty_o     ;
-wire                                rd_en_i     ;
-wire                                rdata_o     ;
-wire                                elements_o  ;
+// Declare output signal
+reg  [SPI_RX_WIDTH-1  :0]               rx_data_obuf        ;
+reg                                     rx_vld_obuf         ;
+reg                                     rx_interrupt_obuf   ;
 
-// define fsm register
-reg  [2              :0]            spi_rx_flow_fsm   ;
+// Declare receive counter
+reg  [LENGTH_RECEIVE-1:0]               length_cnt     ;
+// FSM register
+reg  [1               :0]               rx_fsm_cs       ;    // Current state
+reg  [1               :0]               rx_fsm_ns       ;    // Next state
 
-localparam                          IDLE    = 3'b001;
-localparam                          TFR     = 3'b010;
-localparam                          STOP    = 3'b100;
+// FSM jum singal
+wire                                    to_rx_receive   ;
+wire                                    to_rx_waiting   ;
+// FSM status description
+localparam                              RX_WAITING    = 2'b01;
+localparam                              RX_RECEIVING  = 2'b10;
 
-reg                                 spi_rx_tfr_end    ;
-reg                                 sdi_buf_r         ;
+// sdi ibuf
+reg                                     spi_clk_ibuf    ;
 
-wire                                rise_edge         ;
-
-wire                                go_idle           ;
-wire                                go_tfr            ;
-wire                                go_stop           ;
-
-assign                              go_tfr  = (spi_rx_flow_fsm == IDLE) && rise_edge && rx_enable_i;
-assign                              go_stop = (spi_rx_flow_fsm == TFR ) && bit_en && spi_rx_tfr_end) && rx_enable_i;
-assign                              go_idle = (spi_rx_flow_fsm == STOP) && bit_en && rx_enable_i;
-
-assign                              wdata_i = wdata_r ;
-assign                              wr_en_i = wr_en_r ;
-assign                              rd_en_i = rx_rdy_i;
-assign                              rx_rdata_o = rdata_o;
-
-// generate rise  edge
-assign                              rise_edge = (sdi  && !sdi_buf_r);
-assign                              clk_en    = rise_edge ;
-
-// detect clock disable
-always@(posedge clk_i or negedge) begin
-    if(!rst_n_i) begin
-        spi_rx_tfr_end <= 1'b0;
-    end
-    else if(bit_en && (!spi_bus)) begin
-        spi_rx_tfr_end <= 1'b1;
+// sdi buffer
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        spi_clk_ibuf  <= #DLY 'd0;
     end
     else begin
-        spi_rx_tfr_end <= 1'b0;
+        spi_clk_ibuf  <= #DLY spi_bus_clk;
     end
 end
 
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        sdi_buf_r <= #DLY 1'b0;
+assign      spi_bus_pedge = (spi_bus_clk && !spi_clk_ibuf);
+
+// FSM controll signal
+assign      to_rx_receive = spi_bus_pedge ;
+assign      to_rx_waiting = (rx_fsm_cs == RX_RECEIVING && (length_cnt == length));
+
+// FSM-Shift
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        rx_fsm_cs <= #DLY RX_WAITING;
     end
     else begin
-        sdi_buf_r <= #DLY spi_bus_clk;
+        rx_fsm_cs <= #DLY rx_fsm_ns;
     end
 end
 
-// fsm jump
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        spi_rx_flow_fsm <= #DLY  IDLE;
-    end
-    else begin
-        case(spi_rx_flow_fsm)
-            IDLE:               begin
-                                    if(go_tfr) begin 
-                                        spi_rx_flow_fsm <= #DLY  TFR;
-                                    end 
-                                    else begin
-                                        spi_rx_flow_fsm <= #DLY  IDL;
-                                    end
+// FSM-Jump
+always@(rx_fsm_cs) begin
+    case(rx_fsm_cs)
+        RX_WAITING:         begin
+                                if(to_rx_receive) begin
+                                    rx_fsm_ns  <= #DLY RX_RECEIVING;
                                 end
-            TFR:                begin
-                                    if(go_stop) begin 
-                                        spi_rx_flow_fsm <= #DLY  STOP;
-                                    end 
-                                    else begin
-                                        spi_rx_flow_fsm <= #DLY  TFR;
-                                    end
+                                else begin
+                                    rx_fsm_ns  <= #DLY RX_WAITING;
                                 end
-            STOP:               begin
-                                    if(go_tfr) begin 
-                                        spi_rx_flow_fsm <= #DLY  IDLE;
-                                    end 
-                                    else begin
-                                        spi_rx_flow_fsm <= #DLY  STOP;
-                                    end
+                            end
+        RX_RECEIVING:       begin
+                                if(to_rx_waiting) begin
+                                    rx_fsm_ns  <= #DLY RX_WAITING;
                                 end
-        endcase
+                                else begin
+                                    rx_fsm_ns  <= #DLY RX_RECEIVING;
+                                end
+                            end
+        default:            begin
+                                rx_fsm_ns  <= #DLY RX_WAITING;
+                            end
+    endcase
+end
+
+// FSM-Output receive cnt
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        length_cnt  <= #DLY 'd0;
+    end
+    else if(spi_bus_pedge) begin
+        length_cnt  <= #DLY 'd1 + length_cnt;
+    end
+    else if(rx_vld_obuf) begin
+        length_cnt  <= #DLY 'd0;
     end
 end
 
-// fsm output , record current tfr's bit number.
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        spi_rx_tfr_cnt <= #DLY {TFR_RX_CNT{1'b0}};
+// FSM-Output rx vld 
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        rx_vld_obuf  <= #DLY 'd0;
     end
-    else if(spi_rx_flow_fsm == TFR && bit_en && spi_bus_clk) begin
-        spi_rx_tfr_cnt <= spi_rx_tfr_cnt + 'd1;
+    else if(length == length_cnt) begin
+        rx_vld_obuf  <= #DLY 'd1;
     end
     else begin
-        spi_rx_tfr_cnt <= #DLY {TFR_RX_CNT{1'b0}};
+        rx_vld_obuf  <= #DLY 'd0;
     end
 end
 
-// fsm output , generate write fifo enable signale.
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        wr_en_r <= #DLY 1'b0;
+// FSM-Output rx data
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        rx_data_obuf  <= #DLY 'd0;
     end
-    else if((spi_rx_flow_fsm == STOP && bit_en && ~spi_bus_clk) || (spi_rx_tfr_cnt == {TFR_RX_CNT{1'b1}}) begin
-        wr_en_r <= #DLY 1'b1;
+    else if(spi_bus_pedge) begin
+        rx_data_obuf  <= #DLY {sdi, rx_data_obuf[SPI_RX_WIDTH-1:1]};
+    end
+    else if(rx_vld_obuf) begin
+        rx_data_obuf  <= #DLY 'd0;
+    end
+end
+
+// FSM-Output rx interrupt
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        rx_interrupt_obuf  <= #DLY 'd0;
+    end
+    else if(length == length_cnt) begin
+        rx_interrupt_obuf  <= #DLY 'd1;
     end
     else begin
-        wr_en_r <= #DLY 1'b0;
+        rx_interrupt_obuf <= #DLY 'd0;
     end
 end
-
-// fsm output , write spi data to 
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        wdata_r <= #DLY {FIFO_WIDTH{1'b0}};
-    end
-    else if(wr_en_i) begin
-        wdata_r <= #DLY {spi_rx_tfr_cnt[TFR_RX_CNT-1, 0], wdata_r[DATA_LEN-1:0]};
-    end
-    else if((spi_rx_flow_fsm == TFR)  && bit_en && spi_bus_clk) begin
-        wdata_r <= #DLY {sdi, wdata_r[DATA_LEN-1:1]};
-    end
-    else begin
-        wdata_r <= #DLY {FIFO_WIDTH{1'b0}};
-    end
-end
-
-sync_fifo                           #(
-    .DLY                            ( DLY       ),
-    .WIDTH                          ( FIFO_WIDTH),
-    .DEPTH                          ( 16        )
-    )
-    u_sync_fifo_spi_tx_i
-    (
-    .clk_i                          (clk_i     ),
-    .rst_n_i                        (rst_n_i   ),
-    .wdata_i                        (wdata_i   ),
-    .wr_en_i                        (wr_en_i   ),
-    .rdata_o                        (rdata_o   ),
-    .rd_en_i                        (rd_en_i   ),
-    .full_o                         (full_o    ),
-    .empty_o                        (empty_o   ),
-    .elements_o                     (elements_o)
-    );
 
 endmodule

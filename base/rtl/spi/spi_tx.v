@@ -1,157 +1,175 @@
 
-module                              spi_tx #(
-    parameter                       DLY         = 1,
-    parameter                       DATA_LEN    = 32,
-    parameter                       DATA_VLD    = $clog2(DATA_LEN),
-    parameter                       FIFO_WIDTH  = DATA_LEN + DATA_VLD
+module                                  spi_tx #(
+    parameter                           DLY                 = 1,
+    parameter                           SPI_TX_WIDTH        = 32,           // SPI tx transimit width.
+    parameter                           LENGTH_TRANSMIT     = $clog2(32)    // Length of data will be send.
     )(
-    input  wire                     clk_i       ,  // spi controller clock.
-    input  wire                     rst_n_i     ,  // reset
-    input  wire                     cpol        ,  // 0, clock keep low state ; 1 , clock keep high state , when bus idle
-    input  wire                     cpoa        ,  // 0, first edge DAQ, 1, second edge DAQ
-    input  wire [FIFO_WIDTH-1:0]    tx_data_i   ,  // data from up level, will push to fifo
-    input  wire                     tx_vld_i    ,  // data valid 
-    output wire                     tx_rdy_o    ,  // invert fifo full
-    input  wire                     bit_en      ,  // bit enable, from clock gen.
-    output wire                     clk_en      ,  // start generate bus clock
-    output wire                     tx_eot      ,  // rx send complete
-    output wire                     sdo
+    // Input clock & reset
+    input  wire                         clk         ,   // Primary clock
+    input  wire                         rstn        ,   // System reset
+
+    // SPI mode select
+    input  wire                         cpol        ,   // Mode :[CPOL:CPOA]
+    input  wire                         cpoa        ,   // Mode :[CPOL:CPOA]
+
+    // SPI Tx data input interface
+    input  wire [LENGTH_TRANSMIT-1  :0] length      ,    // Length of data valid
+    input  wire [SPI_TX_WIDTH-1     :0] tx_data     ,    // Data will be sennd to sdo
+    input  wire                         tx_vld      ,    // This just keep one primary clock cycle
+    output wire                         tx_rdy      ,    // Output 1, when flow fsm be WATING
+
+    // SPI status output
+    output wire                         tx_eot      ,    // Once done of transimit, output 1, when cnt eq length
+
+    // SPI physical-link
+    output wire                         sdo         ,    // SPI MOSI or SDO
+    output wire                         spi_bus_clk      // SPI BUS clock
     );
 
-// declare fifo wire
-wire [FIFO_WIDTH-1   :0]            wdata_i     ;
-wire                                wr_en_i     ;
-wire                                full_o      ;
-wire                                empty_o     ;
-wire                                rd_en_i     ;
-wire                                rdata_o     ;
-wire                                elements_o  ;
+reg [LENGTH_TRANSMIT-1  :0] length_cnt      ;   // Transmit length
 
-// define fsm register  
-reg  [2                :0]          spi_tx_flow_fsm     ;
-reg                                 spi_tx_start        ;
-reg  [DATA_VLD-1       :0]          spi_tfr_cnt         ;
-reg                                 sdo_buf_r           ;
+// SPI Tx
+wire                        ritmo           ;   // SPI bus's ritmo in primary clock domain
+wire                        ritmo_half      ;   // SPI bus's ritmo in primary clock domain
+wire                        bus_clock_req   ;   // Generate spi clock from clk_en is high
+wire                        clock_gen_bit   ;
 
-wire                                go_idle             ;
-wire                                go_tfr              ;
-wire                                go_stop             ;
+// SPI physical output buf
+reg                         sdo_obuf        ;
 
-localparam                          IDLE     = 3'b001     ;
-localparam                          TFR      = 3'b010     ;
-localparam                          STOP     = 3'b100     ;
+// Tx flow FSM register
+reg [1:0]                   tx_fsm_cs ;
+reg [1:0]                   tx_fsm_ns ;
 
-// FIFO link with IF
-assign                              wdata_i  = tx_data_i ;
-assign                              wr_en_i  = tx_vld_i  ;
-assign                              tx_rdy_o = ~full_o   ;
+// SPI send data buffer
+reg [SPI_TX_WIDTH-1     :0] sdo_buf   ;
+// FSM Jump control singal
+reg                         wait_state    ;
+wire                        transmit_state;
+// FSM status 
+localparam                  TX_WAITING      = 2'b01;
+localparam                  TX_TRANSMITING  = 2'b10;
 
-assign                              go_tfr   = ((spi_tx_flow_fsm            == IDLE) && spi_tx_start);
-assign                              go_stop  = ((spi_tx_flow_fsm            == TFR ) && bit_en && (spi_tfr_cnt == rdata_o[37:32]));
-assign                              go_idle  = ((spi_tx_flow_fsm            == STOP) && bit_en);
-assign                              clk_en   = spi_tx_start;
-
-assign                              tx_eot   = go_idle  ;
-
-assign                              rd_en_i  = (!empty_o && spi_tx_flow_fsm == IDLE);
-
-// FSM jump
-always@(posedge clk_i or negedge rst_n_i) begin
-    if(!rst_n_i) begin
-        spi_tx_flow_fsm <= #DLY IDLE ;
-    end else begin
-        case(spi_tx_flow_fsm)
-            IDLE:               begin
-                                    if(go_tfr) begin
-                                        spi_tx_flow_fsm <= #DLY TFR;
-                                    end
-                                    else begin
-                                        spi_tx_flow_fsm <= #DLY IDLE;
-                                    end
-                                end
-            TFR:                begin
-                                    if(go_stop) begin
-                                        spi_tx_flow_fsm <= #DLY STOP;
-                                    end
-                                    else begin
-                                        spi_tx_flow_fsm <= #DLY TFR;
-                                    end
-                                end
-            STOP:               begin
-                                    if(go_idle) begin
-                                        spi_tx_flow_fsm <= #DLY IDLE;
-                                    end
-                                    else begin
-                                        spi_tx_flow_fsm <= #DLY STOP;
-                                    end
-                                end
-        endcase
+// FSM ctrl 
+assign                      transmit_state = tx_vld ;
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        sdo_buf <= #DLY 'd0;
+    end
+    else if(tx_vld && tx_fsm_cs == TX_WAITING) begin
+        sdo_buf  <= #DLY tx_data;
     end
 end
 
-// Just do cpol == 0 and cpoa == 0
-generate 
-    if(cpol == 0 && cpoa == 0) begin : SPI_MODE_0
-        // generate start 
-        always@(posedge clk_i or negedge rst_n_i) begin
-            if(!rst_n_i) begin
-                spi_tx_start <= #DLY 1'b0;
-            end
-            else if(rd_en_i) begin
-                spi_tx_start <= #DLY 1'b1;
-            end
-            else begin
-                spi_tx_start <= #DLY 1'b0;
-            end
-        end
-
-        always@(posedge clk_i or negedge rst_n_i) begin
-            if(!rst_n_i) begin
-                spi_tfr_cnt <= #DLY {DATA_VLD{1'b0}};
-            end
-            else if(spi_tx_flow_fsm == TFR && bit_en) begin
-                spi_tfr_cnt <= #DLY spi_tfr_cnt + 'd1;
-            end
-            else begin
-                spi_tfr_cnt <= #DLY {DATA_VLD{1'b0}};
-            end
-        end
-
-        always@(posedge clk_i or negedge rst_n_i) begin
-            if(!rst_n_i) begin
-                sdo_buf_r <= #DLY 1'b0;
-            end
-            else if(spi_tx_flow_fsm == TFR && bit_en) begin
-                sdo_buf_r <= rdata_o[spi_tfr_cnt];
-            end
-        end
-
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        wait_state <= #DLY 'd0;
     end
-    else if(cpol == 0 && cpoa == 1) begin : SPI_MODE_1
+    else if((length_cnt == length) && (length_cnt != 0) && tx_fsm_cs == TX_TRANSMITING) begin
+        wait_state <= #DLY 'd1;
     end
-    else if(cpol == 1 && cpoa == 0) begin : SPI_MODE_2
+    else begin
+        wait_state <= #DLY 'd0;
     end
-    else if(cpol == 1 && cpoa == 1) begin : SPI_MODE_3
-    end
+end
 
-endgenerate
+// FSM-Shift
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        tx_fsm_cs <= #DLY TX_WAITING;
+    end
+    else begin
+        tx_fsm_cs <= #DLY tx_fsm_ns;
+    end
+end
 
-sync_fifo                           #(
-    .DLY                            ( DLY       ),
-    .WIDTH                          ( FIFO_WIDTH),
-    .DEPTH                          ( 16        )
+// FSM-Jump
+// input list sync with clk
+always@(tx_fsm_cs or transmit_state or wait_state) begin
+    case(tx_fsm_cs)
+        // waiting data coming
+        TX_WAITING:         begin
+                                if(transmit_state) begin
+                                    tx_fsm_ns <= #DLY TX_TRANSMITING;
+                                end
+                                else begin
+                                    tx_fsm_ns <= #DLY TX_WAITING;
+                                end
+                            end
+        // spi data transmit
+        TX_TRANSMITING:     begin
+                                if(wait_state) begin
+                                    tx_fsm_ns <= #DLY TX_WAITING;
+                                end
+                                else begin
+                                    tx_fsm_ns <= #DLY TX_TRANSMITING;
+                                end
+                            end
+        default:            begin
+                                tx_fsm_ns <= #DLY TX_WAITING;
+                            end
+    endcase
+end
+
+// FSM-Output, Moore FSM
+
+// Output spi_rdy
+assign      tx_rdy = (tx_fsm_cs == TX_WAITING && tx_fsm_ns == TX_WAITING);
+
+// Output tx_ext
+assign      tx_eot  = (tx_fsm_cs == TX_TRANSMITING && tx_fsm_ns == TX_WAITING);
+
+// Output bus_clock_req
+assign      bus_clock_req = (tx_fsm_cs == TX_TRANSMITING) && (tx_fsm_ns != TX_WAITING);
+assign      clock_gen_bit = (tx_fsm_cs == TX_TRANSMITING) && (tx_fsm_ns != TX_WAITING);
+
+// Output cnt
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        length_cnt  <= #DLY 'd0;
+    end
+    else if(tx_fsm_cs == TX_TRANSMITING && tx_fsm_ns != TX_WAITING && ritmo) begin
+        length_cnt  <=  #DLY 'd1 + length_cnt;
+    end
+    else if(tx_fsm_cs == TX_WAITING) begin
+        length_cnt  <= #DLY 'd0;
+    end
+end
+
+// FSM-Output sdo
+always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+        sdo_obuf  <= #DLY 1'b0;
+    end
+    else if(tx_fsm_cs == TX_TRANSMITING && ritmo) begin
+        sdo_obuf  <= #DLY sdo_buf[length_cnt];  // LSB
+    end
+end
+
+assign          sdo = sdo_obuf ;
+
+clock_bit_gen           #(
+    .DLY                (DLY            ),
+    .WIDTH              (8              )
     )
-    u_sync_fifo_spi_tx_i
+    u_clock_bit_gen_i
     (
-    .clk_i                          (clk_i     ),
-    .rst_n_i                        (rst_n_i   ),
-    .wdata_i                        (wdata_i   ),
-    .wr_en_i                        (wr_en_i   ),
-    .rdata_o                        (rdata_o   ),
-    .rd_en_i                        (rd_en_i   ),
-    .full_o                         (full_o    ),
-    .empty_o                        (empty_o   ),
-    .elements_o                     (elements_o)
+    .clk_i              (clk            ),
+    .rstn_i             (clock_gen_bit  ),
+    .period             (10             ),
+    .bit_en             (ritmo          ),
+    .bit_half_en        (ritmo_half     )
+    );
+
+clock_div               #(
+    .DLY                (DLY            ),
+    .WIDTH              (4              )
+    )(
+    .clk_i              (clk            ),
+    .rst_n_i            (rstn           ),
+    .gen                (bus_clock_req  ),
+    .period             (10             ),
+    .clk_o              (spi_bus_clk    )
     );
 
 endmodule
