@@ -30,8 +30,6 @@ wire                                    spi_bus_pedge   ;
 
 // Declare output signal
 reg  [SPI_RX_WIDTH-1  :0]               rx_data_obuf        ;
-reg                                     rx_vld_obuf         ;
-reg                                     rx_interrupt_obuf   ;
 
 // Declare receive counter
 reg  [LENGTH_RECEIVE-1:0]               length_cnt     ;
@@ -76,7 +74,7 @@ always@(posedge clk or negedge rstn) begin
 end
 
 // FSM-Jump
-always@(rx_fsm_cs) begin
+always@(rx_fsm_cs or to_rx_receive or to_rx_waiting) begin
     case(rx_fsm_cs)
         RX_WAITING:         begin
                                 if(to_rx_receive) begin
@@ -108,23 +106,14 @@ always@(posedge clk or negedge rstn) begin
     else if(spi_bus_pedge) begin
         length_cnt  <= #DLY 'd1 + length_cnt;
     end
-    else if(rx_vld_obuf) begin
+    else if(rx_vld) begin
         length_cnt  <= #DLY 'd0;
     end
 end
 
 // FSM-Output rx vld 
-always@(posedge clk or negedge rstn) begin
-    if(!rstn) begin
-        rx_vld_obuf  <= #DLY 'd0;
-    end
-    else if(length == length_cnt) begin
-        rx_vld_obuf  <= #DLY 'd1;
-    end
-    else begin
-        rx_vld_obuf  <= #DLY 'd0;
-    end
-end
+assign      rx_vld = (length_cnt == length) ;
+assign      rx_interrupt = (length_cnt == length) ;
 
 // FSM-Output rx data
 always@(posedge clk or negedge rstn) begin
@@ -134,22 +123,11 @@ always@(posedge clk or negedge rstn) begin
     else if(spi_bus_pedge) begin
         rx_data_obuf  <= #DLY {sdi, rx_data_obuf[SPI_RX_WIDTH-1:1]};
     end
-    else if(rx_vld_obuf) begin
+    else if(rx_fsm_cs == RX_RECEIVING && rx_fsm_ns == RX_WAITING) begin
         rx_data_obuf  <= #DLY 'd0;
     end
 end
 
 // FSM-Output rx interrupt
-always@(posedge clk or negedge rstn) begin
-    if(!rstn) begin
-        rx_interrupt_obuf  <= #DLY 'd0;
-    end
-    else if(length == length_cnt) begin
-        rx_interrupt_obuf  <= #DLY 'd1;
-    end
-    else begin
-        rx_interrupt_obuf <= #DLY 'd0;
-    end
-end
 
 endmodule

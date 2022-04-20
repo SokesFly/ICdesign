@@ -2,7 +2,7 @@ module          spi_tx_tb();
 
 parameter       DLY     = 1;
 parameter       PERIOD  = 20;
-parameter       DATA_LEN= 32;
+parameter       DATA_LEN= 4;
 parameter       DATA_VLD= $clog2(DATA_LEN);
 parameter       WIDTH   = DATA_LEN + DATA_VLD;
 

@@ -1,9 +1,8 @@
-
 module          spi_rx_tb();
 
 parameter       DLY     = 1;
 parameter       PERIOD  = 20;
-parameter       DATA_LEN= 32;
+parameter       DATA_LEN= 5;
 parameter       DATA_VLD= $clog2(DATA_LEN);
 parameter       WIDTH   = DATA_LEN + DATA_VLD;
 
@@ -19,7 +18,14 @@ wire                    tx_eot  ;
 wire                    sdo     ;
 
 wire                    spi_bus_clk;
-wire                    bit_half_en ;
+wire                    bit_half_en;
+
+//wire  spi rx wire
+wire                    sdi         ;
+wire                    rx_interrupt;
+wire [WIDTH-1:0]        rx_rdata    ;
+wire                    rx_vld      ;
+wire                    rx_rdy      ;
 
 initial begin
     clk_r       =  1'b0;
@@ -31,8 +37,8 @@ end
 
 initial begin
     $fsdbDumpfile("tb.fsdb");
-    $fsdbDumpvars(0, "spi_tx_tb");
-    $fsdbDumpMDA(0, "spi_tx_tb.");
+    $fsdbDumpvars(0, "spi_rx_tb");
+    $fsdbDumpMDA(0, "spi_rx_tb.");
 end
 
 initial begin
@@ -74,6 +80,10 @@ always@(posedge clk_r or negedge rstn_r) begin
     end
 end
 
+// link sdi and sdo
+assign      sdi = sdo;
+assign      rx_rdy = 1'b1;
+
 spi_tx           #(
     .DLY         (DLY        ),
     .SPI_TX_WIDTH(DATA_LEN   )
@@ -84,7 +94,7 @@ spi_tx           #(
     .rstn        (rstn_r     ),
     .cpol        (cpol       ),
     .cpoa        (cpoa       ),
-    .length      (DATA_LEN -1),
+    .length      (DATA_LEN   ),
     .tx_data     (tx_data    ),
     .tx_vld      (tx_vld     ),
     .tx_rdy      (tx_rdy     ),
@@ -92,5 +102,24 @@ spi_tx           #(
     .sdo         (sdo        ),
     .spi_bus_clk (spi_bus_clk)
     );
+
+
+spi_rx              #(
+    .DLY            (DLY         ),
+    .SPI_RX_WIDTH   (DATA_LEN    )
+    )(
+    .clk            (clk_r       ),
+    .rstn           (rstn_r      ),
+    .cpol           (cpol        ),
+    .cpoa           (cpoa        ),
+    .rx_rdy         (rx_rdy      ),
+    .length         (DATA_LEN    ),
+    .rx_rdata       (rx_rdata    ),
+    .rx_vld         (rx_vld      ),
+    .spi_bus_clk    (spi_bus_clk ),
+    .sdi            (sdi         ),
+    .rx_interrupt   (rx_interrupt)
+    );
+
 
 endmodule

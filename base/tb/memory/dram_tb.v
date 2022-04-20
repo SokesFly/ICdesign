@@ -5,12 +5,9 @@ module                      dram_tb();
 parameter                   DLY             = 1;
 parameter                   CLK_PERIOD_A    = 10;
 parameter                   CLK_PERIOD_B    = 28;
-parameter                   WRITE_WIDTH     = 8;
-parameter                   READ_WIDTH      = 8;
-parameter                   DEPTH           = 4;
-parameter                   ADDR            = (READ_WIDTH - WRITE_WIDTH) ? 
-                                              ($clog2(DEPTH) + $clog2(READ_WIDTH/WRITE_WIDTH)) :  
-                                              ($clog2(DEPTH) + $clog2(WRITE_WIDTH/READ_WIDTH));
+parameter                   WIDTH           = 32;
+parameter                   DEPTH           = 32;
+parameter                   ADDR            = $clog2(DEPTH);
 
 // Declare clock register
 wire                         pa_clk_i    ;
@@ -21,15 +18,15 @@ wire                         pb_rstn_i   ;
 // Declare port a channel write & read register 
 wire  [ADDR-1        :0]     pa_addr_i   ;
 wire                         pa_wr_en_i  ;
-wire  [WRITE_WIDTH-1 :0]     pa_wr_data_i;
+wire  [WIDTH-1       :0]     pa_wr_data_i;
 wire                         pa_rd_en_i  ;
-wire [READ_WIDTH-1  :0]      pa_rd_data_o;
+wire  [WIDTH-1       :0]     pa_rd_data_o;
 // Declare port b channel write & read register 
 wire  [ADDR-1        :0]     pb_addr_i   ;
 wire                         pb_wr_en_i  ;
-wire  [WRITE_WIDTH-1 :0]     pb_wr_data_i;
+wire  [WIDTH-1       :0]     pb_wr_data_i;
 wire                         pb_rd_en_i  ;
-wire [READ_WIDTH-1  :0]      pb_rd_data_o;
+wire  [WIDTH-1       :0]     pb_rd_data_o;
 
 // Declare clock register
 reg                          pa_clk_r    ;
@@ -40,12 +37,12 @@ reg                          pb_rstn_r   ;
 // Declare port a channel write & read register 
 reg  [ADDR-1        :0]      pa_addr_r   ;
 reg                          pa_wr_en_r  ;
-reg  [WRITE_WIDTH-1 :0]      pa_wr_data_r;
+reg  [WIDTH-1 :0]      pa_wr_data_r;
 reg                          pa_rd_en_r  ;
 // Declare port b channel write & read register 
 reg  [ADDR-1        :0]      pb_addr_r   ;
 reg                          pb_wr_en_r  ;
-reg  [WRITE_WIDTH-1 :0]      pb_wr_data_r;
+reg  [WIDTH-1 :0]      pb_wr_data_r;
 reg                          pb_rd_en_r  ;
 
 //  assign register to wire
@@ -104,26 +101,29 @@ always@(posedge pa_clk_i or pa_rstn_i) begin
     if(!pa_rstn_i) begin
         pa_wr_en_r <= #DLY 1'b0;
     end
-    else begin
+    else if({$random} % 4 == 2'b01) begin
         pa_wr_en_r <= #DLY 1'b1;
     end
+    else begin
+        pa_wr_en_r <= #DLY 1'b0;
+    end
 end
 
 always@(posedge pa_clk_i or pa_rstn_i) begin
     if(!pa_rstn_i) begin
-        pa_wr_data_r <= #DLY {WRITE_WIDTH{1'b0}};
+        pa_wr_data_r <= #DLY {WIDTH{1'b0}};
     end
     else begin
-        pa_wr_data_r <= #DLY pa_wr_data_r + 'd1;
+        pa_wr_data_r <= #DLY {$random};;
     end
 end
 
 always@(posedge pa_clk_i or pa_rstn_i) begin
     if(!pa_rstn_i) begin
-        pa_addr_r <= #DLY {WRITE_WIDTH{1'b0}};
+        pa_addr_r <= #DLY {WIDTH{1'b0}};
     end
     else if(pa_addr_r == {ADDR{1'b1}}) begin
-        pa_addr_r <= #DLY {WRITE_WIDTH{1'b0}};
+        pa_addr_r <= #DLY {WIDTH{1'b0}};
     end
     else begin
         pa_addr_r <= #DLY pa_addr_r + 'd1;
@@ -142,6 +142,52 @@ always@(posedge pa_clk_i or pa_rstn_i) begin
     end
 end
 
+// pb rd enable
+always@(posedge pb_clk_i or pb_rstn_i) begin
+    if(!pb_rstn_i) begin
+        pb_wr_data_r <= #DLY 'd0;
+    end
+    else begin
+        pb_wr_data_r <= #DLY {$random};;
+    end
+end
+
+always@(posedge pb_clk_i or pb_rstn_i) begin
+    if(!pb_rstn_i) begin
+        pb_wr_en_r <= #DLY 'd0;
+    end
+    else if({$random} % 4 == 2'b01) begin
+        pb_wr_en_r <= #DLY 'd1;
+    end
+    else begin
+        pb_wr_en_r <= #DLY 'd0;
+    end
+end
+
+always@(posedge pb_clk_i or pb_rstn_i) begin
+    if(!pb_rstn_i) begin
+        pb_addr_r <= #DLY 'd0;
+    end
+    else if({$random} % 4 == 2'b01) begin
+        pb_addr_r <= #DLY {$random} % 32;
+    end
+    else begin
+        pb_addr_r <= #DLY 'd0;
+    end
+end
+
+always@(posedge pb_clk_i or pb_rstn_i) begin
+    if(!pb_rstn_i) begin
+        pb_rd_en_r <= #DLY 1'b0;
+    end
+    else if({$random} % 4 == 2'b01) begin
+        pb_rd_en_r <= #DLY 1'b1;
+    end
+    else begin
+        pb_rd_en_r <= #DLY 1'b0;
+    end
+end
+
 // end of sim
 initial begin
     #(CLK_PERIOD_A*2000) 
@@ -149,8 +195,7 @@ initial begin
 end
 
 dram                        #(
-    .WRITE_WIDTH            (WRITE_WIDTH ),
-    .READ_WIDTH             (READ_WIDTH  ),
+    .WIDTH                  (WIDTH       ),
     .DEPTH                  (DEPTH       )
     )
     u_dram_i

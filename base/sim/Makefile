@@ -13,8 +13,8 @@
 # DUT_MODULE  :=sync_fifo
 # DUT_MODULE  :=memory
 # DUT_MODULE  :=reset_sync
-TOP_MODULE	    :=spi_tx_tb
-DUT_MODULE 		:=spi
+TOP_MODULE		:=dram_tb
+DUT_MODULE 		:=memory
 
 # Define project dir
 SIM_DIR         :=$(shell pwd)
@@ -30,7 +30,7 @@ SRCS            +=$(wildcard ${TB_DIR}/${DUT_MODULE}/*.v)
 SRCS            +=$(wildcard ${TB_DIR}/${DUT_MODULE}/*.sv)
 
 # config sub module
-CONFIG_CLOCKS			:=y
+CONFIG_CLOCKS			:=n
 CONFIG_SYNC_FIFO		:=n
 
 ifeq (${CONFIG_SYNC_FIFO}, y)
@@ -65,7 +65,7 @@ DESIGN			:=-top ${TOP_MODULE}
 
 export			RTL_DIR TB_DIR
 
-all: verdi
+all: sim
 
 #${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 
@@ -76,12 +76,11 @@ sim: elab
 	./simv -l run_log
 
 verdi: sim 
-	cp ../../novas.rc .
 	verdi -nologo ${SRCS}	\
-	-dbdir simv.daidir	\
-	-simflow -simBin ./simv	\
-	-simBin simv	\
-	-ssf tb.fsdb
+	dbdir simv.daidir	\
+	simflow -simBin ./simv	\
+	simBin simv	\
+	ssf tb.fsdb
 
 clean:
 	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog comp_log

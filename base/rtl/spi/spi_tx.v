@@ -13,7 +13,7 @@ module                                  spi_tx #(
     input  wire                         cpoa        ,   // Mode :[CPOL:CPOA]
 
     // SPI Tx data input interface
-    input  wire [LENGTH_TRANSMIT-1  :0] length      ,    // Length of data valid
+    input  wire [LENGTH_TRANSMIT    :0] length      ,    // Length of data valid
     input  wire [SPI_TX_WIDTH-1     :0] tx_data     ,    // Data will be sennd to sdo
     input  wire                         tx_vld      ,    // This just keep one primary clock cycle
     output wire                         tx_rdy      ,    // Output 1, when flow fsm be WATING
@@ -26,16 +26,13 @@ module                                  spi_tx #(
     output wire                         spi_bus_clk      // SPI BUS clock
     );
 
-reg [LENGTH_TRANSMIT-1  :0] length_cnt      ;   // Transmit length
+reg [LENGTH_TRANSMIT    :0] length_cnt      ;   // Transmit length
 
 // SPI Tx
 wire                        ritmo           ;   // SPI bus's ritmo in primary clock domain
 wire                        ritmo_half      ;   // SPI bus's ritmo in primary clock domain
 wire                        bus_clock_req   ;   // Generate spi clock from clk_en is high
 wire                        clock_gen_bit   ;
-
-// SPI physical output buf
-reg                         sdo_obuf        ;
 
 // Tx flow FSM register
 reg [1:0]                   tx_fsm_cs ;
@@ -65,7 +62,7 @@ always@(posedge clk or negedge rstn) begin
     if(!rstn) begin
         wait_state <= #DLY 'd0;
     end
-    else if((length_cnt == length) && (length_cnt != 0) && tx_fsm_cs == TX_TRANSMITING) begin
+    else if((length_cnt == length - 1) && (length_cnt != 0) && tx_fsm_cs == TX_TRANSMITING && ritmo) begin
         wait_state <= #DLY 'd1;
     end
     else begin
@@ -137,16 +134,7 @@ always@(posedge clk or negedge rstn) begin
 end
 
 // FSM-Output sdo
-always@(posedge clk or negedge rstn) begin
-    if(!rstn) begin
-        sdo_obuf  <= #DLY 1'b0;
-    end
-    else if(tx_fsm_cs == TX_TRANSMITING && ritmo) begin
-        sdo_obuf  <= #DLY sdo_buf[length_cnt];  // LSB
-    end
-end
-
-assign          sdo = sdo_obuf ;
+assign sdo = (length_cnt >= length) ? 1'b0 : sdo_buf[length_cnt];  // LSB
 
 clock_bit_gen           #(
     .DLY                (DLY            ),
@@ -166,7 +154,7 @@ clock_div               #(
     .WIDTH              (4              )
     )(
     .clk_i              (clk            ),
-    .rst_n_i            (rstn           ),
+    .rst_n_i            (bus_clock_req  ),
     .gen                (bus_clock_req  ),
     .period             (10             ),
     .clk_o              (spi_bus_clk    )
