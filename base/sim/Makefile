@@ -13,8 +13,8 @@
 # DUT_MODULE  :=sync_fifo
 # DUT_MODULE  :=memory
 # DUT_MODULE  :=reset_sync
-TOP_MODULE		:=dram_tb
-DUT_MODULE 		:=memory
+TOP_MODULE		:=convert_tb
+DUT_MODULE 		:=cdc
 
 # Define project dir
 SIM_DIR         :=$(shell pwd)

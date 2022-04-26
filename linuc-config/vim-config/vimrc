@@ -81,6 +81,7 @@ Plug  'terryma/vim-expand-region'
 Plug  'nvie/vim-togglemouse'
 
 Plug 'antoinemadec/vim-verilog-instance'
+Plug 'hhktony/vim-authorinfo'
 
 Plug 'maralla/completor.vim'
 Plug 'tokorom/completor-shell'
@@ -266,7 +267,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " auto update tags
-autocmd BufWritePost *.sv *.v *.c,*.h,*.cpp call UpdateCtags()
+autocmd BufWritePost *.a *.sv *.v *.c,*.h,*.cpp call UpdateCtags()
 
 function! UpdateCtags()
     let curdir=getcwd()
@@ -290,3 +291,12 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" 当新建 .h .c .hpp .cpp .mk .sh等文件时自动调用SetTitle 函数
+
+let g:vimrc_author='ChainJJ'
+let g:vimrc_email='1406072501@QQ.com'
+let g:vimrc_homepage='CHinA'
+
+nmap <F4> :AuthorInfoDetect<cr>
