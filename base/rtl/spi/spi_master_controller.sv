@@ -1,3 +1,5 @@
+`define     OP_WRITE    2'b01
+
 module                              spi_master_controller #(
     parameter                       DLY       = 1,
     parameter                       REG_WIDTH = 32
@@ -22,22 +24,19 @@ localparam                          CTRL_ILDE   = 3'b001;
 localparam                          CTRL_WRITE  = 3'b010;
 localparam                          CTRL_READ   = 3'b100;
 */
-wire [REG_WIDTH-1   :0]  cfg_synced_o       ,  //SPI config register in
-wire [REG_WIDTH-1   :0]  addr_synced_o      ,  //Device addr
-wire [REG_WIDTH-1   :0]  operation_synced_o ,  //Write or read
-wire [REG_WIDTH-1   :0]  len_synced_o       ,  //Wirte or read lengt
-wire [REG_WIDTH-1   :0]  data_synced_o      ,  //Op data input
 
 typedef enum bit [2:0] {
     CTRL_ILDE,
     CTRL_WRITE,
     CTRL_READ
-} ctrl_fsm_cs, ctrl_fsm_ns;
+    } ctrl_fsm_cs, ctrl_fsm_ns;
 
 //TOP-FSM status controll signals
-reg                                 to_ctrl_write_r;
-reg                                 to_ctrl_read_r ;
-reg                                 to_ctrl_idle_r ;
+wire                                to_ctrl_write;
+wire                                to_ctrl_read ;
+wire                                to_ctrl_idle ;
+
+assign                              to_ctrl_write = operation_i[1:0] ;
 
 //TOP-FSM status transfer
 always@(posedge clk_i or negedge rstn_i) begin
@@ -52,11 +51,20 @@ end
 //TOP-FSM status jump
 always@(ctrl_fsm_cs) begin
     case(ctrl_fsm_cs)
-        CTRL_ILDE:      begin
-                        end
-        CTRL_WRITE:     begin
-                        end
-        CTRL_READ:      begin
+        // CTRL status
+        default:        begin
+                            if(to_ctrl_write) begin
+                                ctrl_fsm_ns <= #DLY CTRL_WRITE;
+                            end
+                            else if(to_ctrl_read) begin
+                                ctrl_fsm_ns <= #DLY CTRL_READ;
+                            end
+                            else if(to_ctrl_idle) begin
+                                ctrl_fsm_ns <= #DLY CTRL_ILDE;
+                            end 
+                            else begin
+                                ctrl_fsm_ns <= #DLY ctrl_fsm_ns;
+                            end
                         end
     endcase
 end

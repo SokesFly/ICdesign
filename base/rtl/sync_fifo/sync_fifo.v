@@ -30,11 +30,11 @@ module sync_fifo #(
     input wire                  rd_en_i ,       // input  , read enable , high valid.
 
     /****** Control and status *****************************************/
-    output wire                 full_o      ,           // output , high, when fifo full, or low.
-    output wire                 empty_o     ,           // output , high, when fifo empty, or low.
+    output wire                 full_o      ,   // output , high, when fifo full, or low.
+    output wire                 empty_o     ,   // output , high, when fifo empty, or low.
     output reg [ELS_SIZE : 0]   elements_o      // output , elements fifo's storaged.
 );
-    
+
     reg [ELS_SIZE - 1 : 0]      wr_ptr ;
     reg [ELS_SIZE - 1 : 0]      rd_ptr ;
     reg [WIDTH - 1 : 0]         fifo_array [0 : DEPTH - 1] ;
