@@ -12,6 +12,9 @@
 #*************************************************************************************/
 
 
+MODULE          :=ft-d2000-pmu
+# MODULE          :=ahb2apb
+
 # Define project dir
 SIM_DIR         :=$(shell pwd)
 RTL_DIR         :=${SIM_DIR}/../rtl
@@ -32,21 +35,22 @@ LOG_OUTPU		:=-l vcs.log
 VERDI_LIBS      :=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
 TIME_SCALE      :=-timescale=1ns/1ns
 NO_TIMING       :=+notimingcheck +nospecify
-DESIGN			:=-top ${TOP_MODULE}
+SRCS            := -f ${TB_DIR}/${MODULE}/filelist.f
+SRCS            += -f ${RTL_DIR}/${MODULE}/filelist.f
 
-export			SIM_DIR RTL_DIR TB_DIR
+export          SIM_DIR RTL_DIR TB_DIR MODULE
 
 all: sim
 
 #${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 
 elab:
-	${VCS} ${GCC_V} ${VCS_FLAGS} ${VCS_LDFLAGS} ${TIME_SCALE} ${NO_TIMING} ${SRCS} ${DESIGN}
+	${VCS} ${GCC_V} ${VCS_FLAGS} ${VCS_LDFLAGS} ${TIME_SCALE} ${NO_TIMING} ${SRCS}
 
 sim: elab
 	./simv -l run_log
 
-verdi: sim 
+verdi:
 	verdi -nologo ${SRCS} -ssf tb.fsdb
 
 clean:
