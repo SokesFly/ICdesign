@@ -1,7 +1,0 @@
-Command Line: /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/bin/elabcom -logdir simv.daidir/elabcomLog -simvdaidir simv.daidir -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top spi_apb_if_tb -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
-uname(Linux ubuntu 5.4.0-121-generic #137~18.04.1-Ubuntu SMP Mon Jun 20 07:25:24 UTC 2022 x86_64)
-[INFO] error/warning message 'C00380' has been suppressed.
-[INFO] error/warning message 'C00381' has been suppressed.
-[INFO] error/warning message 'C00388' has been suppressed.
-[INFO] error/warning message 'C00389' has been suppressed.
-au time 0.026188 0.001945 0.012049 delta 92078080 92078080 total 170258432 170258432
