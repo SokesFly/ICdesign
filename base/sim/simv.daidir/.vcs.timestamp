@@ -1,0 +1,145 @@
+0 
+41
++itf+/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
++memcbk
++nospecify
++notimingcheck
++v2k
++vcsd1
++vpi
++warn=all
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/include
+-Mcplusplus=-cc
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -Wl,--no-as-needed -rdynamic
+-Mobjects= /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvirsim.so /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/liberrorinf.so /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/include
+-P
+-Xufe=2steps
+-debug_acc+all
+-f /home/soke/ICdesign/base/sim/../rtl/spi/filelist.f
+-f /home/soke/ICdesign/base/sim/../tb/spi/filelist.f
+-fsdb
+-full64
+-gen_obj
+-kdb
+-l
+-nc
+-picarchive
+-sverilog
+-timescale=1ns/1ns
+/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/bin/vcs1
+/home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+comp_log
+86
+sysc_uni_pwd=/home/soke/ICdesign/base/sim
+no_proxy=localhost,127.0.0.0/8,::1
+https_proxy=http://127.0.0.1:7890/
+http_proxy=http://127.0.0.1:7890/
+all_proxy=socks://127.0.0.1:7890/
+_P9K_TTY=/dev/pts/3
+ZSH=/home/soke/.oh-my-zsh
+XMODIFIERS=@im=ibus
+XDG_SESSION_TYPE=x11
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_CLASS=user
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_MENU_PREFIX=gnome-
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/soke
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+XAUTHORITY=/home/soke/.Xauthority
+VTE_VERSION=5202
+VMR_MODE_FLAG=64
+VERDI_HOME=/home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LOG_FILE=comp_log
+VCS_HOME=/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH_OVERRIDE=linux
+VCS_ARCH=linux64
+UNAME=/bin/uname
+TOOL_HOME=/home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64
+TEXTDOMAINDIR=/usr/share/locale/
+TEXTDOMAIN=im-config
+TB_DIR=/home/soke/ICdesign/base/sim/../tb
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+SSH_AGENT_PID=2097
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+SNPS_VCS_INTERNAL_UBUNTU_PRE_LDFLAGS= -no-pie 
+SIM_DIR=/home/soke/ICdesign/base/sim
+SESSION_MANAGER=local/ubuntu:@/tmp/.ICE-unix/2132,unix/ubuntu:/tmp/.ICE-unix/2132
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+RTL_DIR=/home/soke/ICdesign/base/sim/../rtl
+QT_IM_MODULE=xim
+QT_ACCESSIBILITY=1
+QT4_IM_MODULE=xim
+P9K_TTY=old
+P9K_SSH=0
+OVA_UUM=0
+NO_PROXY=localhost,127.0.0.0/8,::1
+NOVAS_HOME=/home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2
+MODULE=spi
+MFLAGS=
+MANAGERPID=1848
+MAKE_TERMOUT=/dev/pts/3
+MAKE_TERMERR=/dev/pts/3
+MAKELEVEL=1
+MAKEFLAGS=
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+LC_ALL=C
+JOURNAL_STREAM=9:56210
+INVOCATION_ID=5a007fe4323d46908812f8f071f4d2c7
+IM_CONFIG_PHASE=2
+HTTP_PROXY=http://127.0.0.1:7890/
+HTTPS_PROXY=http://127.0.0.1:7890/
+GTK_MODULES=gail:atk-bridge
+GTK_IM_MODULE=ibus
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+GNOME_TERMINAL_SERVICE=:1.136
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/08ff7fb5_3536_42d6_b3cd_221f5fe79c16
+GNOME_SHELL_SESSION_MODE=ubuntu
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GJS_DEBUG_OUTPUT=stderr
+GDM_LANG=en_US
+GDMSESSION=ubuntu
+DESKTOP_SESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+COLORTERM=truecolor
+CLUTTER_IM_MODULE=xim
+AUTOJUMP_SOURCED=1
+AUTOJUMP_ERROR_PATH=/home/soke/.local/share/autojump/errors.log
+ALL_PROXY=socks://127.0.0.1:7890/
+0
+6
+1658386434 /home/soke/ICdesign/base/sim/../rtl/spi/spi_apb_if.sv
+1658386816 /home/soke/ICdesign/base/sim/../tb/spi/spi_apb_if_tb.sv
+1658373729 /home/soke/ICdesign/base/sim/../rtl/spi/filelist.f
+1658382974 /home/soke/ICdesign/base/sim/../tb/spi/filelist.f
+1550753332 /home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+1551421246 /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
+4
+1551422344 /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvirsim.so
+1551421792 /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/liberrorinf.so
+1551421768 /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so
+1551421789 /home/soke/software/synopsis2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvfs.so
+1658387059 simv.daidir
+-1 partitionlib

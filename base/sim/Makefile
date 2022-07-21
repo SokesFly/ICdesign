@@ -13,7 +13,8 @@
 
 
 # MODULE          :=ft-d2000-pmu
-MODULE          :=ahb2apb
+# MODULE          :=ahb2apb
+MODULE          :=spi
 
 # Define project dir
 SIM_DIR         :=$(shell pwd)
@@ -51,7 +52,7 @@ sim: elab
 	./simv -l run_log
 
 verdi:
-	verdi -nologo ${SRCS} -ssf tb.fsdb
+	verdi -sv -nologo ${SRCS} -ssf tb.fsdb
 
 clean:
 	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog comp_log
