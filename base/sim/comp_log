@@ -1,0 +1,16 @@
+
+Warning-[LINX_KRNL] Unsupported Linux kernel
+  Linux kernel '5.4.0-122-generic' is not supported.
+  Supported versions are 2.4* or 2.6*.
+
+Command: vcs -cpp -cc -full64 -debug_acc+all -sverilog -nc -l comp_log +v2k -j16 \
+-M +memcbk +warn=all -kdb -LDFLAGS -Wl,--no-as-needed -timescale=1ns/1ns +notimingcheck \
++nospecify -f /home/more/ICdesign/base/sim/../tb/ahb2apb/filelist.f -f /home/more/ICdesign/base/sim/../rtl/ahb2apb/filelist.f \
+
+Parsing design file '/home/more/ICdesign/base/sim/../tb/ahb2apb/ahb2apb_tb.v'
+Parsing design file '/home/more/ICdesign/base/sim/../rtl/ahb2apb/ahb2apb.v'
+
+Error-[NM] No modules defined
+  No modules defined in current design file(s).  
+
+1 error
