@@ -8,15 +8,10 @@ localparam                 PERIOD    = 20 ;
 reg                        clk_i          ;
 reg                        resetn_i       ;
 
-enum  {IDLE = 'd0, SETUP, ACCESS} fsm  ;
+enum  {IDLE = 'd0, SETUP, ACCESS} fsmc,fsmn;
 
 // IF transfer long drawm,value is 1'1 ,or 1'b0
 wire                       transfer    ;
-
-wire                       go_idle     ;
-wire                       go_setup    ;
-wire                       go_access   ;
-
 // AHB interface
 reg  [ADDR_WIDE-1 :0]      paddr_i     ;
 reg                        pwrite_i    ;
@@ -45,68 +40,86 @@ end
 
 // Dump wavm
 initial begin
-   $fsdbDumpfile("tb.fsdb");
-   $fsdbDumpvars(0, "spi_apb_if_tb");
+    $fsdbDumpfile("tb.fsdb");
+    $fsdbDumpvars(0, "spi_apb_if_tb");
 end
 
-// FSM jump
-assign            transfer  = 1'b1;
-assign            go_idle   = (fsm == ACCESS) && (pready_o) && (!transfer);
-assign            go_setup  = (fsm == IDLE  ) && (transfer) || (fsm == ACCESS) || (transfer);
-assign            go_access = (fsm == SETUP ) ;
+assign                      transfer = 1'b1;
 
-// FSM condition control
-always@(posedge clk_i or negedge resetn_i) 
+// FSM status jump
+always@(posedge clk_i or negedge resetn_i)
 begin
     if(!resetn_i) begin
-       fsm <= IDLE;
+        fsmc <= IDLE ;
     end
     else begin
-        case(fsm)
-            IDLE:    begin
-                        if(go_setup) begin
-                            fsm <= SETUP;
+        fsmc <= fsmn ;
+    end
+end
+
+// FSM stats control
+always@(*)
+begin
+    case(fsmc)
+        IDLE:       begin
+                        if(transfer) begin
+                            fsmn <= SETUP;
                         end
                         else begin
-                            fsm <= IDLE;
+                            fsmn <= IDLE;
                         end
-                     end
+                    end
 
-            SETUP:   begin
-                        if(go_access) begin
-                            fsm <= ACCESS;
+        SETUP:      begin
+                        fsmn <= ACCESS;
+                    end
+        ACCESS:     begin
+                        if(pready_o && transfer) begin
+                            fsmn <= SETUP;
                         end
-                        else begin
-                            fsm <= SETUP;
+                        else if((pready_o && !transfer) || (!pready_o)) begin
+                            fsmn <= IDLE;
                         end
-                     end
+                    end
+        default:    begin fsmn <= IDLE; end
+    endcase
+end
 
-            ACCESS:  begin
-                        if(go_idle) begin
-                            fsm <= IDLE;
-                        end
-                        else if(go_setup) begin
-                            fsm <= SETUP;
-                        end
-                        else begin
-                            fsm <= ACCESS;
-                        end
-                     end
-
-            default: begin fsm <= IDLE; end
-
-        endcase
+// FSM output , enable signal control
+always@(posedge clk_i or negedge resetn_i)
+begin
+    if(!resetn_i) begin
+        penable_i <= 1'b0;
+    end
+    else if(fsmn == SETUP || fsmn == IDLE) begin
+        penable_i <= 1'b0;
+    end
+    else if(fsmn == ACCESS) begin
+        penable_i <= 1'b1;
     end
 end
 
 // FSM output , write or read
 always@(posedge clk_i or negedge resetn_i)
 begin
-   if(!resetn_i) begi
-    
-   end
-   else begin
-   end
+    if(!resetn_i) begin
+        pwdata_i <= 32'd0 ;
+        pwrite_i <= 1'b0  ;
+        paddr_i  <= 32'd0 ;
+        psel_i   <= 1'b0  ;
+    end
+    else if(fsmn == IDLE) begin
+        pwdata_i <= 32'd0 ;
+        pwrite_i <= 1'b0  ;
+        paddr_i  <= 32'd0 ;
+        psel_i   <= 1'b0  ;
+    end
+    else if(fsmn == SETUP) begin
+        pwdata_i <= {$random} % 32'h0FF0_FFFF ;
+        pwrite_i <= {$random} % 1 ;
+        paddr_i  <= {$random} % 1024 ;
+        psel_i   <= 1'b1 ;
+    end
 end
 
 spi_apb_if      #(
