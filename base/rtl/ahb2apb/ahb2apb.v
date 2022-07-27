@@ -7,7 +7,7 @@
 module ahb2apb #(
     parameter                               ADDR_WIDTH    = 32,
     parameter                               HBURST_WIDTH  = 3 ,
-    parameter                               HPROT_WIDTH   = 0 ,  // 0 or 4 or 7
+    parameter                               HPROT_WIDTH   = 4 ,  // 0 or 4 or 7
     parameter                               DATA_WIDTH    = 32   // 8,16,32,64,128,256.512,1024
     )
     (
@@ -114,7 +114,7 @@ begin
     if(!presetn_i) begin
         hready_o <= 1'b0;
     end
-    else if(apbfsm_c ==  APB_ACCESS && pready_i) begin
+    else if(apbfsm_n ==  APB_IDLE || apbfsm_n == APB_SETUP) begin
         hready_o <= 1'b1;
     end
 end

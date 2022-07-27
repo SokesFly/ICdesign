@@ -11,6 +11,10 @@ module              ahb2apb_tb();
 reg                 clk         ;
 reg                 reset       ;
 
+// AHB dut signals 
+wire                hready_o    ;
+wire                hreadyout_o ;
+
 // AHB master fsm 
 enum    {AHB_ADDR_PHASE='d0, AHB_DATA_PHASE} ahbfsm_c, ahbfsm_n;
 
@@ -52,6 +56,52 @@ begin
     end
 end
 
+// AHB fsm stat jump
+always@(*)
+begin
+    if(!reset) begin
+        ahbfsm_n <= AHB_ADDR_PHASE;
+    end
+    else begin
+        case(ahbfsm_c)
+            AHB_ADDR_PHASE:         begin
+                                        if(hready_o) begin
+                                            ahbfsm_n <= AHB_DATA_PHASE;
+                                        end
+                                        else begin
+                                            ahbfsm_n <= AHB_ADDR_PHASE;
+                                        end
+                                    end
+            AHB_DATA_PHASE:         begin
+                                        if(hready_o) begin
+                                            ahbfsm_n <= AHB_ADDR_PHASE;
+                                        end
+                                        else begin
+                                            ahbfsm_n <= AHB_DATA_PHASE;
+                                        end
+                                    end
+
+            default: begin ahbfsm_n <= AHB_ADDR_PHASE; end
+        endcase
+    end
+
+end
+
+// AHB fsm master signals output
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        haddr_i     <= 32'd0;
+        hburst_i    <= `AHB_BRUST_IDLE;
+        hsel_i      <= 1'b0;
+        hprot_i     <= 4'b000;
+        //hsize_i     <= 
+    end
+    else if(ahbfsm_n == AHB_ADDR_PHASE) begin
+    end
+    else if(ahbfsm_n == AHB_DATA_PHASE) begin
+    end
+end
 
 ahb2apb           #(
     .ADDR_WIDTH   (32          ),
