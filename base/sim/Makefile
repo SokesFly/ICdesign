@@ -12,10 +12,10 @@
 #*************************************************************************************/
 
 
-# MODULE          :=ft-d2000-pmu
+#  MODULE          :=ft-d2000-pmu
 # MODULE          :=ahb2apb
 # MODULE          :=spi
-MODULE          :=ahb2apb
+ MODULE          :=ahb2apb
 
 # Define project dir
 SIM_DIR         :=$(shell pwd)
@@ -53,6 +53,7 @@ sim: elab
 	./simv -l run_log
 
 verdi:
+	cp ../../novas.rc .
 	verdi -sv -nologo ${SRCS} -ssf tb.fsdb
 
 clean:
