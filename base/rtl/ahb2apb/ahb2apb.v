@@ -1,8 +1,8 @@
 `default_nettype wire
-`define   AHB_BRUST_IDLE    2'b00
-`define   AHB_BRUST_BUSY    2'b01
-`define   AHB_BRUST_NONSEQ  2'b10
-`define   AHB_BRUST_SEQ     2'b11
+`define   AHB_HTRANS_IDLE    2'b00
+`define   AHB_HTRANS_BUSY    2'b01
+`define   AHB_HTRANS_NONSEQ  2'b10
+`define   AHB_HTRANS_SEQ     2'b11
 
 module ahb2apb #(
     parameter                               ADDR_WIDTH    = 32,
@@ -83,7 +83,7 @@ begin
                             end
 
             APB_SETUP:      begin
-                                if(htrans_i != `AHB_BRUST_IDLE) begin
+                                if(htrans_i != `AHB_HTRANS_IDLE) begin
                                     apbfsm_n <= APB_ACCESS;
                                 end
                                 else begin
@@ -95,7 +95,7 @@ begin
                                 if(!pready_i) begin
                                     apbfsm_n <= APB_ACCESS;
                                 end
-                                else if(htrans_i == `AHB_BRUST_IDLE) begin
+                                else if(htrans_i == `AHB_HTRANS_IDLE) begin
                                     apbfsm_n <= APB_IDLE;
                                 end
                                 else begin

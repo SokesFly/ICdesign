@@ -1,22 +1,78 @@
-
 `default_nettype wire
-`define   AHB_BRUST_IDLE    2'b00
-`define   AHB_BRUST_BUSY    2'b01
-`define   AHB_BRUST_NONSEQ  2'b10
-`define   AHB_BRUST_SEQ     2'b11
+// Declare AHB bus transfer type.
+`define   AHB_HTRANS_IDLE    2'b00
+`define   AHB_HTRANS_BUSY    2'b01
+`define   AHB_HTRANS_NONSEQ  2'b10
+`define   AHB_HTRANS_SEQ     2'b11
 
-module              ahb2apb_tb();
+// Declare AHB bus burst transfer type.
+`define   AHB_HBURST_SINGLE  3'b000
+`define   AHB_HBURST_INCR    3'b001
+`define   AHB_HBURST_WRAP4   3'b010
+`define   AHB_HBURST_INCR4   3'b011
+`define   AHB_HBURST_WRAP8   3'b100
+`define   AHB_HBURST_INCR8   3'b101
+`define   AHB_HBURST_WRAP16  3'b110
+`define   AHB_HBURST_INCR16  3'b111
+
+module                  ahb2apb_tb();
+
+parameter               ADDR_WIDTH      = 32;
+parameter               HBURST_WIDTH    = 2;
+parameter               HPROT_WIDTH     = 4;
+parameter               DATA_WIDTH      = 32;
+
+// counter for record AHB transfer times
+reg  [15            :0] transfer_times  ;
 
 // clock
-reg                 clk         ;
-reg                 reset       ;
+reg                     clk             ;
+reg                     reset           ;
 
 // AHB dut signals 
-wire                hready_o    ;
-wire                hreadyout_o ;
+reg  [ADDR_WIDTH-1  :0] haddr_i         ;
+reg  [HBURST_WIDTH-1:0] hburst_i        ;
+reg                     hmastlock_i     ;
+reg                     hsel_i          ;
+reg  [HPROT_WIDTH-1 :0] hprot_i         ;
+reg  [2             :0] hsize_i         ;
+reg                     hnonsec_i       ;
+reg                     hexcl_i         ;
+reg  [1             :0] htrans_i        ;
+reg                     hmaster_i       ;
+reg  [DATA_WIDTH-1  :0] hwdata_i        ;
+reg  [DATA_WIDTH/8-1:0] hwstrb_i        ;
+reg                     hwrite_i        ;
+wire [DATA_WIDTH-1  :0] hrdata_o        ;
+wire                    hready_o        ;
+wire                    hreadyout_o     ;
+wire                    hresp_o         ;
+wire                    hexokay_o       ;
 
-// AHB master fsm 
-enum    {AHB_ADDR_PHASE='d0, AHB_DATA_PHASE} ahbfsm_c, ahbfsm_n;
+// APB interface signals declare
+wire [ADDR_WIDTH-1  :0] paddr_o         ;
+wire                    psel_o          ;
+wire                    penabe_o        ;
+wire [DATA_WIDTH-1  :0] pwdata_o        ;
+reg  [DATA_WIDTH-1  :0] prdata_i        ;
+reg                     pready_i        ;
+
+
+// AHB master fsm
+reg  [ADDR_WIDTH-1  :0] haddr_wrap_fixed;
+reg  [ADDR_WIDTH-1  :0] wrap_width      ;
+wire [ADDR_WIDTH-1  :0] wrap_addr_start ;
+wire [ADDR_WIDTH-1  :0] wrap_addr_end   ;
+wire [ADDR_WIDTH-1  :0] down_half       ;
+wire [ADDR_WIDTH-1  :0] upper_half      ;
+reg  [ADDR_WIDTH-1  :0] wrap_offset     ;
+
+reg                     ending_of_trans     ;
+reg                     ahb_trans_last_flag ;
+
+enum    {AHB_IDLE='d0, AHB_ADDR_PHASE, AHB_DATA_PHASE} ahbfsm_reg, ahbfsm_next;
+enum    {AHB_TRANS_FIRST='d0, AHB_TRANS_MIDDLE, AHB_TRANS_LAST} ahbfsm_trans_reg,ahbfsm_trans_next;
+enum    {APB_IDLE='d0, APB_SETUP, APB_ACCESS} apbfsm_reg, apbfsm_next;
 
 // generate clock and reset
 initial begin
@@ -33,9 +89,23 @@ initial begin
     reset = 1'b0;
     #100
     reset = 1'b1;
-    // finished simulation
-    #(20*1000)
-    $finish;
+end
+
+// Wait signal to ending the simulation
+initial begin
+    wait(transfer_times == 16'h0F) begin
+        $finish;
+    end
+end
+
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        transfer_times = 16'h00;
+    end
+    else if(ending_of_trans) begin
+        transfer_times <= transfer_times + 16'h01;
+    end
 end
 
 // Verdi Dump
@@ -45,14 +115,63 @@ initial begin
     $fsdbDumpMDA(0, "ahb2apb_tb");
 end
 
+// AHB trasnfer type fsm state jump
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        ahbfsm_trans_reg    <= AHB_TRANS_FIRST;
+    end
+    else begin
+        ahbfsm_trans_reg    <= ahbfsm_trans_next;
+    end
+end
+
+// AHB transfer type fsm state control
+always@(*)
+begin
+    if(!reset) begin
+        ahbfsm_trans_next    <= AHB_TRANS_FIRST;
+    end
+    else begin
+        case(ahbfsm_trans_reg)
+            AHB_TRANS_FIRST:        begin
+                                        if(ahbfsm_next == AHB_ADDR_PHASE && hready_o) begin
+                                            ahbfsm_trans_next <= AHB_TRANS_MIDDLE;
+                                        end
+                                        else begin
+                                            ahbfsm_trans_next <= AHB_TRANS_FIRST;
+                                        end
+                                    end
+
+            AHB_TRANS_MIDDLE:       begin
+                                        if(ahbfsm_next == AHB_ADDR_PHASE && hready_o && ahb_trans_last_flag) begin
+                                            ahbfsm_trans_next <= AHB_TRANS_LAST;
+                                        end
+                                        else begin
+                                            ahbfsm_trans_next <= AHB_TRANS_MIDDLE;
+                                        end
+                                    end
+
+            AHB_TRANS_LAST:         begin
+                                        if(ahbfsm_next == AHB_ADDR_PHASE && hready_o) begin
+                                            ahbfsm_trans_next <= AHB_TRANS_FIRST;
+                                        end
+                                        else begin
+                                            ahbfsm_trans_next <= AHB_TRANS_LAST;
+                                        end
+                                    end
+        endcase
+    end
+end
+
 // AHB fsm state transfer
 always@(posedge clk or negedge reset)
 begin
     if(!reset) begin
-        ahbfsm_c <= AHB_ADDR_PHASE;
+        ahbfsm_reg <= AHB_IDLE;
     end
     else begin
-        ahbfsm_c <= ahbfsm_n;
+        ahbfsm_reg <= ahbfsm_next;
     end
 end
 
@@ -60,54 +179,152 @@ end
 always@(*)
 begin
     if(!reset) begin
-        ahbfsm_n <= AHB_ADDR_PHASE;
+        ahbfsm_next <= AHB_ADDR_PHASE;
     end
     else begin
-        case(ahbfsm_c)
-            AHB_ADDR_PHASE:         begin
-                                        if(hready_o) begin
-                                            ahbfsm_n <= AHB_DATA_PHASE;
+        case(ahbfsm_reg)
+            AHB_IDLE:               begin
+                                        if(transfer_times != 16'h0F) begin
+                                            ahbfsm_next <= AHB_ADDR_PHASE;
                                         end
                                         else begin
-                                            ahbfsm_n <= AHB_ADDR_PHASE;
+                                            ahbfsm_next <= AHB_IDLE;
+                                        end
+                                    end
+            AHB_ADDR_PHASE:         begin
+                                        if(hready_o) begin
+                                            ahbfsm_next <= AHB_DATA_PHASE;
+                                        end
+                                        else begin
+                                            ahbfsm_next <= AHB_ADDR_PHASE;
                                         end
                                     end
             AHB_DATA_PHASE:         begin
-                                        if(hready_o) begin
-                                            ahbfsm_n <= AHB_ADDR_PHASE;
+                                        if(hready_o && ending_of_trans) begin
+                                            ahbfsm_next <= AHB_IDLE;
                                         end
-                                        else begin
-                                            ahbfsm_n <= AHB_DATA_PHASE;
+                                        else if(hready_o && !ending_of_trans) begin
+                                            ahbfsm_next <= AHB_ADDR_PHASE;
+                                        end
+                                        else if(!hready_o) begin
+                                            ahbfsm_next <= AHB_DATA_PHASE;
                                         end
                                     end
 
-            default: begin ahbfsm_n <= AHB_ADDR_PHASE; end
+            default: begin ahbfsm_next <= AHB_ADDR_PHASE; end
         endcase
     end
-
 end
 
-// AHB fsm master signals output
+// AHB fsm master signals output: hburst_i
 always@(posedge clk or negedge reset)
 begin
     if(!reset) begin
-        haddr_i     <= 32'd0;
-        hburst_i    <= `AHB_BRUST_IDLE;
-        hsel_i      <= 1'b0;
-        hprot_i     <= 4'b000;
-        //hsize_i     <= 
+        hburst_i    <= `AHB_HTRANS_IDLE;
     end
-    else if(ahbfsm_n == AHB_ADDR_PHASE) begin
+    else if(ahbfsm_next == AHB_IDLE) begin
+        hburst_i    <= `AHB_HTRANS_IDLE;
     end
-    else if(ahbfsm_n == AHB_DATA_PHASE) begin
+    else if(ahbfsm_trans_next == AHB_TRANS_FIRST) begin
+        hburst_i    <= {$random} % 4;
+    end
+end
+
+assign          wrap_addr_start = (ahbfsm_trans_next == AHB_TRANS_FIRST) ? ( haddr_i - down_half ) : 32'd0;
+assign          down_half       = (haddr_i >> (wrap_width));
+assign          upper_half      = (wrap_width - down_half);
+
+always@(hsize_i)
+begin
+    case(hburst_i)
+        `AHB_HBURST_WRAP4:      begin
+                                    wrap_width     <= ((1 << ( hsize_i + 3)) << 2);
+                                end
+        `AHB_HBURST_WRAP8:      begin
+                                    wrap_width     <= ((1 << ( hsize_i + 3)) << 3);
+                                end
+        `AHB_HBURST_WRAP16:     begin
+                                    wrap_width     <= ((1 << ( hsize_i + 3)) << 4);
+                                end
+        default:                begin
+                                    wrap_width     <= 32'd0;
+                                end
+    endcase
+end
+
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        haddr_i     <= 'd0;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANS_FIRST) begin
+        haddr_i     <= 32'h0000_000C;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
+        case(hburst_i)
+            `AHB_HBURST_SINGLE: begin
+                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                end
+            `AHB_HBURST_INCR:   begin
+                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                end
+            `AHB_HBURST_INCR4:  begin
+                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                end
+            `AHB_HBURST_WRAP4:  begin
+                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
+                                        haddr_i  <= wrap_addr_start;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    end
+                                end
+            `AHB_HBURST_INCR8:  begin
+                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                end
+            `AHB_HBURST_WRAP8:  begin
+                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
+                                        haddr_i  <= wrap_addr_start;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    end
+                                end
+            `AHB_HBURST_INCR16: begin
+                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                end
+            `AHB_HBURST_WRAP16: begin
+                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
+                                        haddr_i  <= wrap_addr_start;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    end
+                                end
+        endcase
+    end
+end
+
+
+// AHB Brust transfer end.
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        ending_of_trans <= 1'b0;
+    end
+    else if(ahbfsm_next == AHB_IDLE) begin
+        ending_of_trans <= 1'b0;
+    end
+    else if(ahbfsm_next == AHB_DATA_PHASE) begin
+        ending_of_trans <= 1'b0;
     end
 end
 
 ahb2apb           #(
-    .ADDR_WIDTH   (32          ),
-    .HBURST_WIDTH (3           ),
-    .HPROT_WIDTH  (0           ),
-    .DATA_WIDTH   (32          )
+    .ADDR_WIDTH   (ADDR_WIDTH  ),
+    .HBURST_WIDTH (HBURST_WIDTH),
+    .HPROT_WIDTH  (HPROT_WIDTH ),
+    .DATA_WIDTH   (DATA_WIDTH  )
     )
     ahb2apb_i
     (
