@@ -1,0 +1,21 @@
+FONTSETTING:DEFAULT
+tfgGenerate -ref "ahb2apb_tb.ahb_trans_last_flag#700#T"  -incr -startWithStmt -schFG
+tfgSetOption :win: -activeNodeOnly off
+tfgSetOption :win: -activeDataNodeOnly off
+tfgSetOption :win: -valueXNodeOnly off
+tfgSetOption :win: -hierName off
+tfgSetOption :win: -sigName on
+tfgSetOption :win: -sigValue on
+tfgSetOption :win: -portName on
+tfgSetOption :win: -showTip off
+tfgSetOption :win: -showHoldCycles off
+tfgSetOption :win: -showDetailsOfHold off
+tfgSetOption :win: -syncWithNWave off
+tfgSetOption :win: -pan on
+tfgSetOption :win: -annotatInColor off
+tfgSetOption :win: -powerCellName off
+tfgSetOption :win: -displayGlitch off
+tfgFolderClick  :win: -folder "ahb2apb_tb.ahb_trans_last_flag#700#T"
+tfgSetOption :win: -showSrcOnTip off
+tfgSetOption :win: -showNSchema off
+tfgSetOption :win: -showNWave off

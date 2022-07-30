@@ -1,0 +1,100 @@
+{
+    "Modules": {
+        "ahb2apb_tb": {
+            "Compiled Times": 17,
+            "start_perf": [
+                0.21649289131164551,
+                0.00033599999999999998,
+                0.0,
+                324588,
+                324588,
+                1659189284.9683249,
+                20549730621188
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "significant_routs": [
+                [
+                    6,
+                    "R_VCSgd_E9dbv_6",
+                    3615744,
+                    1511,
+                    151
+                ],
+                [
+                    10,
+                    "R_VCSgd_E9dbv_a",
+                    3662065,
+                    3463,
+                    363
+                ],
+                [
+                    32,
+                    "R_VCSgd_E9dbv_20",
+                    3370784,
+                    2844,
+                    273
+                ]
+            ],
+            "end_perf": [
+                0.25197196006774902,
+                0.025773999999999998,
+                0.0085909999999999997,
+                326532,
+                326532,
+                20549843783369,
+                12884901889,
+                0
+            ],
+            "nMops": 4548,
+            "nRouts": 249,
+            "nQuads": 2163
+        }
+    },
+    "CompUnits": {
+        "E9dbv_d": {
+            "text": 44383,
+            "mod": "ahb2apb_tb",
+            "out": "E9dbv_d.o",
+            "bytes": 81070,
+            "mode": 4,
+            "checksum": 0,
+            "archive": "archive.16/_25311_archive_1.a"
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "archive": "archive.16/_25311_archive_1.a",
+            "objects": [
+                [
+                    "E9dbv_d.o",
+                    81070
+                ]
+            ],
+            "size": 81070
+        }
+    ],
+    "stat": {
+        "peak_mem_kb": 326532,
+        "ru_self_end": {
+            "ru_stime_sec": 0.0086239999999999997,
+            "ru_utime_sec": 0.025871999999999999,
+            "ru_nivcsw": 15,
+            "ru_maxrss_kb": 59232,
+            "ru_majflt": 0,
+            "ru_minflt": 2082,
+            "ru_nvcsw": 0
+        },
+        "ru_childs_end": {
+            "ru_stime_sec": 0.0,
+            "ru_utime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_maxrss_kb": 0,
+            "ru_majflt": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0
+        },
+        "cpu_cycles_end": 20549844138217
+    }
+}

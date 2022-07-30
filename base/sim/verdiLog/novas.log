@@ -1,0 +1,30 @@
+Verdi (R)
+
+Release Verdi_O-2018.09-SP2 for (RH Linux x86_64/64bit) -- Thu Feb 21 04:40:56 PDT 2019
+
+Copyright (c) 1999 - 2019 Synopsys, Inc.
+This software and the associated documentation are proprietary to Synopsys, Inc. 
+This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc. 
+All other use, reproduction, or distribution of this software is strictly prohibited.
+
+
+Total number of converted HDL2CELL cells=0 (normal modules=0)
+Inferring module ahb2apb_tb, file /home/soke/ICdesign/base/sim/../tb/ahb2apb/ahb2apb_tb.v, line 18~469 (Verilog)
+
+
+Module ahb2apb_tb, File /home/soke/ICdesign/base/sim/../tb/ahb2apb/ahb2apb_tb.v, Line 18~469, Total error(s) 0, warning(s) 3
+
+
+Verdi design analysis: total error(s) 0, total warning(s) 3.
+---- Any errors/warnings, please refer to file /home/soke/ICdesign/base/sim/verdiLog/novas.log -----------------------
+Inferring module reset_syncer, file /home/soke/ICdesign/base/sim/../tb/ahb2apb/reset_syncer.v, line 14~36 (Verilog)
+
+
+Verdi design analysis: total error(s) 0, total warning(s) 0.
+[Symbol Library from default setting]
+  library Path = /home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/symlib/64
+  library Name = default_u
+[Symbol Library from manual setting]
+  There are 0 library path(s) and 0 library name(s):
+
+

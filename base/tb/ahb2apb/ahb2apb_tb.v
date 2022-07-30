@@ -63,11 +63,15 @@ reg                     pready_i        ;
 reg  [ADDR_WIDTH-1  :0] haddr_wrap_fixed;
 reg  [ADDR_WIDTH-1  :0] wrap_width      ;
 reg  [ADDR_WIDTH-1  :0] wrap_single     ;
+wire [ADDR_WIDTH-1  :0] addr_single     ;
 wire [ADDR_WIDTH-1  :0] wrap_addr_start ;
 wire [ADDR_WIDTH-1  :0] wrap_addr_end   ;
 wire [ADDR_WIDTH-1  :0] down_half       ;
 wire [ADDR_WIDTH-1  :0] upper_half      ;
-reg  [ADDR_WIDTH-1  :0] wrap_offset     ;
+reg  [ADDR_WIDTH-1  :0] wrap_upper_offset     ;
+reg  [ADDR_WIDTH-1  :0] wrap_down_offset      ;
+reg  [3             :0] wrap_step       ;
+reg  [3             :0] wrap_step_cnt   ;
 
 reg                     ending_of_trans     ;
 reg                     ahb_trans_last_flag ;
@@ -241,12 +245,39 @@ begin
     end
 end
 
-assign          wrap_addr_start = (ahbfsm_trans_next == AHB_TRANS_FIRST) ? haddr_i : wrap_addr_start;
-assign          wrap_single     = ( 1 << ( hsize_i + 3) >> 3 );
-assign          down_half       = (haddr_i % wrap_width);
-assign          upper_half      = (wrap_width - down_half);
+assign          wrap_addr_start = (ahbfsm_trans_next == AHB_TRANS_MIDDLE && ahbfsm_trans_reg == AHB_TRANS_FIRST) ? ( haddr_i - down_half ): wrap_addr_start;
+assign          wrap_single     = (ahbfsm_trans_next == AHB_TRANS_MIDDLE) ? (1 << ( hsize_i + 3) >> 3) : 'd0 ;
+assign          down_half       = (ahbfsm_trans_next == AHB_TRANS_MIDDLE && ahbfsm_trans_reg == AHB_TRANS_FIRST) ? (haddr_i % wrap_width) : down_half;
+assign          upper_half      = (ahbfsm_trans_next == AHB_TRANS_MIDDLE && ahbfsm_trans_reg == AHB_TRANS_FIRST) ? (wrap_width - down_half) : upper_half;
+assign          addr_single     = wrap_single;
 
-always@(hsize_i or hburst_i)
+always@(*)
+begin
+    if(!reset) begin
+        wrap_step <= 4'h0;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE && ahbfsm_trans_reg == AHB_TRANS_FIRST) begin
+        case(hburst_i)
+        `AHB_HBURST_WRAP4:      begin
+                                    wrap_step <= 4'h4;
+                                end
+        `AHB_HBURST_WRAP8:      begin
+                                    wrap_step <= 4'h8;
+                                end
+        `AHB_HBURST_WRAP16:     begin
+                                    wrap_step <= 4'hF;
+                                end
+        default:                begin
+                                    wrap_step <= 4'h0;
+                                end
+        endcase
+    end
+    else begin
+        wrap_step <= wrap_step ;
+    end
+end
+
+always@(hsize_i or hburst_i or wrap_single)
 begin
     case(hburst_i)
         `AHB_HBURST_WRAP4:      begin
@@ -259,7 +290,7 @@ begin
                                     wrap_width     <= (wrap_single << 4);
                                 end
         default:                begin
-                                    wrap_width     <= 32'hFFFF_FFFF;
+                                    wrap_width     <= 32'h0000_0000;
                                 end
     endcase
 end
@@ -277,13 +308,43 @@ end
 always@(posedge clk or negedge reset)
 begin
     if(!reset) begin
-        wrap_offset <= 'd0;
+        wrap_upper_offset <= 'd0;
+        wrap_down_offset  <= 'd0;
     end
-    else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
-        wrap_offset <= wrap_offset + wrap_single;
+    else if(ahbfsm_trans_next == AHB_TRANS_FIRST && ahbfsm_trans_reg == AHB_TRANS_IDLE) begin
+        wrap_upper_offset <= 'd0;
+        wrap_down_offset  <= 'd0;
+    end
+    else if((ahbfsm_trans_next == AHB_TRANS_MIDDLE) && (upper_half - wrap_single <= wrap_upper_offset)) begin
+        wrap_down_offset <= wrap_down_offset + wrap_single;
+    end
+    else begin
+        wrap_upper_offset <= wrap_upper_offset + wrap_single;
     end
 end
 
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        wrap_step_cnt <= 4'h0;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
+        wrap_step_cnt <= 4'h1 + wrap_step_cnt;
+    end
+end
+
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        ahb_trans_last_flag <= 1'b0;
+    end
+    else if(wrap_step_cnt < wrap_step) begin
+        ahb_trans_last_flag <= 1'b0;
+    end
+    else if(wrap_step_cnt >= wrap_step - 1) begin
+        ahb_trans_last_flag <= 1'b1;
+    end
+end
 
 always@(posedge clk or negedge reset)
 begin
@@ -291,47 +352,47 @@ begin
         haddr_i     <= 'd0;
     end
     else if(ahbfsm_trans_next == AHB_TRANS_FIRST) begin
-        haddr_i     <= 32'h0000_0024;
+        haddr_i     <= 32'h0000_002c;
     end
     else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
         case(hburst_i)
             `AHB_HBURST_SINGLE: begin
-                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    haddr_i  <= haddr_i + addr_single;
                                 end
             `AHB_HBURST_INCR:   begin
-                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    haddr_i  <= haddr_i + addr_single;
                                 end
             `AHB_HBURST_INCR4:  begin
-                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    haddr_i  <= haddr_i + addr_single;
                                 end
             `AHB_HBURST_WRAP4:  begin
-                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
-                                        haddr_i  <= wrap_addr_start;
+                                    if(upper_half - wrap_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
                                     end
                                     else begin
-                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                        haddr_i  <= haddr_i + wrap_single;
                                     end
                                 end
             `AHB_HBURST_INCR8:  begin
-                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    haddr_i  <= haddr_i + addr_single;
                                 end
             `AHB_HBURST_WRAP8:  begin
-                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
-                                        haddr_i  <= wrap_addr_start;
+                                    if(upper_half - wrap_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
                                     end
                                     else begin
-                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                        haddr_i  <= haddr_i + wrap_single;
                                     end
                                 end
             `AHB_HBURST_INCR16: begin
-                                    haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                    haddr_i  <= haddr_i + addr_single;
                                 end
             `AHB_HBURST_WRAP16: begin
-                                    if(wrap_width <= wrap_addr_start + wrap_offset) begin
-                                        haddr_i  <= wrap_addr_start;
+                                    if(upper_half - wrap_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
                                     end
                                     else begin
-                                        haddr_i  <= haddr_i + ((1 << (hsize_i+3)) >> 3);
+                                        haddr_i  <= haddr_i + wrap_single;
                                     end
                                 end
             default:            begin haddr_i <= 'd0; end

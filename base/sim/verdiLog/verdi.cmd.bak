@@ -1,0 +1,88 @@
+debImport "-sv" "-f" "/home/soke/ICdesign/base/sim/../tb/ahb2apb/filelist.f" "-f" \
+          "/home/soke/ICdesign/base/sim/../rtl/ahb2apb/filelist.f"
+debLoadSimResult /home/soke/ICdesign/base/sim/tb.fsdb
+wvCreateWindow
+wvRestoreSignal -win $_nWave2 "/home/soke/ICdesign/base/sim/signal.rc" \
+           -overWriteAutoAlias on -appendSignals on
+wvSetCursor -win $_nWave2 702.247984 -snap {("G4" 4)}
+wvSetCursor -win $_nWave2 660.837783 -snap {("G3" 3)}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "haddr_i" -line 34 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "transfer_times" -line 26 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave2
+wvSetPosition -win $_nWave2 {("G4" 5)}
+wvSetPosition -win $_nWave2 {("G4" 3)}
+wvSetPosition -win $_nWave2 {("G4" 2)}
+wvSetPosition -win $_nWave2 {("G4" 1)}
+wvSetPosition -win $_nWave2 {("G4" 0)}
+wvSetPosition -win $_nWave2 {("G3" 3)}
+wvSetPosition -win $_nWave2 {("G3" 2)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvSetPosition -win $_nWave2 {("G2" 2)}
+wvSetPosition -win $_nWave2 {("G2" 1)}
+wvSetPosition -win $_nWave2 {("G2" 0)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G2" 0)}
+wvSetPosition -win $_nWave2 {("G2" 1)}
+wvSelectSignal -win $_nWave2 {( "G1" 6 )} 
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ahb_trans_last_flag" -line 341 -pos 1 -win $_nTrace1
+wvSetPosition -win $_nWave2 {("G1" 0)}
+wvSetPosition -win $_nWave2 {("G1" 1)}
+wvSetPosition -win $_nWave2 {("G4" 5)}
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G3" 2)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvAddSignal -win $_nWave2 "/ahb2apb_tb/ahb_trans_last_flag"
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "wrap_step_cnt" -line 337 -pos 1 -win $_nTrace1
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvSetPosition -win $_nWave2 {("G1" 7)}
+wvSetPosition -win $_nWave2 {("G1" 8)}
+wvSetPosition -win $_nWave2 {("G2" 0)}
+wvSetPosition -win $_nWave2 {("G2" 1)}
+wvSetPosition -win $_nWave2 {("G2" 2)}
+wvSetPosition -win $_nWave2 {("G2" 3)}
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvAddSignal -win $_nWave2 "/ahb2apb_tb/wrap_step_cnt\[3:0\]"
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "wrap_step" -line 337 -pos 1 -win $_nTrace1
+wvSetPosition -win $_nWave2 {("G1" 0)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G2" 0)}
+wvSetPosition -win $_nWave2 {("G2" 1)}
+wvSetPosition -win $_nWave2 {("G2" 2)}
+wvSetPosition -win $_nWave2 {("G2" 3)}
+wvSetPosition -win $_nWave2 {("G3" 0)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G3" 2)}
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvAddSignal -win $_nWave2 "/ahb2apb_tb/wrap_step\[3:0\]"
+wvSetPosition -win $_nWave2 {("G3" 1)}
+wvSetPosition -win $_nWave2 {("G3" 2)}
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+srcDeselectAll -win $_nTrace1
+wvSetCursor -win $_nWave2 345.085004 -snap {("G3" 1)}
+wvSetCursor -win $_nWave2 327.830754 -snap {("G3" 2)}
+wvSetCursor -win $_nWave2 659.112358 -snap {("G3" 6)}
+srcDeselectAll -win $_nTrace1
+wvSetCursor -win $_nWave2 584.919082 -snap {("G3" 4)}
+wvSaveSignal -win $_nWave2 "/home/soke/ICdesign/base/sim/signal.rc"
+wvSetCursor -win $_nWave2 348.535854 -snap {("G3" 6)}
+wvZoom -win $_nWave2 224.305253 474.491881
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
