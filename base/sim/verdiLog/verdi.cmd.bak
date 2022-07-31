@@ -1,0 +1,22 @@
+debImport "-sv" "-f" "/home/soke/ICdesign/base/sim/../tb/ahb2apb/filelist.f" "-f" \
+          "/home/soke/ICdesign/base/sim/../rtl/ahb2apb/filelist.f"
+debLoadSimResult /home/soke/ICdesign/base/sim/tb.fsdb
+wvCreateWindow
+wvRestoreSignal -win $_nWave2 "/home/soke/ICdesign/base/sim/signal.rc" \
+           -overWriteAutoAlias on -appendSignals on
+wvSelectSignal -win $_nWave2 {( "G3" 1 )} 
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "transmited_cnt" -line 71 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "transmited_tgt" -line 70 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave2
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "transmit_complete" -line 63 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave2
+wvSetCursor -win $_nWave2 625.535121 -snap {("G3" 3)}
+wvSetCursor -win $_nWave2 660.601285 -snap {("G3" 1)}
+srcDeselectAll -win $_nTrace1
+wvSetCursor -win $_nWave2 618.748121 -snap {("G3" 1)}
+wvSetCursor -win $_nWave2 653.814285 -snap {("G3" 1)}

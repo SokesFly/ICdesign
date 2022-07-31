@@ -1,0 +1,14 @@
+*design* DebussyLib (btIdent Verdi_O-2018.09-SP2)
+Command arguments:
+    +define+verilog
+    -sv
+    -f /home/soke/ICdesign/base/sim/../tb/ahb2apb/filelist.f
+        /home/soke/ICdesign/base/sim/../tb/ahb2apb/ahb2apb_tb.v
+        /home/soke/ICdesign/base/sim/../tb/ahb2apb/reset_syncer.v
+    -f /home/soke/ICdesign/base/sim/../rtl/ahb2apb/filelist.f
+        /home/soke/ICdesign/base/sim/../rtl/ahb2apb/ahb2apb.v
+
+Highest level modules:
+ahb2apb_tb
+
+Total	0 error(s),   0 warning(s)

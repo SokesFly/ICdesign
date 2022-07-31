@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 30 2558 500 293 126
+viewPort 0 30 2558 558 293 126
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 2390.154991
-cursor 340.000000
+zoom 0.000000 6032.853211
+cursor 0.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 13
+markerPos 8
 
 ; event list
 ; addEvent event_name event_expression
@@ -51,15 +51,20 @@ addSignal -h 15 /ahb2apb_tb/clk
 addSignal -h 15 -holdScope reset_async
 addSignal -h 15 -holdScope reset
 addSignal -h 15 -holdScope hready_o
+addSignal -h 15 -holdScope ahb_trans_start
+addSignal -h 15 -holdScope go_ahb_start
+addSignal -h 15 -holdScope go_ahb_transmit
+addSignal -h 15 -holdScope transmit_complete
+addSignal -h 15 -holdScope go_ahb_end
+addSignal -h 15 -holdScope go_ahb_idle
 addSignal -h 15 -UNSIGNED -holdScope ahbfsm_trans_reg[31:0]
 addSignal -h 15 -UNSIGNED -holdScope ahbfsm_trans_next[31:0]
 addGroup "G2"
-addSignal -h 15 /ahb2apb_tb/haddr_i[31:0]
-addSignal -h 15 -holdScope transfer_times[15:0]
+addSignal -h 15 /ahb2apb_tb/transfer_times[15:0]
 addSignal -h 15 -holdScope hsize_i[2:0]
 addSignal -h 15 -holdScope hburst_i[2:0]
 addGroup "G3"
-addSignal -h 15 /ahb2apb_tb/transmited_cnt[15:0]
+addSignal -h 15 /ahb2apb_tb/haddr_i[31:0]
 addGroup "G4"
 addGroup "G5"
 

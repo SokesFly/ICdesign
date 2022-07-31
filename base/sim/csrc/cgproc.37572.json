@@ -1,0 +1,77 @@
+{
+    "Modules": {
+        "ahb2apb_tb": {
+            "nQuads": 3644,
+            "start_perf": [
+                0.24936199188232422,
+                0.00018799999999999999,
+                0.0,
+                324576,
+                324576,
+                1659265409.704433,
+                28246791922643
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "nMops": 7368,
+            "Compiled Times": 25,
+            "end_perf": [
+                0.29099798202514648,
+                0.030699000000000001,
+                0.0076740000000000003,
+                326520,
+                326520,
+                28246924843461,
+                12884901889,
+                0
+            ],
+            "nRouts": 218
+        }
+    },
+    "CompUnits": {
+        "E9dbv_d": {
+            "archive": "archive.24/_37572_archive_1.a",
+            "bytes": 69680,
+            "mod": "ahb2apb_tb",
+            "out": "E9dbv_d.o",
+            "text": 36415,
+            "mode": 4,
+            "checksum": 0
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "archive": "archive.24/_37572_archive_1.a",
+            "objects": [
+                [
+                    "E9dbv_d.o",
+                    69680
+                ]
+            ],
+            "size": 69680
+        }
+    ],
+    "stat": {
+        "peak_mem_kb": 326520,
+        "ru_self_end": {
+            "ru_maxrss_kb": 60924,
+            "ru_utime_sec": 0.030817000000000001,
+            "ru_nivcsw": 12,
+            "ru_stime_sec": 0.0077039999999999999,
+            "ru_majflt": 0,
+            "ru_minflt": 2558,
+            "ru_nvcsw": 0
+        },
+        "ru_childs_end": {
+            "ru_maxrss_kb": 0,
+            "ru_utime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_stime_sec": 0.0,
+            "ru_majflt": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0
+        },
+        "cpu_cycles_end": 28246925227781
+    }
+}
