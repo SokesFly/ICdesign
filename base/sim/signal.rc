@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 30 2558 448 293 222
+viewPort 0 30 3767 700 293 222
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/soke/ICdesign/base/sim/tb.fsdb"
+openDirFile -d / "" "/home/more/ICdesign/base/sim/tb.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 2490.000000
-cursor 660.000000
+zoom 0.000000 4747.000000
+cursor 1020.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 1
+markerPos 9
 
 ; event list
 ; addEvent event_name event_expression
@@ -46,17 +46,30 @@ curSTATUS ByChange
 
 
 addGroup "G1"
-activeDirFile "" "/home/soke/ICdesign/base/sim/tb.fsdb"
+activeDirFile "" "/home/more/ICdesign/base/sim/tb.fsdb"
 addSignal -h 15 /ahb2apb_tb/clk
-addSignal -h 15 -holdScope clk
 addSignal -h 15 -holdScope reset
 addSignal -h 15 -UNSIGNED -holdScope ahbfsm_trans_reg[31:0]
 addSignal -h 15 -UNSIGNED -holdScope ahbfsm_trans_next[31:0]
 addGroup "G2"
-addSignal -h 15 /ahb2apb_tb/haddr_i[31:0]
+addSignal -h 15 /ahb2apb_tb/hready_o
 addSignal -h 15 -holdScope hsize_i[2:0]
 addSignal -h 15 -holdScope hburst_i[2:0]
+addSignal -h 15 /ahb2apb_tb/ahb2apb_i/htrans_i[1:0]
+addSignal -h 15 /ahb2apb_tb/haddr_i[31:0]
+addSignal -h 15 -holdScope hwdata_i[31:0]
+addSignal -h 15 -holdScope hwrite_i
+addSignal -h 15 -holdScope hsel_i
 addGroup "G3"
+addSignal -h 15 /ahb2apb_tb/clk
+addSignal -h 15 -UNSIGNED /ahb2apb_tb/ahb2apb_i/apbfsm_c[31:0]
+addGroup "G4"
+addSignal -h 15 /ahb2apb_tb/paddr_o[31:0]
+addSignal -h 15 -holdScope psel_o
+addSignal -h 15 -holdScope penabe_o
+addSignal -h 15 /ahb2apb_tb/ahb2apb_i/pready_i
+addSignal -h 15 -holdScope pwdata_o[31:0]
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

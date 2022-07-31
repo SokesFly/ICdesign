@@ -72,9 +72,9 @@ begin
         apbfsm_n <= APB_IDLE;
     end
     else begin
-        case(apbfsm_n)
+        case(apbfsm_c)
             APB_IDLE:       begin
-                                if(hsel_i) begin
+                                if(pready_i) begin
                                     apbfsm_n <= APB_SETUP;
                                 end
                                 else begin
@@ -114,8 +114,11 @@ begin
     if(!presetn_i) begin
         hready_o <= 1'b0;
     end
-    else if(apbfsm_n ==  APB_IDLE || apbfsm_n == APB_SETUP) begin
+    else if(apbfsm_n == APB_ACCESS) begin
         hready_o <= 1'b1;
+    end
+    else if(apbfsm_n == APB_IDLE || apbfsm_n == APB_SETUP) begin
+        hready_o <= 1'b0;
     end
 end
 

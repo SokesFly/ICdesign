@@ -122,6 +122,9 @@ begin
     if(!reset) begin
         ahb_trans_start <= 1'b0;
     end
+    else if(hready_o) begin
+        ahb_trans_start <= 1'b1;
+    end
     else begin
         ahb_trans_start <= 1'b1;
     end
@@ -138,8 +141,8 @@ begin
 end
 
 assign              go_ahb_start       = ((ahbfsm_trans_reg == AHB_IDLE     ) && ahb_trans_start) ||
-                                         ((ahbfsm_trans_reg == AHB_END      ) && ahb_trans_start ) ||
-                                         ((ahbfsm_trans_reg == AHB_START    ) && transmit_is_single);
+                                         ((ahbfsm_trans_reg == AHB_END      ) && ahb_trans_start && hready_o) ||
+                                         ((ahbfsm_trans_reg == AHB_START    ) && transmit_is_single && hready_o);
 assign              go_ahb_transmit    = (ahbfsm_trans_reg == AHB_START     ) && hready_o && (!transmit_is_single);
 assign              go_ahb_end         = (ahbfsm_trans_reg == AHB_TRANSMIT  ) && hready_o && transmit_complete;
 assign              go_ahb_idle        = (ahbfsm_trans_reg == AHB_END       ) && (!ahb_trans_start);
@@ -227,7 +230,7 @@ begin
     if(!reset) begin
         hsize_i <= 'd0;
     end
-    else if(ahbfsm_trans_next == AHB_START) begin
+    else if(ahbfsm_trans_next == AHB_START && ahbfsm_trans_reg != AHB_START ) begin
         hsize_i <= {$random} % 8;
     end
 end
@@ -297,10 +300,10 @@ begin
     if(!reset) begin
         haddr_i <= 'd0;
     end
-    else if(ahbfsm_trans_next == AHB_START) begin
+    else if(ahbfsm_trans_next == AHB_START && hready_o) begin
         haddr_i <= ({$random} % 16'h0F) * 4;
     end
-    else if(ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) begin
+    else if((ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) && hready_o) begin
         case(hburst_i)
             `AHB_HBURST_SINGLE: begin
                                     haddr_i  <= haddr_i + addr_single;
@@ -352,8 +355,43 @@ begin
     if(!reset) begin
         hburst_i <= 'd0;
     end
-    else if(ahbfsm_trans_next == AHB_START) begin
+    else if(ahbfsm_trans_next == AHB_START && ahbfsm_trans_reg != AHB_START) begin
         hburst_i <= {$random} % 8;
+    end
+end
+
+// AHB fsm output signal: hsel_i
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        hsel_i <= 1'b0;
+    end
+    else if(ahbfsm_trans_next == AHB_START || ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) begin
+        hsel_i <= 1'b1;
+    end
+end
+
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        hwrite_i <= 1'b0;
+    end
+    else if(ahbfsm_trans_next == AHB_START) begin
+        hwrite_i <= {$random} % 2;
+    end
+end
+
+// AHB fsm output signal: htrans_i
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        htrans_i <= `AHB_HTRANS_IDLE;
+    end
+    else if(ahbfsm_trans_next == AHB_START) begin
+        htrans_i <= `AHB_HTRANS_NONSEQ;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) begin
+        htrans_i <= `AHB_HTRANS_SEQ;
     end
 end
 
@@ -366,7 +404,7 @@ begin
     else if(ahbfsm_trans_next == AHB_IDLE || transmit_complete || transmit_is_single) begin
         transmited_cnt <= 16'h00;
     end
-    else if(ahbfsm_trans_next == AHB_START || ahbfsm_trans_next == AHB_TRANSMIT) begin
+    else if((ahbfsm_trans_next == AHB_START || ahbfsm_trans_next == AHB_TRANSMIT) && hready_o) begin
         transmited_cnt <=  transmited_cnt + 16'h01;
     end
 end
@@ -382,6 +420,19 @@ begin
     end
     else if(transmited_tgt - 2 == transmited_cnt) begin
         transmit_complete <= 1'b1;
+    end
+end
+
+// AHB fsm output signal: hwdata_i
+always@(posedge clk or negedge reset)
+begin
+    if(!reset) begin
+        hwdata_i <= 'd0;
+    end
+    else if(ahbfsm_trans_next == AHB_START && hready_o && hwrite_i) begin
+        hwdata_i <= {$random};
+    end if((ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) && hready_o && hwrite_i) begin
+        hwdata_i <= {$random};
     end
 end
 
@@ -424,6 +475,8 @@ begin
         endcase
     end
 end
+
+assign                              pready_i    = 1'b1;
 
 ahb2apb           #(
     .ADDR_WIDTH   (ADDR_WIDTH  ),
