@@ -1,4 +1,0 @@
-Command Line: /home/soke/software/synopsis2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -sv -nologo -f /home/soke/ICdesign/base/sim/../tb/ahb2apb/filelist.f -f /home/soke/ICdesign/base/sim/../rtl/ahb2apb/filelist.f -ssf tb.fsdb
-uname(Linux ubuntu 5.4.0-121-generic #137~18.04.1-Ubuntu SMP Mon Jun 20 07:25:24 UTC 2022 x86_64)
-Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 182.851994 5.180292 3.262500 delta 678727680 678727680 total 1066975232 1066975232

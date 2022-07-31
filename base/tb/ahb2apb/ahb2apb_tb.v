@@ -240,8 +240,8 @@ begin
         hburst_i    <= `AHB_HTRANS_IDLE;
     end
     else if(ahbfsm_reg == AHB_IDLE && ahbfsm_next == AHB_ADDR_PHASE) begin
-        //hburst_i    <= {$random} % 4;
-        hburst_i    <= `AHB_HBURST_WRAP8;
+        hburst_i    <= {$random} % 4;
+        //hburst_i    <= `AHB_HBURST_WRAP8;
     end
 end
 
@@ -315,6 +315,10 @@ begin
         wrap_upper_offset <= 'd0;
         wrap_down_offset  <= 'd0;
     end
+    else if(ahbfsm_trans_next == AHB_TRANS_LAST && ahbfsm_trans_reg == AHB_TRANS_MIDDLE) begin
+        wrap_upper_offset <= 'd0;
+        wrap_down_offset  <= 'd0;
+    end
     else if((ahbfsm_trans_next == AHB_TRANS_MIDDLE) && (upper_half - wrap_single <= wrap_upper_offset)) begin
         wrap_down_offset <= wrap_down_offset + wrap_single;
     end
@@ -331,6 +335,9 @@ begin
     else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
         wrap_step_cnt <= 4'h1 + wrap_step_cnt;
     end
+    else if(ahbfsm_trans_next == AHB_TRANS_LAST) begin
+        wrap_step_cnt <= 4'h0;
+    end
 end
 
 always@(posedge clk or negedge reset)
@@ -338,10 +345,10 @@ begin
     if(!reset) begin
         ahb_trans_last_flag <= 1'b0;
     end
-    else if(wrap_step_cnt < wrap_step) begin
+    else if(wrap_step_cnt < wrap_step - 3) begin
         ahb_trans_last_flag <= 1'b0;
     end
-    else if(wrap_step_cnt >= wrap_step - 1) begin
+    else if(wrap_step_cnt >= wrap_step -3) begin
         ahb_trans_last_flag <= 1'b1;
     end
 end
@@ -352,7 +359,8 @@ begin
         haddr_i     <= 'd0;
     end
     else if(ahbfsm_trans_next == AHB_TRANS_FIRST) begin
-        haddr_i     <= 32'h0000_002c;
+        //haddr_i     <= 32'h0000_002c;
+        haddr_i     <= {$random} / wrap_single;
     end
     else if(ahbfsm_trans_next == AHB_TRANS_MIDDLE) begin
         case(hburst_i)
