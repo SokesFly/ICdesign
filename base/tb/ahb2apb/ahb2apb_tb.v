@@ -61,18 +61,28 @@ reg                     pready_i        ;
 // AHB starting control
 reg                     ahb_trans_start     ;
 reg                     transmit_complete   ;
+reg                     transmit_is_single  ;
 wire                    go_ahb_idle         ;
 wire                    go_ahb_start        ;
 wire                    go_ahb_transmit     ;
 wire                    go_ahb_end          ;
-wire                    transmit_is_single  ;
 
 // AHB ending control signals declare
-reg [15             :0] transmited_tgt  ;
-reg [15             :0] transmited_cnt  ;
+reg [15             :0] transmited_tgt      ;
+reg [15             :0] transmited_cnt      ;
 
 // wrap calulate signals declare
+reg  [ADDR_WIDTH-1  :0] wrap_width          ;
+reg  [ADDR_WIDTH-1  :0] addr_single         ;
+reg  [ADDR_WIDTH-1  :0] wrap_addr_start     ;
+reg  [ADDR_WIDTH-1  :0] wrap_addr_end       ;
+reg  [ADDR_WIDTH-1  :0] down_half           ;
+reg  [ADDR_WIDTH-1  :0] upper_half          ;
+reg  [ADDR_WIDTH-1  :0] wrap_upper_offset   ;
+reg  [ADDR_WIDTH-1  :0] wrap_down_offset    ;
 
+reg  [3             :0] wrap_step           ;
+reg  [3             :0] wrap_step_cnt       ;
 
 enum {AHB_IDLE='d0, AHB_START, AHB_TRANSMIT, AHB_END} ahbfsm_trans_reg, ahbfsm_trans_next;
 
@@ -94,7 +104,7 @@ initial begin
 end
 
 initial begin
-    wait(transfer_times == 16'h00F0) begin
+    wait(transfer_times == 16'h000F) begin
         $finish;
     end
 end
@@ -127,13 +137,25 @@ begin
     end
 end
 
-assign              transmit_is_single = (hburst_i == 3'b000);
 assign              go_ahb_start       = ((ahbfsm_trans_reg == AHB_IDLE     ) && ahb_trans_start) ||
                                          ((ahbfsm_trans_reg == AHB_END      ) && ahb_trans_start ) ||
                                          ((ahbfsm_trans_reg == AHB_START    ) && transmit_is_single);
 assign              go_ahb_transmit    = (ahbfsm_trans_reg == AHB_START     ) && hready_o && (!transmit_is_single);
 assign              go_ahb_end         = (ahbfsm_trans_reg == AHB_TRANSMIT  ) && hready_o && transmit_complete;
 assign              go_ahb_idle        = (ahbfsm_trans_reg == AHB_END       ) && (!ahb_trans_start);
+
+always@(*)
+begin
+    if(!reset) begin
+        transmit_is_single <= 1'b0;
+    end
+    else if(ahbfsm_trans_reg == AHB_START && hburst_i == `AHB_HBURST_SINGLE) begin
+        transmit_is_single <= 1'b1;
+    end
+    else begin
+        transmit_is_single <= 1'b0;
+    end
+end
 
 always@(posedge clk or negedge reset)
 begin
@@ -210,6 +232,65 @@ begin
     end
 end
 
+// wraping address calulate
+always@(*)
+begin
+    if(!reset) begin
+        addr_single <= 'd0;
+    end
+    else if(ahbfsm_trans_next == AHB_START) begin
+        addr_single <= (1 << ( hsize_i + 3) >> 3);
+    end
+    else begin
+        addr_single <= addr_single; // Avoid generate latch.
+    end
+end
+
+always@(hsize_i or hburst_i or addr_single)
+begin
+    case(hburst_i)
+        `AHB_HBURST_WRAP4:      begin
+                                    wrap_width     <= (addr_single << 2);
+                                end
+        `AHB_HBURST_WRAP8:      begin
+                                    wrap_width     <= (addr_single << 3);
+                                end
+        `AHB_HBURST_WRAP16:     begin
+                                    wrap_width     <= (addr_single << 4);
+                                end
+        default:                begin
+                                    wrap_width     <= 32'h0000_0000;
+                                end
+    endcase
+end
+
+always@(*)
+begin
+    if(!reset) begin
+        wrap_step <= 4'h0;
+    end
+    else if(ahbfsm_trans_next == AHB_START) begin
+        case(hburst_i)
+        `AHB_HBURST_WRAP4:      begin
+                                    wrap_step <= 4'h4;
+                                end
+        `AHB_HBURST_WRAP8:      begin
+                                    wrap_step <= 4'h8;
+                                end
+        `AHB_HBURST_WRAP16:     begin
+                                    wrap_step <= 4'hF;
+                                end
+        default:                begin
+                                    wrap_step <= 4'h0;
+                                end
+        endcase
+    end
+    else begin
+        wrap_step <= wrap_step ;
+    end
+end
+
+
 // AHB fsm output signal: haddr_i
 always@(posedge clk or negedge reset)
 begin
@@ -217,7 +298,51 @@ begin
         haddr_i <= 'd0;
     end
     else if(ahbfsm_trans_next == AHB_START) begin
-        haddr_i <= {$random} / 4;
+        haddr_i <= ({$random} % 16'h0F) * 4;
+    end
+    else if(ahbfsm_trans_next == AHB_TRANSMIT || ahbfsm_trans_next == AHB_END) begin
+        case(hburst_i)
+            `AHB_HBURST_SINGLE: begin
+                                    haddr_i  <= haddr_i + addr_single;
+                                end
+            `AHB_HBURST_INCR:   begin
+                                    haddr_i  <= haddr_i + addr_single;
+                                end
+            `AHB_HBURST_INCR4:  begin
+                                    haddr_i  <= haddr_i + addr_single;
+                                end
+            `AHB_HBURST_WRAP4:  begin
+                                    if(upper_half - addr_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + addr_single;
+                                    end
+                                end
+            `AHB_HBURST_INCR8:  begin
+                                    haddr_i  <= haddr_i + addr_single;
+                                end
+            `AHB_HBURST_WRAP8:  begin
+                                    if(upper_half - addr_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + addr_single;
+                                    end
+                                end
+            `AHB_HBURST_INCR16: begin
+                                    haddr_i  <= haddr_i + addr_single;
+                                end
+            `AHB_HBURST_WRAP16: begin
+                                    if(upper_half - addr_single <= wrap_upper_offset) begin
+                                        haddr_i  <= wrap_addr_start + wrap_down_offset;
+                                    end
+                                    else begin
+                                        haddr_i  <= haddr_i + addr_single;
+                                    end
+                                end
+            default:            begin haddr_i <= 'd0; end
+        endcase
     end
 end
 
