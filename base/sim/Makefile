@@ -15,7 +15,8 @@
 #  MODULE          :=ft-d2000-pmu
 # MODULE          :=ahb2apb
 # MODULE          :=spi
- MODULE          :=ahb2apb
+#  MODULE          :=ahb2apb
+MODULE          :=axi2ahb
 
 # Define project dir
 SIM_DIR         :=$(shell pwd)
