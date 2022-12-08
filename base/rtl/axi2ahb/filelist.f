@@ -1,1 +1,0 @@
-${RTL_DIR}/${MODULE}/${MODULE}.sv
