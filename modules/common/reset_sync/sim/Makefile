@@ -11,19 +11,12 @@
 # Description: 
 #*************************************************************************************/
 
-MODULE_NAME     :=sync_fifo
-
 SIM_DIR         :=$(shell pwd)
-RTL_DIR         :=${SIM_DIR}/../rtl
-TB_DIR          :=${SIM_DIR}/../tb
-
-SRCS            :=$(wildcard ${SIM_DIR}/../rtl/*.v)
-SRCS            +=$(wildcard ${SIM_DIR}/../tb/*.v)
-FILELIST        :=${SIM_DIR}/../rtl/filelist.f
-TBLIST          :=${SIM_DIR}/../tb/filelist.f
+RTL_DIR         :=../rtl
+TB_DIR          :=../tb
 
 VCS             :=vcs
-# GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
+#GCC             :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed
 GCC             :=-cpp -cc -LDFLAGS -Wl,--no-as-needed
 MODE            :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k
 MODE            +=-lca -kdb
@@ -33,7 +26,7 @@ NO_TIMING       :=+notimingcheck +nospecify
 
 export			RTL_DIR TB_DIR
 
-all: elab
+all: elab elab
 
 #${VCS} ${GCC} ${MODE} ${SRCS} ${TIME_SCALE} ${NO_TIMING}
 
@@ -49,9 +42,9 @@ sim:
 verdi:
 	verdi -nologo \
 	-dbdir simv.daidir	\
+	-ssf tb.fsdb	\
 	-simflow -simBin ./simv	\
-	-simBin simv	\
-	-ssf tb.fsdb
+	-simBin simv
 
 clean:
 	rm -fr AN.DB DEVfiles csrc simv.* inter.vpd ucli.key *_log novas* *fsdb simv verdiLog comp_log
