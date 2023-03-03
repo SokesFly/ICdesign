@@ -1,0 +1,2 @@
+Command Line: /home/remo/tools/sysnopsys2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -nologo -dbdir simv.daidir -simBin simv -ssf tb.fsdb
+uname(Linux localhost.localdomain 5.4.0-84-generic #94~18.04.1-Ubuntu SMP Thu Aug 26 23:17:46 UTC 2021 x86_64)

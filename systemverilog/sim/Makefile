@@ -21,6 +21,8 @@ LDFLAGS         :=-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed -j8
 OPTIONS         :=-full64 -debug_acc+all -sverilog -nc -l comp_log +v2k -lca -kdb
 # 启用UVM库
 # OPTIONS		+=-ntb_opts uvm-1.1 
+# Dump MEM
+# OPTIONS		+=-mda
 VERDI_LIBS      :=${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab ${VERDI_HOME}/share/PLI/VCS/LINUX64/pli.a
 TIME_SCALE      :=-timescale=1ns/1ps
 NO_TIMING       :=+notimingcheck +nospecify

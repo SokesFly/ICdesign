@@ -1,0 +1,8 @@
+Command: vcs -full64 -debug_acc+all -sverilog -nc -l comp_log +v2k -cpp -cc -LDFLAGS \
+-Wl,--no-as-needed -timescale=1ns/1ps +notimingcheck +nospecify
+
+Error-[NTMES] No TopModule/Entity supplied
+  No TopModule/Entity supplied on 'vcs' command line.
+  Usage: vcs [libname.]<Design Unit> [-o output] [other compile opts] or vcs 
+  -help
+

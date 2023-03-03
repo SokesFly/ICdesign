@@ -1,0 +1,105 @@
+0 
+39
++itf+/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
++nospecify
++notimingcheck
++v2k
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc-4.8
+-Mcfl= -pipe -fPIC -O -I/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/include
+-Mcplusplus=g++-4.8
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -Wl,--no-as-needed -rdynamic
+-Mobjects= /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvirsim.so /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/liberrorinf.so /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/home/remo/tools/sysnopsys2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/include
+-P
+-Xufe=2steps
+-debug_acc+all
+-f /home/remo/ICdesign/systemverilog/sim/filelist.f
+-fsdb
+-full64
+-gen_obj
+-kdb
+-l
+-lca
+-nc
+-picarchive
+-sverilog
+-timescale=1ns/1ps
+/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/bin/vcs1
+/home/remo/tools/sysnopsys2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+comp_log
+49
+sysc_uni_pwd=/home/remo/ICdesign/systemverilog/sim
+XDG_SESSION_ID=4
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+VSCODE_IPC_HOOK_CLI=/run/user/1000/vscode-ipc-78292391-1538-4a1c-99a6-dcb7ef858845.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-6e50fa2d36.sock
+VSCODE_GIT_ASKPASS_NODE=/home/remo/.vscode-server/bin/92da9481c0904c6adfe372c12da3b7748d74bdcb/node
+VSCODE_GIT_ASKPASS_MAIN=/home/remo/.vscode-server/bin/92da9481c0904c6adfe372c12da3b7748d74bdcb/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+VMR_MODE_FLAG=64
+VERDI_HOME=/home/remo/tools/sysnopsys2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LOG_FILE=comp_log
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH_OVERRIDE=linux
+VCS_ARCH=linux64
+UVM_HOME=/home/remo/ICdesign/lib/uvm/uvm-1.2
+UNAME=/bin/uname
+TOOL_HOME=/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64
+TERM_PROGRAM_VERSION=1.76.0
+TERM_PROGRAM=vscode
+TB_DIR=/home/remo/ICdesign/systemverilog/sim/../tb
+SSH_CONNECTION=192.168.91.1 58347 192.168.91.130 22
+SSH_CLIENT=192.168.91.1 58347 22
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+SCL_HOME=/home/remo/tools/sysnopsys2018/scl_v2018.06/scl/2018.06
+RTL_DIR=/home/remo/ICdesign/systemverilog/sim/../rtl
+OVA_UUM=0
+MFLAGS=
+MAKE_TERMOUT=/dev/pts/5
+MAKE_TERMERR=/dev/pts/5
+MAKELEVEL=1
+MAKEFLAGS=
+LESSOPEN=| /usr/bin/lesspipe %s
+LESSCLOSE=/usr/bin/lesspipe %s %s
+LC_ALL=C
+GIT_ASKPASS=/home/remo/.vscode-server/bin/92da9481c0904c6adfe372c12da3b7748d74bdcb/extensions/git/dist/askpass.sh
+FM_HOME=/home/remo/tools/sysnopsys2018/fm_vO-2018.06-SP1/fm/O-2018.06-SP1
+DVE_HOME=/home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/gui/dve
+DESIGNWARE_HOME=/home/remo/eda/DESIGNWARE
+DC_HOME=/home/remo/tools/sysnopsys2018/syn_vO-2018.06-SP1/syn/O-2018.06-SP1
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+COLORTERM=truecolor
+0
+5
+1677750976 /home/remo/ICdesign/systemverilog/sim/../rtl/reset_sync.sv
+1677807616 /home/remo/ICdesign/systemverilog/sim/../tb/tb.sv
+1677751125 /home/remo/ICdesign/systemverilog/sim/filelist.f
+1550753332 /home/remo/tools/sysnopsys2018/verdi-2018.9/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+1551421246 /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
+4
+1551422344 /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvirsim.so
+1551421792 /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/liberrorinf.so
+1551421768 /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so
+1551421789 /home/remo/tools/sysnopsys2018/vcs_mx_vO-2018.09-SP2/vcs-mx/O-2018.09-SP2/linux64/lib/libvfs.so
+1677807620 simv.daidir
+-1 partitionlib
