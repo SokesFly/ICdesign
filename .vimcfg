@@ -1,0 +1,82 @@
+" This vim configuration for ic design "
+" Show number
+set number
+" Not select cow number, when use mouse copy
+set mouse=a
+set showmatch
+
+filetype on " 打开文件类型检测
+filetype plugin on " 为特定的文件类型允许插件文件的载入
+filetype indent on " 为特定的文件类型载入缩进文件
+
+set showmode " 在底部显示当前模式
+set tabstop=2 " 按下Tab会空2格
+set guifont=Monospace\ 16 " 调整字体和字号
+set paste " 设置粘贴功能
+set cursorline " 光标所在的当前行高亮
+set cursorcolumn " 光标所在的当前列高亮
+set hlsearch " 搜索时，高亮显示匹配结果
+set noerrorbells " 不让vim发出讨厌的滴滴声 set shortmess=ati " 启动的时候不显示那个援助索马里儿童的提示 
+set t_Co=256  "开启256色支持 set hlsearch "搜索设置高亮
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+set autoindent
+" set smartindent
+
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>O
+
+nmap  <S-f> :FZF
+" nmap  <C-f> :FZF .<cr>
+"" export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+
+
+"进行版权声明的设置 "添加或更新头
+map <F3> :call TitleDet()<cr>
+function AddTitle()
+	call append(0,"/*")
+	call append(1,"* Author: jjiang - vip@vip.ccc")
+	call append(2,"* Tel :100000000000 ")
+	call append(3,"* Last modified: ".strftime("%Y-%m-%d %H:%M"))
+	call append(4,"* Filename: ".expand("%:t"))
+	call append(5,"* Description: ")
+	call append(6,"*/")
+	echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+endf
+
+"更新最近修改时间和文件名 
+function UpdateTitle()
+	normal m' execute '/# *Last modified:/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@' normal '' normal mk execute '/# *Filename:/s@:.*$@\=":\t\t".expand("%:t")@' execute "noh" normal 'k echohl WarningMsg | echo "Successful in updating the copy right." | echohl None 
+endfunction
+"判断前10行代码里面，是否有Last modified这个单词，
+"如果没有的话，代表没有添加过作者信息，需要新添加； "如果有的话，那么只需要更新即可
+function TitleDet()
+	let n=1
+	"默认为添加
+	while n < 10
+		let line = getline(n)
+		if line =~ '^\#\s*\S*Last\smodified:\S*.*$'
+			call UpdateTitle()
+			return
+		endif
+		let n = n + 1
+	endwhile
+	call AddTitle()
+endfunction
+
+" Pulgin 
+call plug#begin()
+Plug 'vhda/verilog_systemverilog.vim'
+Plug 'nachumk/systemverilog.vim'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+call plug#end()
+
+set tags=tags;~
